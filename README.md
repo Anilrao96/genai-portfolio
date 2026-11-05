@@ -2,7 +2,7 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-Current state: **1/10 new MVPs implemented and live-verified** (Local AI); Agent Eval Lab is completed existing work. The other nine apps remain scheduled work. A local Git repository is used for checkpoints; no GitHub remote or push has been created.
+Current state: **1/10 new MVPs implemented and live-verified** (Local AI); Agent Eval Lab is completed existing work. The other nine apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). The user has authorized publishing this repository and pushing each completed project; delivery status is recorded in PROGRESS.md.
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
@@ -40,7 +40,7 @@ Read [ROADMAP.md](ROADMAP.md) for the fourteen-day sequence and acceptance crite
 - Keep offline fixtures clearly distinct from live inference. A stub is not a completed AI integration.
 - Each app needs a reproducible start command, example workflow, architecture notes, focused tests, and evidence of what actually ran.
 - Work resumes hourly through 18 November when the computer and desktop app are available. This is scheduled work, not a persistent startup service; unavailable time reduces the build window.
-- Keep all work local unless the user later requests GitHub publishing or hosting.
+- Push completed, verified projects to the portfolio GitHub repository. Keep runtime services local; hosting has not been requested.
 
 ## Layout
 

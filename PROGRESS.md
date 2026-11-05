@@ -12,7 +12,7 @@ Last updated: 5 November 2026, Asia/Kolkata.
 
 Evidence: `docs/local-ai-live.json`, `docs/local-ai-cpu-probe.json`, `docs/local-ai-browser.json`, desktop/mobile PNGs and the session log. Initial GPU inference timed out; that failure is retained in `docs/local-ai-initial-timeout.json`. CPU is the verified default. This is a scoped local MVP; streaming and cancellation are documented follow-ups.
 
-**Git:** local repository initialized on `main`; no remote is configured and nothing has been pushed to GitHub. GitHub delivery has not been authorized in this sprint.
+**Git:** the user authorized publishing the current work and pushing each completed project. Destination: `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Initial publication is in progress; remote verification is pending. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
@@ -26,7 +26,7 @@ Evidence: `docs/local-ai-live.json`, `docs/local-ai-cpu-probe.json`, `docs/local
 ## Known dependencies
 
 - Working Python 3.13 exists under the existing uv installation; the Python 3.10 launcher registration is stale.
-- 24 GB system RAM; Intel i5-9300H; about 688 GB available on D:. GPU not established.
+- 24 GB system RAM; Intel i5-9300H; about 688 GB available on D: at initial inspection.
 - NVIDIA GTX 1650 with 4 GB VRAM detected by Ollama; automatic GPU inference hit the 120-second read timeout. CPU inference works.
 - The dedicated portfolio Ollama at `127.0.0.1:11435` has `qwen2.5:1.5b` (about 986 MB) under `.models` on D:. The existing default instance remains independent.
 - Docker not found in PATH. Gemini key/budget not configured by this task.

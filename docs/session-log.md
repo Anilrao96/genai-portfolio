@@ -23,3 +23,10 @@
 - Initialized a local Git repository on `main`. No remote, repository publication or GitHub push was performed. The user's follow-up was answered with that distinction.
 
 Next scheduled slice: project 07, SQL assistant. Project 04 is a verified MVP, with non-streaming responses, CPU-only live evidence and no cancellation; see its README for scope limits.
+
+## 2026-11-05 — GitHub delivery authorization
+
+- User instructed: "Push it to my GitHub, and push each project as you complete it."
+- Confirmed the connected GitHub account is `Anilrao96`. Destination is one `genai-portfolio` repository for the ten apps and shared code; completed apps receive tested commits and verified pushes.
+- The GitHub connector can inspect repositories but does not provide repository creation. Using the existing Git Credential Manager authentication for that missing operation and native Git for pushes. Credentials remain in memory and are never printed or saved in project files.
+- Reviewed tracked files and ignore rules: local model weights, node_modules, virtual environments, runtime/browser profiles, caches and secret `.env` files are excluded. Only the credential-free `.env.example` is tracked.
