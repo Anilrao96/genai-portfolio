@@ -12,7 +12,7 @@ Last updated: 5 November 2026, Asia/Kolkata.
 
 Evidence: `docs/local-ai-live.json`, `docs/local-ai-cpu-probe.json`, `docs/local-ai-browser.json`, desktop/mobile PNGs and the session log. Initial GPU inference timed out; that failure is retained in `docs/local-ai-initial-timeout.json`. CPU is the verified default. This is a scoped local MVP; streaming and cancellation are documented follow-ups.
 
-**Git:** the user authorized publishing the current work and pushing each completed project. Destination: `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Initial publication is in progress; remote verification is pending. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. The completed Local AI MVP and sprint roadmap are pushed; the first delivery was verified at commit `70f7fb7326b07ed2c03e8f64a6af42b0e1039f69`. Push this delivery record too, then verify the final remote head. The user authorized publishing each subsequent project after it meets its acceptance criteria. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 

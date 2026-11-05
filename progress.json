@@ -16,6 +16,6 @@
     {"id": "p10_multimodal_gemini", "article_number": 10, "status": "planned", "target_date": "2026-11-16"}
   ],
   "next_action": "Build project 07 SQL assistant with fictional data and database-enforced read-only queries.",
-  "git": {"branch": "main", "remote": "https://github.com/Anilrao96/genai-portfolio.git", "repository": "https://github.com/Anilrao96/genai-portfolio", "pushed": false, "publication_authorized": true, "delivery_policy": "Commit and push each completed verified project; verify origin/main equals HEAD.", "delivery_status": "initial_publication_in_progress"},
+  "git": {"branch": "main", "remote": "https://github.com/Anilrao96/genai-portfolio.git", "repository": "https://github.com/Anilrao96/genai-portfolio", "pushed": true, "publication_authorized": true, "delivery_policy": "Commit and push each completed verified project; verify origin/main equals HEAD.", "delivery_status": "published", "first_verified_delivery_commit": "70f7fb7326b07ed2c03e8f64a6af42b0e1039f69", "delivered_projects": ["p04_local_ai"]},
   "automation": {"id": "build-genai-portfolio-over-two-weeks", "status": "ACTIVE", "cadence": "hourly", "ends_before": "2026-11-19T00:00:00+05:30", "requires": "computer on and desktop app running"}
 }
