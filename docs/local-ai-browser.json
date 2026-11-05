@@ -1,0 +1,11 @@
+{
+  "verified_at": "2026-11-05T14:27:26.415Z",
+  "kind": "headless_edge_live_ui",
+  "prompt": "What is 17 + 25? Reply with only the number.",
+  "answer": "42",
+  "javascript_errors": [],
+  "desktop_screenshot": "local-ai-desktop.png",
+  "mobile_screenshot": "local-ai-mobile.png",
+  "mobile_no_horizontal_overflow": true,
+  "new_conversation_clears_messages": true
+}

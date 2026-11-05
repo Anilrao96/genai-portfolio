@@ -1,0 +1,14 @@
+.venv/
+.cache/
+.tools/
+.models/
+.runtime/
+__pycache__/
+.pytest_cache/
+node_modules/
+*.py[cod]
+.env
+.env.*
+!.env.example
+runs/
+*.log

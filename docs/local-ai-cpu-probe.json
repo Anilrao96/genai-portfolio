@@ -1,0 +1,21 @@
+{
+  "kind": "live_cpu_probe",
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-05T14:21:11.5780613Z",
+    "message": {
+      "role": "assistant",
+      "content": "42"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6371872800,
+    "load_duration": 5568093600,
+    "prompt_eval_count": 45,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 681474000,
+    "eval_count": 3,
+    "eval_duration": 113262000
+  },
+  "elapsed_ms": 6503
+}

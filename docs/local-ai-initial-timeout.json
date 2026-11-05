@@ -1,0 +1,30 @@
+{
+  "kind": "live_local_inference",
+  "health": {
+    "status": "ok",
+    "service": "local-ai"
+  },
+  "verified_at": "2026-11-05T19:50:31.3434458+05:30",
+  "response": null,
+  "models": [
+    {
+      "name": "qwen2.5:1.5b",
+      "size_bytes": 986061892,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "1.5B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 1536,
+        "runner": "ggml"
+      }
+    }
+  ],
+  "prompt": "What is 17 + 25? Reply with only the number.",
+  "outcome": "failed_upstream_timeout_gpu_auto"
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Local AI Studio</title><link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <aside>
+    <a class="brand" href="/">LOCAL<span> / AI</span></a>
+    <div class="badge">PORTFOLIO 04 / 10</div>
+    <h1>Your model.<br>Your machine.</h1>
+    <p class="muted">A private workspace for a conversation with a local language model.</p>
+    <label for="model">MODEL</label><select id="model" aria-label="Select local model"><option>Connecting…</option></select>
+    <button id="refresh" class="secondary">Refresh models</button>
+    <div id="connection" role="status" class="connection">Checking Ollama…</div>
+    <button id="clear" class="secondary">New conversation</button>
+    <p class="foot">Prompts stay in this browser tab and your local Ollama process. No chat history is saved on the server.</p>
+  </aside>
+  <main>
+    <header><span>Local AI Studio</span><span class="muted">ON YOUR DEVICE</span></header>
+    <section id="messages" aria-label="Conversation" aria-live="polite">
+      <div id="welcome"><div class="spark">✳</div><h2>A little room to think.</h2><p>Ask a question, explore an idea, or work through a problem.</p>
+        <div class="suggestions"><button data-prompt="Explain retrieval augmented generation using a simple example.">Explain an AI concept</button><button data-prompt="Help me plan a small Python project I can finish this weekend.">Plan a small project</button></div>
+      </div>
+    </section>
+    <div class="compose"><form id="chat-form"><label class="sr-only" for="prompt">Message</label><textarea id="prompt" rows="2" maxlength="4000" placeholder="What are you working on?" required></textarea><button id="send" type="submit" disabled>Send ↗</button></form><p id="status" role="status">Responses can be inaccurate. Check facts and code before using them.</p></div>
+  </main>
+</body>
+</html>

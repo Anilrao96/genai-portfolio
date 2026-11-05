@@ -1,0 +1,16 @@
+{
+  "verified_at": "2026-11-05T19:57:10.7538647+05:30",
+  "prompt": "What is 17 + 25? Reply with only the number.",
+  "outcome": "passed",
+  "kind": "live_local_inference",
+  "inference_mode": "cpu",
+  "model": "qwen2.5:1.5b",
+  "response": {
+    "answer": "42",
+    "model": "qwen2.5:1.5b",
+    "input_tokens": 57,
+    "output_tokens": 3,
+    "generation_duration_ns": 115956000,
+    "elapsed_ms": 3785.4
+  }
+}
