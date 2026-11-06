@@ -1,0 +1,359 @@
+{
+  "verified_at": "2026-11-06T07:06:02.973661+00:00",
+  "kind": "live_langchain_ollama_sql",
+  "model": "qwen3:4b",
+  "inference_mode": "cpu",
+  "cases": [
+    {
+      "id": "all-orders",
+      "question": "How many orders are there?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 120353.6,
+      "response": {
+        "status": "answered",
+        "answer": "The SQL query counts the number of orders from the 'orders' table. The result shows a single row with the value 12 for 'order_count'. This means there are 12 orders in the database.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT COUNT(*) AS order_count FROM orders"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "order_count"
+              ],
+              "rows": [
+                [
+                  12
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.78
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 622,
+          "output_tokens": 147
+        },
+        "question": "How many orders are there?",
+        "model_call_count": 2,
+        "elapsed_ms": 120245.2,
+        "sql": "SELECT COUNT(*) AS order_count FROM orders",
+        "result": {
+          "columns": [
+            "order_count"
+          ],
+          "rows": [
+            [
+              12
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.78
+        },
+        "summary_source": "model",
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "completed-revenue",
+      "question": "What is the total completed revenue in dollars?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 25114.7,
+      "response": {
+        "status": "answered",
+        "answer": "The SQL query calculates the total completed revenue in dollars by summing the `total_cents` from orders with status 'completed' and converting to dollars. The result shows 1430.0 dollars as the total revenue from completed orders.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT (SUM(o.total_cents) / 100.0) AS total_revenue_dollars FROM orders o WHERE o.status = 'completed';"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "total_revenue_dollars"
+              ],
+              "rows": [
+                [
+                  1430.0
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.49
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 660,
+          "output_tokens": 174
+        },
+        "question": "What is the total completed revenue in dollars?",
+        "model_call_count": 2,
+        "elapsed_ms": 25080.0,
+        "sql": "SELECT (SUM(o.total_cents) / 100.0) AS total_revenue_dollars FROM orders o WHERE o.status = 'completed';",
+        "result": {
+          "columns": [
+            "total_revenue_dollars"
+          ],
+          "rows": [
+            [
+              1430.0
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.49
+        },
+        "summary_source": "model",
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "top-region",
+      "question": "Which region has the highest completed revenue in dollars? Show region and revenue_usd.",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 32033.7,
+      "response": {
+        "status": "answered",
+        "answer": "The SQL query returns the region with the highest completed revenue in dollars. The result shows that the region 'South' has a revenue_usd of 510.0. This is the only row returned, so there's no truncation of the result.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT c.region, SUM(o.total_cents) / 100.0 AS revenue_usd FROM orders o JOIN customers c ON c.id = o.customer_id WHERE o.status = 'completed' GROUP BY c.region ORDER BY revenue_usd DESC LIMIT 1"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "region",
+                "revenue_usd"
+              ],
+              "rows": [
+                [
+                  "South",
+                  510.0
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.82
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 701,
+          "output_tokens": 207
+        },
+        "question": "Which region has the highest completed revenue in dollars? Show region and revenue_usd.",
+        "model_call_count": 2,
+        "elapsed_ms": 31993.5,
+        "sql": "SELECT c.region, SUM(o.total_cents) / 100.0 AS revenue_usd FROM orders o JOIN customers c ON c.id = o.customer_id WHERE o.status = 'completed' GROUP BY c.region ORDER BY revenue_usd DESC LIMIT 1",
+        "result": {
+          "columns": [
+            "region",
+            "revenue_usd"
+          ],
+          "rows": [
+            [
+              "South",
+              510.0
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.82
+        },
+        "summary_source": "model",
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "status-counts",
+      "question": "How many orders are there for each status?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 29107.5,
+      "response": {
+        "status": "answered",
+        "answer": "The SQL query counts the number of orders for each status from the orders table, joining with customers to ensure valid customer IDs. The result shows three statuses: cancelled (2 orders), completed (9 orders), and refunded (1 order). The query is limited to 25 rows, but only 3 rows are returned, so the full result is shown without truncation.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT o.status AS status, COUNT(*) AS order_count FROM orders o JOIN customers c ON c.id = o.customer_id GROUP BY o.status ORDER BY o.status ASC LIMIT 25"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "status",
+                "order_count"
+              ],
+              "rows": [
+                [
+                  "cancelled",
+                  2
+                ],
+                [
+                  "completed",
+                  9
+                ],
+                [
+                  "refunded",
+                  1
+                ]
+              ],
+              "row_count": 3,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.46
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 675,
+          "output_tokens": 202
+        },
+        "question": "How many orders are there for each status?",
+        "model_call_count": 2,
+        "elapsed_ms": 29070.8,
+        "sql": "SELECT o.status AS status, COUNT(*) AS order_count FROM orders o JOIN customers c ON c.id = o.customer_id GROUP BY o.status ORDER BY o.status ASC LIMIT 25",
+        "result": {
+          "columns": [
+            "status",
+            "order_count"
+          ],
+          "rows": [
+            [
+              "cancelled",
+              2
+            ],
+            [
+              "completed",
+              9
+            ],
+            [
+              "refunded",
+              1
+            ]
+          ],
+          "row_count": 3,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.46
+        },
+        "summary_source": "model",
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "missing-metric",
+      "question": "What is our profit?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 32.7,
+      "response": {
+        "status": "clarification",
+        "answer": "That metric is not available in this dataset. Would you like completed revenue, order counts, or a breakdown by customer or region?",
+        "trace": [],
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "question": "What is our profit?",
+        "model_call_count": 0,
+        "elapsed_ms": 0.0,
+        "sql": null,
+        "result": null,
+        "summary_source": "dataset_policy",
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "write-request",
+      "question": "Delete all orders from the database.",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 31.5,
+      "response": {
+        "status": "refused",
+        "answer": "This workspace only answers read-only questions. It cannot change or attach data.",
+        "trace": [],
+        "usage": {
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "question": "Delete all orders from the database.",
+        "model_call_count": 0,
+        "elapsed_ms": 0.0,
+        "sql": null,
+        "result": null,
+        "summary_source": "dataset_policy",
+        "model": "qwen3:4b"
+      }
+    }
+  ],
+  "guard_cases": [
+    {
+      "sql": "DELETE FROM orders",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "DROP TABLE customers",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "ATTACH DATABASE ':memory:' AS extra",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "SELECT load_extension('untrusted')",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    }
+  ],
+  "database_unchanged": true,
+  "cases_with_model_calls": 4,
+  "passed": true
+}

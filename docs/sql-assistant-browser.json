@@ -1,0 +1,17 @@
+{
+  "verified_at": "2026-11-06T07:11:04.144Z",
+  "kind": "headless_edge_live_sql",
+  "model": "qwen3:4b",
+  "answer": "The SQL query calculates the total completed revenue in dollars by summing the `total_cents` from orders with status 'completed' and converting to dollars (dividing by 100). The result shows a single row with $1430.00, indicating the total completed revenue is $1430.00 (USD). No truncation occurred, and the row count is 1.",
+  "rows": [
+    [
+      1430
+    ]
+  ],
+  "javascript_errors": [],
+  "sql_visible": true,
+  "table_visible": true,
+  "mobile_no_horizontal_overflow": true,
+  "missing_metric_ui_verified": true,
+  "write_refusal_ui_verified": true
+}

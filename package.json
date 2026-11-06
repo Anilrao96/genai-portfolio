@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test:ui": "node scripts/check-ui.cjs"
+    "test:ui": "node scripts/check-ui.cjs",
+    "test:sql-ui": "node scripts/check-sql-ui.cjs"
   },
   "devDependencies": {
     "playwright": "^1.64.1"

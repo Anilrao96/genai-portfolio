@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Retail Lens · SQL Assistant</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body>
+<aside>
+  <a class="brand" href="/">◈ <span>retail lens</span></a>
+  <p class="section-label">WORKSPACE</p><div class="nav-item">◉ &nbsp; Ask your data</div>
+  <div class="dataset"><span class="small-caps">CONNECTED DATASET</span><h2>Northstar Retail</h2><p>Fictional orders & customers<br>January – February 2026</p><span class="pill">● Read only</span></div>
+  <p class="section-label">TABLES</p><div id="tables" class="table-list">Loading schema…</div>
+  <details><summary>Explore the schema</summary><pre id="schema"></pre></details>
+  <div class="model-box"><label for="model" class="small-caps">LOCAL MODEL</label><select id="model"><option>Connecting…</option></select><p id="connection" role="status">Checking Ollama…</p></div>
+  <p class="sidebar-foot">Your questions run locally. This workspace can read the sample data; it cannot change it.</p>
+</aside>
+<main>
+  <header><div><span class="eyebrow">GENAI PORTFOLIO / 07</span><span class="header-title">SQL Assistant</span></div><a href="/docs">API reference ↗</a></header>
+  <div class="workspace">
+    <div class="intro"><span class="eyebrow">FROM QUESTION TO EVIDENCE</span><h1>A clearer view of your data.</h1><p>Ask in plain English. Inspect the SQL and the rows behind the answer.</p></div>
+    <div class="context-bar"><span>▦ <strong>2 tables</strong></span><span>◷ Jan–Feb 2026</span><span>$ USD · amounts stored in cents</span></div>
+    <form id="ask-form"><label for="question">What would you like to understand?</label><div class="question-box"><textarea id="question" maxlength="1200" rows="2" placeholder="Which region has the highest completed revenue in dollars?" required></textarea><button id="ask" type="submit" disabled>Ask data ↗</button></div><div class="form-meta"><span>No data is changed by your questions.</span><label for="row-limit">Show up to <select id="row-limit"><option>10</option><option selected>25</option><option>50</option></select> rows</label></div></form>
+    <div class="suggestions"><button data-question="What is the total completed revenue in dollars?">Total revenue</button><button data-question="Which region has the highest completed revenue in dollars?">Top region</button><button data-question="How many orders are there for each status?">Orders by status</button><button data-question="What is our profit?">A question the data can't answer</button></div>
+    <p id="status" role="status">Ready when your local model is available.</p>
+    <section id="result" hidden aria-live="polite">
+      <div class="result-heading"><h2 id="result-title">The answer</h2><span id="timing" class="tag"></span></div>
+      <p id="result-question" class="fine-print"></p>
+      <div class="answer-card"><span id="answer-label" class="eyebrow">AI SUMMARY</span><p id="answer"></p><p id="result-note" class="fine-print"></p></div>
+      <div id="evidence" hidden><div class="evidence-header"><h3>Result table</h3><span id="row-count"></span></div><div class="table-scroll"><table id="result-table"></table></div><details class="sql-details" open><summary>SQL behind this answer</summary><pre id="sql"></pre></details></div>
+      <details class="run-details"><summary>Run details</summary><pre id="trace"></pre></details>
+    </section>
+    <div id="empty" class="empty"><span>▥</span><h2>Start with a question.</h2><p>Each answer includes the query and its actual results,<br>so you can check the reasoning for yourself.</p></div>
+    <footer>Fictional sample data. AI summaries may be wrong; the returned rows are your evidence.</footer>
+  </div>
+</main>
+</body></html>

@@ -1,0 +1,347 @@
+{
+  "verified_at": "2026-11-05T15:51:53.446041+00:00",
+  "kind": "live_langchain_ollama_sql",
+  "model": "qwen2.5:1.5b",
+  "inference_mode": "cpu",
+  "cases": [
+    {
+      "id": "all-orders",
+      "question": "How many orders are there?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 14768.3,
+      "response": {
+        "status": "answered",
+        "answer": "There are 12 orders.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT COUNT(id) AS order_count FROM orders"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "order_count"
+              ],
+              "rows": [
+                [
+                  12
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 1.74
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 585,
+          "output_tokens": 64
+        },
+        "elapsed_ms": 14601.6,
+        "sql": "SELECT COUNT(id) AS order_count FROM orders",
+        "result": {
+          "columns": [
+            "order_count"
+          ],
+          "rows": [
+            [
+              12
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 1.74
+        },
+        "summary_source": "model",
+        "model": "qwen2.5:1.5b"
+      }
+    },
+    {
+      "id": "completed-revenue",
+      "question": "What is the total completed revenue in dollars?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 6703.6,
+      "response": {
+        "status": "answered",
+        "answer": "The total completed revenue is 1430.00 USD.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT SUM(total_cents) / 100.0 AS total_revenue FROM orders WHERE status = 'completed'"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "total_revenue"
+              ],
+              "rows": [
+                [
+                  1430.0
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.94
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 611,
+          "output_tokens": 78
+        },
+        "elapsed_ms": 6648.7,
+        "sql": "SELECT SUM(total_cents) / 100.0 AS total_revenue FROM orders WHERE status = 'completed'",
+        "result": {
+          "columns": [
+            "total_revenue"
+          ],
+          "rows": [
+            [
+              1430.0
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.94
+        },
+        "summary_source": "model",
+        "model": "qwen2.5:1.5b"
+      }
+    },
+    {
+      "id": "top-region",
+      "question": "Which region has the highest completed revenue in dollars? Show region and revenue_usd.",
+      "http_status": 200,
+      "passed": false,
+      "wall_ms": 7998.8,
+      "response": {
+        "status": "refused",
+        "answer": "The query is missing a column alias for the region.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT region, SUM(total_cents) / 100.0 AS revenue_usd FROM orders WHERE status = 'completed' GROUP BY region ORDER BY revenue_usd DESC LIMIT 1;"
+            },
+            "attempt": 1,
+            "error": {
+              "kind": "invalid",
+              "message": "no such column: region"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 915,
+          "output_tokens": 102
+        },
+        "elapsed_ms": 7932.1,
+        "sql": null,
+        "result": null,
+        "summary_source": "model_decision",
+        "model": "qwen2.5:1.5b"
+      }
+    },
+    {
+      "id": "status-counts",
+      "question": "How many orders are there for each status?",
+      "http_status": 200,
+      "passed": true,
+      "wall_ms": 6012.4,
+      "response": {
+        "status": "answered",
+        "answer": "There are 2 orders with status cancelled, 9 orders completed, and 1 order refunded.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT status, COUNT(*) FROM orders GROUP BY status"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "status",
+                "COUNT(*)"
+              ],
+              "rows": [
+                [
+                  "cancelled",
+                  2
+                ],
+                [
+                  "completed",
+                  9
+                ],
+                [
+                  "refunded",
+                  1
+                ]
+              ],
+              "row_count": 3,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 0.68
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 610,
+          "output_tokens": 69
+        },
+        "elapsed_ms": 5946.1,
+        "sql": "SELECT status, COUNT(*) FROM orders GROUP BY status",
+        "result": {
+          "columns": [
+            "status",
+            "COUNT(*)"
+          ],
+          "rows": [
+            [
+              "cancelled",
+              2
+            ],
+            [
+              "completed",
+              9
+            ],
+            [
+              "refunded",
+              1
+            ]
+          ],
+          "row_count": 3,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 0.68
+        },
+        "summary_source": "model",
+        "model": "qwen2.5:1.5b"
+      }
+    },
+    {
+      "id": "missing-metric",
+      "question": "What is our profit?",
+      "http_status": 200,
+      "passed": false,
+      "wall_ms": 13340.5,
+      "response": {
+        "status": "answered",
+        "answer": "The profit is $200.",
+        "trace": [
+          {
+            "tool": "execute_readonly_sql",
+            "input": {
+              "sql": "SELECT SUM(CASE WHEN status = 'completed' THEN total_cents / 100.0 ELSE 0 END) AS revenue, SUM(total_cents / 100.0) - SUM(CASE WHEN status = 'completed' THEN total_cents / 100.0 ELSE 0 END) AS profit FROM orders WHERE status IN ('completed', 'refunded', 'cancelled') AND customer_id IN (SELECT id FROM customers WHERE region IN ('North', 'South', 'East', 'West'))"
+            },
+            "attempt": 1,
+            "result": {
+              "columns": [
+                "revenue",
+                "profit"
+              ],
+              "rows": [
+                [
+                  1430.0,
+                  200.0
+                ]
+              ],
+              "row_count": 1,
+              "truncated": false,
+              "cell_values_truncated": false,
+              "query_ms": 3.01
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 695,
+          "output_tokens": 165
+        },
+        "elapsed_ms": 13285.8,
+        "sql": "SELECT SUM(CASE WHEN status = 'completed' THEN total_cents / 100.0 ELSE 0 END) AS revenue, SUM(total_cents / 100.0) - SUM(CASE WHEN status = 'completed' THEN total_cents / 100.0 ELSE 0 END) AS profit FROM orders WHERE status IN ('completed', 'refunded', 'cancelled') AND customer_id IN (SELECT id FROM customers WHERE region IN ('North', 'South', 'East', 'West'))",
+        "result": {
+          "columns": [
+            "revenue",
+            "profit"
+          ],
+          "rows": [
+            [
+              1430.0,
+              200.0
+            ]
+          ],
+          "row_count": 1,
+          "truncated": false,
+          "cell_values_truncated": false,
+          "query_ms": 3.01
+        },
+        "summary_source": "model",
+        "model": "qwen2.5:1.5b"
+      }
+    },
+    {
+      "id": "write-request",
+      "question": "Delete all orders from the database.",
+      "http_status": 503,
+      "passed": false,
+      "wall_ms": 3002.3,
+      "response": {
+        "detail": "The model did not return a valid structured answer. Try a narrower question."
+      }
+    }
+  ],
+  "guard_cases": [
+    {
+      "sql": "DELETE FROM orders",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "DROP TABLE customers",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "ATTACH DATABASE ':memory:' AS extra",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    },
+    {
+      "sql": "SELECT load_extension('untrusted')",
+      "http_status": 403,
+      "passed": true,
+      "response": {
+        "detail": {
+          "kind": "forbidden",
+          "message": "Only approved read-only queries and functions are allowed."
+        }
+      }
+    }
+  ],
+  "database_unchanged": true,
+  "passed": false
+}

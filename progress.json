@@ -2,7 +2,7 @@
   "sprint": {"start_date": "2026-11-05", "end_date": "2026-11-18", "timezone": "Asia/Kolkata", "stop_at": "2026-11-19T00:00:00+05:30"},
   "workspace": "D:\\genai-portfolio",
   "existing_projects": [{"name": "Agent Eval Lab", "path": "D:\\agent-eval-lab", "repository": "https://github.com/Anilrao96/agent-eval-lab", "status": "completed_existing", "verification": "user_confirmed; README and clean Git tree inspected; tests not rerun", "action": "reuse evaluation contracts; do not rebuild or modify"}],
-  "current_project": "p07_sql_assistant",
+  "current_project": "p03_agentic_rag",
   "projects": [
     {"id": "p01_mcp_agents", "article_number": 1, "status": "planned", "target_date": "2026-11-08"},
     {"id": "p02_voice_agent", "article_number": 2, "status": "planned", "target_date": "2026-11-14"},
@@ -10,12 +10,12 @@
     {"id": "p04_local_ai", "article_number": 4, "status": "completed_mvp", "target_date": "2026-11-05", "offline_verified": true, "offline_test_count": 27, "live_verified": true, "browser_verified": true, "model": "qwen2.5:1.5b", "inference_mode": "cpu", "evidence": ["docs/local-ai-live.json", "docs/local-ai-browser.json"], "limitations": ["complete responses rather than streaming", "GPU automatic inference timed out", "no cancellation", "history character limit is not a token guarantee"]},
     {"id": "p05_self_healing_pipeline", "article_number": 5, "status": "planned", "target_date": "2026-11-09"},
     {"id": "p06_code_assistant", "article_number": 6, "status": "planned", "target_date": "2026-11-10"},
-    {"id": "p07_sql_assistant", "article_number": 7, "status": "planned", "target_date": "2026-11-06"},
+    {"id": "p07_sql_assistant", "article_number": 7, "status": "completed_mvp", "target_date": "2026-11-06", "offline_verified": true, "offline_test_count": 50, "portfolio_test_count": 77, "live_verified": true, "browser_verified": true, "model": "qwen3:4b", "inference_mode": "cpu", "live_model_cases": 4, "scope_policy_cases": 2, "direct_guard_cases": 4, "recorded_eval_cases_passed": 6, "delivery_status": "push_pending", "evidence": ["docs/sql-assistant-live.json", "docs/sql-assistant-browser.json", "docs/sql-assistant-eval/run.json"], "limitations": ["fictional SQLite datasource only", "finite English scope routing", "small authored smoke suite", "summaries may be wrong", "CPU latency can exceed a minute on a cold request"]},
     {"id": "p08_app_builder", "article_number": 8, "status": "planned", "target_date": "2026-11-12"},
     {"id": "p09_docker_agent", "article_number": 9, "status": "planned", "target_date": "2026-11-15"},
     {"id": "p10_multimodal_gemini", "article_number": 10, "status": "planned", "target_date": "2026-11-16"}
   ],
-  "next_action": "Build project 07 SQL assistant with fictional data and database-enforced read-only queries.",
+  "next_action": "Push and remotely verify the completed SQL project, then start project 03 Agentic RAG.",
   "git": {"branch": "main", "remote": "https://github.com/Anilrao96/genai-portfolio.git", "repository": "https://github.com/Anilrao96/genai-portfolio", "pushed": true, "publication_authorized": true, "delivery_policy": "Commit and push each completed verified project; verify origin/main equals HEAD.", "delivery_status": "published", "first_verified_delivery_commit": "70f7fb7326b07ed2c03e8f64a6af42b0e1039f69", "delivered_projects": ["p04_local_ai"]},
   "automation": {"id": "build-genai-portfolio-over-two-weeks", "status": "ACTIVE", "cadence": "hourly", "ends_before": "2026-11-19T00:00:00+05:30", "requires": "computer on and desktop app running"}
 }

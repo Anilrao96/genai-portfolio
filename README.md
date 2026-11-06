@@ -2,11 +2,20 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-Current state: **1/10 new MVPs implemented and live-verified** (Local AI); Agent Eval Lab is completed existing work. The other nine apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). The user has authorized publishing this repository and pushing each completed project; delivery status is recorded in PROGRESS.md.
+Current state: **2/10 new MVPs implemented and live-verified** (Local AI and SQL Assistant); Agent Eval Lab is completed existing work. The other eight apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). Completed projects are committed and pushed after verification; delivery status is recorded in PROGRESS.md.
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
 **Existing work:** [Agent Eval Lab](https://github.com/Anilrao96/agent-eval-lab) is already completed at `D:\agent-eval-lab`. Reuse its evaluation contracts and reporting rather than rebuilding an evaluation framework. Its checkout remains independent and untouched. Evaluation infrastructure does not by itself implement an MCP multi-agent application.
+
+## Implemented applications
+
+| Project | What works | Start command |
+| --- | --- | --- |
+| [04 Local AI Studio](projects/p04_local_ai/README.md) | Local chat, model selection, bounded requests and measured responses | `scripts/Start-LocalAI.ps1` → port 8104 |
+| [07 Retail Lens SQL Assistant](projects/p07_sql_assistant/README.md) | LangChain SQL planning, database-enforced read-only queries, visible results and summaries | `scripts/Start-SqlAssistant.ps1` → port 8107 |
+
+The portfolio regression suite has **77 passing offline tests**. SQL verification includes four actual local-model workflows, two deterministic scope-policy cases, four refused database operations, desktop/mobile browser checks and a six-case replay through the existing Agent Eval Lab. These authored checks are smoke evidence, not a broad model benchmark.
 
 ## Start the first application
 

@@ -49,6 +49,7 @@ async function loadModels() {
       option.textContent = model.name;
       $('model').append(option);
     }
+    if (data.models.some(model => model.name === 'qwen2.5:1.5b')) $('model').value = 'qwen2.5:1.5b';
     ready = data.models.length > 0;
     $('connection').textContent = ready ? `${data.models.length} model(s) available locally` : 'No models yet. Pull a model using the README instructions.';
   } catch (error) {
