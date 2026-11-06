@@ -32,13 +32,13 @@ Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots a
 
 Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-assistant-live.json`, `docs/code-browser.json`, screenshots and `docs/code-eval/`. API repair/generation took **30.9s / 20.4s**, and the separate browser repair **17.6s**. The runtime is a project-owned D:-backed WSL 3.0.3 session with Python 3.13.18, unprivileged UID, no host mounts/network, hard address-space/process/file/CPU limits and bounded output. Swap-cgroup enforcement is unavailable; hard 128 MB address space and one-process limits supplement it. Nonempty regular-file writes are denied; empty-file metadata inside the disposable container is not a read-only filesystem. Scope is two small pure-function contracts, not general repository repair or proof of program correctness.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. The first five MVPs have verified delivery. Project 06 has passed acceptance and is awaiting the staged review and normal authorized commit/push in this session. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All six completed MVPs have verified delivery. Repair Bench source, tests, documentation and fictional evidence were committed as `ff0909b4028a465101259caec075988962f8ada3`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Complete project 06 GitHub delivery, then start project 08, the full-stack app builder: structured specification, backend/frontend/QA roles, confined generated workspace and actual isolated build/tests. Reuse the verified native container boundary; do not execute generated build scripts on Windows.
+1. Start project 08, the full-stack app builder: structured specification, backend/frontend/QA roles, confined generated workspace and actual isolated build/tests. Reuse the verified native container boundary; do not execute generated build scripts on Windows.
 2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
