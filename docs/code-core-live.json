@@ -1,0 +1,312 @@
+{
+  "captured_at": "2026-11-06T12:22:00.376541+00:00",
+  "mode": "actual Qwen3 CPU + native WSL OCI containers",
+  "model": "qwen3:4b",
+  "complete": true,
+  "passed": true,
+  "cases": [
+    {
+      "id": "repair_mean",
+      "passed": true,
+      "response": {
+        "id": "28370595663a4e49acd7035764a2a6e1",
+        "task_id": "mean",
+        "model": "qwen3:4b",
+        "created_at": "2026-11-06T12:21:19.432933+00:00",
+        "status": "passed",
+        "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+        "model_calls": 1,
+        "executions": 2,
+        "attempts": [
+          {
+            "number": 1,
+            "code": "def solve(data):\n    return sum(data) / len(data)\n",
+            "passed": false,
+            "feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+            "execution": {
+              "container_id": "d4ffac9ea8e3bd8e3e5c468703d7560e40f9dcbc9c9b2995fe535a4d95543543",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 1,
+              "termination_reason": null,
+              "stdout": "",
+              "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+              "duration_ms": 1104,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            }
+          },
+          {
+            "number": 2,
+            "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+            "passed": true,
+            "feedback": null,
+            "execution": {
+              "container_id": "98c7d8750dab30d413b25d56e72950ef5143e5882200e8fca825cfd2c0a5323a",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 0,
+              "termination_reason": null,
+              "stdout": "{\"outputs\": [0, 4.0, 0.0, 1.5]}\n",
+              "stderr": "",
+              "duration_ms": 965,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            },
+            "outputs": [
+              0,
+              4.0,
+              0.0,
+              1.5
+            ],
+            "tests_passed": 4,
+            "tests_total": 4
+          }
+        ],
+        "trace": [
+          {
+            "stage": "execute",
+            "attempt": 1,
+            "passed": false,
+            "feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero"
+          },
+          {
+            "stage": "repair",
+            "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+            "model_note": "Fixed the ZeroDivisionError by checking for empty list and returning 0. The original code would throw ZeroDivisionError when len(data) is 0.",
+            "usage": {
+              "input_tokens": 254,
+              "output_tokens": 73
+            },
+            "duration_ms": 19072
+          },
+          {
+            "stage": "execute",
+            "attempt": 2,
+            "passed": true,
+            "feedback": null
+          }
+        ],
+        "error": null,
+        "limits": {
+          "model_calls": 3,
+          "executions": 3,
+          "seconds": 240
+        },
+        "feedback": null,
+        "duration_ms": 25361
+      }
+    },
+    {
+      "id": "generate_words",
+      "passed": true,
+      "response": {
+        "id": "b5566d3b02a84fa7b1fd9491c426f103",
+        "task_id": "words",
+        "model": "qwen3:4b",
+        "created_at": "2026-11-06T12:21:44.796075+00:00",
+        "status": "passed",
+        "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+        "model_calls": 1,
+        "executions": 1,
+        "attempts": [
+          {
+            "number": 1,
+            "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+            "passed": true,
+            "feedback": null,
+            "execution": {
+              "container_id": "885189efa2f732d1132f41af0b19860d28645d9ba9fbcbd19a7b1a9ab6cdfa31",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 0,
+              "termination_reason": null,
+              "stdout": "{\"outputs\": [[\"blue\", \"red\"], [\"hello\", \"world\"], [], [\"one\", \"three\", \"two\"]]}\n",
+              "stderr": "",
+              "duration_ms": 800,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            },
+            "outputs": [
+              [
+                "blue",
+                "red"
+              ],
+              [
+                "hello",
+                "world"
+              ],
+              [],
+              [
+                "one",
+                "three",
+                "two"
+              ]
+            ],
+            "tests_passed": 4,
+            "tests_total": 4
+          }
+        ],
+        "trace": [
+          {
+            "stage": "generate",
+            "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+            "model_note": "This code uses regex to find all lowercase letter sequences, converts the whole string to lowercase, removes duplicates by converting to a set, then sorts alphabetically. It handles punctuation by only matching letters, as per the task description.",
+            "usage": {
+              "input_tokens": 170,
+              "output_tokens": 98
+            },
+            "duration_ms": 14448
+          },
+          {
+            "stage": "execute",
+            "attempt": 1,
+            "passed": true,
+            "feedback": null
+          }
+        ],
+        "error": null,
+        "limits": {
+          "model_calls": 3,
+          "executions": 3,
+          "seconds": 240
+        },
+        "feedback": null,
+        "duration_ms": 15579
+      }
+    }
+  ],
+  "scope": "Core workflow only; HTTP/browser acceptance remains separate."
+}

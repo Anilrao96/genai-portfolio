@@ -1,0 +1,18 @@
+{
+  "verified_at": "2026-11-06T12:33:49.471Z",
+  "mode": "actual headless Edge → FastAPI → LangGraph → local Qwen3 → native WSL OCI containers",
+  "run_id": "89852332d6204d009fa69ad9ee10fd8f",
+  "status": "passed",
+  "model": "qwen3:4b",
+  "model_calls": 1,
+  "executions": 2,
+  "duration_ms": 17575,
+  "first_feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+  "last_tests_passed": 4,
+  "attempt_history_visible": true,
+  "trace_opened": true,
+  "persisted_run_reload_verified": true,
+  "embedding_model_excluded": true,
+  "javascript_errors": [],
+  "mobile_no_horizontal_overflow": true
+}

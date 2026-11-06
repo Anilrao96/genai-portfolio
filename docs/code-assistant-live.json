@@ -1,0 +1,410 @@
+{
+  "captured_at": "2026-11-06T12:31:43.348877+00:00",
+  "mode": "actual local-model HTTP workflows + native container resource control",
+  "model": "qwen3:4b",
+  "inference": "CPU; LOCAL_AI_NUM_GPU=0",
+  "complete": true,
+  "passed": true,
+  "cases": [
+    {
+      "id": "repair_mean",
+      "passed": true,
+      "http_elapsed_ms": 30901,
+      "response": {
+        "id": "68942f6399294f1a8feede104b247461",
+        "task_id": "mean",
+        "model": "qwen3:4b",
+        "created_at": "2026-11-06T12:30:43.871728+00:00",
+        "status": "passed",
+        "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+        "model_calls": 1,
+        "executions": 2,
+        "attempts": [
+          {
+            "number": 1,
+            "code": "def solve(data):\n    return sum(data) / len(data)\n",
+            "passed": false,
+            "feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+            "execution": {
+              "container_id": "b299d4e5be80d3ddff2228d06c60d096b27140c104a14417b69d88f896a8ba6f",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 1,
+              "termination_reason": null,
+              "stdout": "",
+              "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+              "duration_ms": 1759,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            }
+          },
+          {
+            "number": 2,
+            "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+            "passed": true,
+            "feedback": null,
+            "execution": {
+              "container_id": "60ad9ab644d57b6ac9db9c37b70a74ba8113068813c3749666cfa707eebcff93",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 0,
+              "termination_reason": null,
+              "stdout": "{\"outputs\": [0, 4.0, 0.0, 1.5]}\n",
+              "stderr": "",
+              "duration_ms": 825,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            },
+            "outputs": [
+              0,
+              4.0,
+              0.0,
+              1.5
+            ],
+            "tests_passed": 4,
+            "tests_total": 4
+          }
+        ],
+        "trace": [
+          {
+            "stage": "execute",
+            "attempt": 1,
+            "passed": false,
+            "feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero"
+          },
+          {
+            "stage": "repair",
+            "code": "def solve(data):\n    if len(data) == 0:\n        return 0\n    return sum(data) / len(data)",
+            "model_note": "Fixed the ZeroDivisionError by checking for empty list and returning 0. The original code would throw ZeroDivisionError when len(data) is 0.",
+            "usage": {
+              "input_tokens": 254,
+              "output_tokens": 73
+            },
+            "duration_ms": 21763
+          },
+          {
+            "stage": "execute",
+            "attempt": 2,
+            "passed": true,
+            "feedback": null
+          }
+        ],
+        "error": null,
+        "limits": {
+          "model_calls": 3,
+          "executions": 3,
+          "seconds": 240
+        },
+        "feedback": null,
+        "duration_ms": 30722
+      }
+    },
+    {
+      "id": "generate_words",
+      "passed": true,
+      "http_elapsed_ms": 20409,
+      "response": {
+        "id": "e5fc6d7acba74cb4bf448611e9f671c2",
+        "task_id": "words",
+        "model": "qwen3:4b",
+        "created_at": "2026-11-06T12:31:14.777342+00:00",
+        "status": "passed",
+        "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+        "model_calls": 1,
+        "executions": 1,
+        "attempts": [
+          {
+            "number": 1,
+            "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+            "passed": true,
+            "feedback": null,
+            "execution": {
+              "container_id": "d63bf2a72a3d1b2e6660f19b8f2d304f3ef4c4907de2bf88750e6e6886578701",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 0,
+              "termination_reason": null,
+              "stdout": "{\"outputs\": [[\"blue\", \"red\"], [\"hello\", \"world\"], [], [\"one\", \"three\", \"two\"]]}\n",
+              "stderr": "",
+              "duration_ms": 2111,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            },
+            "outputs": [
+              [
+                "blue",
+                "red"
+              ],
+              [
+                "hello",
+                "world"
+              ],
+              [],
+              [
+                "one",
+                "three",
+                "two"
+              ]
+            ],
+            "tests_passed": 4,
+            "tests_total": 4
+          }
+        ],
+        "trace": [
+          {
+            "stage": "generate",
+            "code": "def solve(data):\n    import re\n    words = re.findall(r'[a-z]+', data.lower())\n    unique_words = sorted(set(words))\n    return unique_words",
+            "model_note": "This code uses regex to find all lowercase letter sequences, converts the whole string to lowercase, removes duplicates by converting to a set, then sorts alphabetically. It handles punctuation by only matching letters, as per the task description.",
+            "usage": {
+              "input_tokens": 170,
+              "output_tokens": 98
+            },
+            "duration_ms": 16073
+          },
+          {
+            "stage": "execute",
+            "attempt": 1,
+            "passed": true,
+            "feedback": null
+          }
+        ],
+        "error": null,
+        "limits": {
+          "model_calls": 3,
+          "executions": 3,
+          "seconds": 240
+        },
+        "feedback": null,
+        "duration_ms": 20202
+      }
+    },
+    {
+      "id": "wall_limit_no_retry",
+      "passed": true,
+      "http_elapsed_ms": 8328,
+      "response": {
+        "id": "a1db53e0342547468fdb16b28ad79cf5",
+        "task_id": "mean",
+        "model": "qwen3:4b",
+        "created_at": "2026-11-06T12:31:35.173887+00:00",
+        "status": "limited",
+        "code": "def solve(data):\n    import time\n    time.sleep(30)",
+        "model_calls": 0,
+        "executions": 1,
+        "attempts": [
+          {
+            "number": 1,
+            "code": "def solve(data):\n    import time\n    time.sleep(30)",
+            "passed": false,
+            "feedback": "Execution stopped at the wall_time limit.",
+            "execution": {
+              "container_id": "c2d5c39de8c45f305113aa846c09fec65bfdc83900ce8c7c5458a79edc3fafbe",
+              "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+              "exit_code": 137,
+              "termination_reason": "wall_time",
+              "stdout": "",
+              "stderr": "",
+              "duration_ms": 7244,
+              "kernel_policy": {
+                "uid": 65534,
+                "limits": {
+                  "cpu": [
+                    2,
+                    2
+                  ],
+                  "as": [
+                    134217728,
+                    134217728
+                  ],
+                  "fsize": [
+                    0,
+                    0
+                  ],
+                  "nproc": [
+                    1,
+                    1
+                  ],
+                  "nofile": [
+                    128,
+                    128
+                  ]
+                },
+                "interfaces": [
+                  "lo"
+                ],
+                "capabilities_effective": 0,
+                "no_new_privileges": true
+              },
+              "engine_policy": {
+                "memory_bytes": 134217728,
+                "cpus": 0.5,
+                "network": "none",
+                "user": "65534:65534",
+                "host_mounts": [],
+                "ulimits": {
+                  "cpu": 2,
+                  "as": 2147483648,
+                  "fsize": 0,
+                  "nproc": 16,
+                  "nofile": 128
+                },
+                "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+              },
+              "wall_seconds": 6.0,
+              "output_bytes": 8192
+            }
+          }
+        ],
+        "trace": [
+          {
+            "stage": "execute",
+            "attempt": 1,
+            "passed": false,
+            "feedback": "Execution stopped at the wall_time limit."
+          }
+        ],
+        "error": "Execution stopped at the wall_time limit.",
+        "limits": {
+          "model_calls": 3,
+          "executions": 3,
+          "seconds": 240
+        },
+        "feedback": "Execution stopped at the wall_time limit.",
+        "duration_ms": 8085
+      }
+    }
+  ],
+  "persistent_history_verified": true
+}

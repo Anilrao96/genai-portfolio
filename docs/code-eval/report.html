@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agent Eval Lab · recorded-code-native-isolation-replay-v1</title><style>
+:root{--ink:#172b37;--muted:#586c78;--paper:#f4f5f1;--line:#dbe2dc;--green:#075e47;--gold:#e8b957}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,sans-serif}main{max-width:1160px;margin:auto;padding:36px 28px 60px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-weight:800;letter-spacing:-.5px;font-size:20px}.mark{display:inline-grid;place-items:center;background:var(--ink);color:var(--gold);width:32px;height:32px;margin-right:10px;border-radius:8px}.mono{font:12px ui-monospace,monospace;color:var(--muted)}.hero{padding:44px 0 24px;max-width:850px}.eyebrow{font-size:11px;font-weight:750;letter-spacing:1.6px;color:var(--muted)}h1{font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-2px;margin:14px 0 18px}h2{font-size:23px;line-height:1.25;letter-spacing:-.5px;margin:8px 0}p{color:var(--muted);margin:10px 0}.notice{border-left:3px solid var(--gold);background:#fff7e7;padding:12px 18px;margin-bottom:24px;font-size:13px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card,.panel{background:white;border:1px solid var(--line);border-radius:12px;padding:22px}.card strong{display:block;font-size:36px;line-height:1.4;letter-spacing:-1px}small{display:block;font-size:12px;color:var(--muted)}.panel{margin-top:24px}.comparison{display:grid;grid-template-columns:1fr auto;align-items:center;background:var(--ink);color:white;border-color:var(--ink)}.comparison p,.comparison .eyebrow,.comparison small{color:#c3d5d6}.delta{font-size:42px;color:var(--gold);font-weight:750;text-align:right}.wide{grid-column:1/-1;font-size:13px}.slice{display:grid;grid-template-columns:150px 1fr 50px;align-items:center;gap:18px;margin:14px 0;font-size:13px}.slice b{text-align:right}.track{height:8px;background:#edf0ec;border-radius:6px;overflow:hidden}.track div{height:100%;background:var(--green)}.section-title{display:flex;align-items:center;justify-content:space-between;margin:32px 0 14px}.badge{padding:4px 8px;border-radius:5px;font-size:10px;font-weight:800;letter-spacing:.8px;white-space:nowrap}.pass{background:#e3f3e9;color:#075e47}.fail{background:#fce6e1;color:#9d3028}.case{border:1px solid var(--line);border-radius:8px;background:white;margin:8px 0;overflow:hidden}summary{padding:14px;cursor:pointer;display:flex;align-items:center;gap:14px;font-size:13px}summary b{flex:1}.tags{color:var(--muted);font-size:11px}.evidence{padding:6px 22px 20px;border-top:1px solid var(--line)}pre{font:12px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f2;padding:16px;border-radius:8px}ul{padding:0;list-style:none}li{margin:12px 0;font-size:13px}li small{margin-left:56px}button{border:1px solid var(--line);background:white;border-radius:6px;padding:7px 12px;color:var(--ink);cursor:pointer}footer{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;font-size:12px;color:var(--muted)}@media(max-width:720px){main{padding:24px 16px}.cards{grid-template-columns:repeat(2,1fr)}.tags{display:none}.slice{grid-template-columns:95px 1fr 35px}.comparison{grid-template-columns:1fr}.delta{text-align:left}summary{gap:8px}}
+</style></head><body><main><header><div class="brand"><span class="mark">A</span>Agent Eval Lab</div><span class="mono">RUN 8ee14f886fa7</span></header><section class="hero"><span class="eyebrow">QUALITY / TRAJECTORY / RELIABILITY</span><h1>Evaluate what the<br>agent actually did.</h1><p>recorded-code-native-isolation-replay-v1 · 2026-11-06T12:35:23.295460+00:00 · Framework 0.1.0</p></section><div class="notice">RECORDED CODE STAGE REPLAY — No inference or candidate execution; timing below is replay overhead. Scores apply to this curated dataset and configuration. Review failures and validate with representative held-out production data.</div><section class="cards"><article class="card"><span class="eyebrow">PASS RATE</span><strong>100%</strong><small>3 / 3 executions passed</small></article><article class="card"><span class="eyebrow">CASES</span><strong>3</strong><small>1 repetition(s) per case</small></article><article class="card"><span class="eyebrow">P95 REPLAY OVERHEAD</span><strong>0.1 ms</strong><small>Not an inference performance measurement</small></article><article class="card"><span class="eyebrow">EXECUTION ERRORS</span><strong>0</strong><small>Timeouts and adapter/evaluator failures</small></article></section><section class="panel"><span class="eyebrow">FAILURE LOCALIZATION</span><h2>Performance by slice</h2><p>A case may belong to multiple slices.</p><div class="slice"><span>code</span><div class="track"><div style="width:100.00%"></div></div><b>3/3</b></div><div class="slice"><span>generation</span><div class="track"><div style="width:100.00%"></div></div><b>1/1</b></div><div class="slice"><span>limits</span><div class="track"><div style="width:100.00%"></div></div><b>1/1</b></div><div class="slice"><span>repair</span><div class="track"><div style="width:100.00%"></div></div><b>1/1</b></div></section><div class="section-title"><h2>Case evidence</h2><button id="filter" type="button" aria-pressed="false">Show failures only</button></div><details class="case" data-status="pass"><summary><span class="badge pass">PASS</span><b>repair-from-error</b><span class="tags">code / repair</span><span>0.1 ms</span></summary><div class="evidence"><p class="eyebrow">ANSWER · REPETITION 1 · 1 ATTEMPT(S)</p><pre>{&quot;status&quot;: &quot;passed&quot;, &quot;executions&quot;: 2, &quot;model_calls&quot;: 1, &quot;tests_passed&quot;: 4, &quot;native_isolation&quot;: true}</pre><ul><li><span class="badge pass">PASS</span> <b>json_contract</b> · 1.00 / 1.00<small>Strict JSON object, types, values and extra-key policy</small></li><li><span class="badge pass">PASS</span> <b>tool_path</b> · 1.00 / 1.00<small>Successful ordered subsequence 3/3; arguments matched</small></li><li><span class="badge pass">PASS</span> <b>max_tool_calls</b> · 1.00 / 1.00<small>Observed 3; limit 6; unknown usage fails closed</small></li></ul><p>Status: ok </p><p class="eyebrow">TOOL TRACE</p><pre>[
+  {
+    &quot;name&quot;: &quot;execute&quot;,
+    &quot;arguments&quot;: {
+      &quot;attempt&quot;: 1,
+      &quot;passed&quot;: false,
+      &quot;feedback&quot;: &quot;Traceback (most recent call last):\n  File \&quot;&lt;string&gt;\&quot;, line 18, in &lt;module&gt;\n    outputs=[scope[\&quot;solve\&quot;](value) for value in request[\&quot;inputs\&quot;]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \&quot;&lt;candidate&gt;\&quot;, line 2, in solve\nZeroDivisionError: division by zero&quot;
+    },
+    &quot;output&quot;: &quot;Traceback (most recent call last):\n  File \&quot;&lt;string&gt;\&quot;, line 18, in &lt;module&gt;\n    outputs=[scope[\&quot;solve\&quot;](value) for value in request[\&quot;inputs\&quot;]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \&quot;&lt;candidate&gt;\&quot;, line 2, in solve\nZeroDivisionError: division by zero&quot;,
+    &quot;error&quot;: null
+  },
+  {
+    &quot;name&quot;: &quot;repair&quot;,
+    &quot;arguments&quot;: {
+      &quot;model_note&quot;: &quot;Fixed the ZeroDivisionError by checking for empty list and returning 0. The original code would throw ZeroDivisionError when len(data) is 0.&quot;,
+      &quot;usage&quot;: {
+        &quot;input_tokens&quot;: 254,
+        &quot;output_tokens&quot;: 73
+      },
+      &quot;duration_ms&quot;: 21763
+    },
+    &quot;output&quot;: null,
+    &quot;error&quot;: null
+  },
+  {
+    &quot;name&quot;: &quot;execute&quot;,
+    &quot;arguments&quot;: {
+      &quot;attempt&quot;: 2,
+      &quot;passed&quot;: true,
+      &quot;feedback&quot;: null
+    },
+    &quot;output&quot;: null,
+    &quot;error&quot;: null
+  }
+]</pre></div></details><details class="case" data-status="pass"><summary><span class="badge pass">PASS</span><b>generate-and-test</b><span class="tags">code / generation</span><span>0.0 ms</span></summary><div class="evidence"><p class="eyebrow">ANSWER · REPETITION 1 · 1 ATTEMPT(S)</p><pre>{&quot;status&quot;: &quot;passed&quot;, &quot;executions&quot;: 1, &quot;model_calls&quot;: 1, &quot;tests_passed&quot;: 4, &quot;native_isolation&quot;: true}</pre><ul><li><span class="badge pass">PASS</span> <b>json_contract</b> · 1.00 / 1.00<small>Strict JSON object, types, values and extra-key policy</small></li><li><span class="badge pass">PASS</span> <b>tool_path</b> · 1.00 / 1.00<small>Successful ordered subsequence 2/2; arguments matched</small></li><li><span class="badge pass">PASS</span> <b>max_tool_calls</b> · 1.00 / 1.00<small>Observed 2; limit 6; unknown usage fails closed</small></li></ul><p>Status: ok </p><p class="eyebrow">TOOL TRACE</p><pre>[
+  {
+    &quot;name&quot;: &quot;generate&quot;,
+    &quot;arguments&quot;: {
+      &quot;model_note&quot;: &quot;This code uses regex to find all lowercase letter sequences, converts the whole string to lowercase, removes duplicates by converting to a set, then sorts alphabetically. It handles punctuation by only matching letters, as per the task description.&quot;,
+      &quot;usage&quot;: {
+        &quot;input_tokens&quot;: 170,
+        &quot;output_tokens&quot;: 98
+      },
+      &quot;duration_ms&quot;: 16073
+    },
+    &quot;output&quot;: null,
+    &quot;error&quot;: null
+  },
+  {
+    &quot;name&quot;: &quot;execute&quot;,
+    &quot;arguments&quot;: {
+      &quot;attempt&quot;: 1,
+      &quot;passed&quot;: true,
+      &quot;feedback&quot;: null
+    },
+    &quot;output&quot;: null,
+    &quot;error&quot;: null
+  }
+]</pre></div></details><details class="case" data-status="pass"><summary><span class="badge pass">PASS</span><b>wall-bound-no-retry</b><span class="tags">code / limits</span><span>0.0 ms</span></summary><div class="evidence"><p class="eyebrow">ANSWER · REPETITION 1 · 1 ATTEMPT(S)</p><pre>{&quot;status&quot;: &quot;limited&quot;, &quot;executions&quot;: 1, &quot;model_calls&quot;: 0, &quot;tests_passed&quot;: null, &quot;native_isolation&quot;: true}</pre><ul><li><span class="badge pass">PASS</span> <b>json_contract</b> · 1.00 / 1.00<small>Strict JSON object, types, values and extra-key policy</small></li><li><span class="badge pass">PASS</span> <b>tool_path</b> · 1.00 / 1.00<small>Successful ordered subsequence 1/1; arguments matched</small></li><li><span class="badge pass">PASS</span> <b>max_tool_calls</b> · 1.00 / 1.00<small>Observed 1; limit 1; unknown usage fails closed</small></li></ul><p>Status: ok </p><p class="eyebrow">TOOL TRACE</p><pre>[
+  {
+    &quot;name&quot;: &quot;execute&quot;,
+    &quot;arguments&quot;: {
+      &quot;attempt&quot;: 1,
+      &quot;passed&quot;: false,
+      &quot;feedback&quot;: &quot;Execution stopped at the wall_time limit.&quot;
+    },
+    &quot;output&quot;: &quot;Execution stopped at the wall_time limit.&quot;,
+    &quot;error&quot;: null
+  }
+]</pre></div></details><footer>Dataset SHA-256: <span class="mono">7a9a6d1aa32a04c4825802903eed0ee85a5b0a96e2096e0c101977270b9d4afd</span><br>Known successful-call cost: Unknown / not applicable. Failed/retried attempts may incur unreported cost.<br>Checks use lexical correctness, contracts and trace evidence. Citation presence does not prove factual entailment. Raw answers and tool outputs may contain sensitive data; review before sharing.</footer></main><script>document.getElementById('filter').addEventListener('click',function(){const active=this.getAttribute('aria-pressed')!=='true';this.setAttribute('aria-pressed',String(active));this.textContent=active?'Show all cases':'Show failures only';document.querySelectorAll('.case').forEach(el=>el.hidden=active&&el.dataset.status==='pass')});</script></body></html>

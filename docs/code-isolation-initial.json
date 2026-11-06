@@ -1,0 +1,485 @@
+{
+  "complete": false,
+  "cases": [
+    {
+      "id": "function_runs",
+      "passed": true,
+      "result": {
+        "container_id": "74e6bb1115f4d1e6f2d0a31671231795d5a8e26bf561cb7e66ce81f11fb3a28d",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 0,
+        "termination_reason": null,
+        "stdout": "{\"outputs\": [42]}\n",
+        "stderr": "",
+        "duration_ms": 1493,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "host_files_unmapped",
+      "passed": true,
+      "result": {
+        "container_id": "af051a647d8494ca4ea6ccfceea2ab9f8f3ce75228399288a30124ed7a44fec6",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 0,
+        "termination_reason": null,
+        "stdout": "{\"outputs\": [[false, false, false]]}\n",
+        "stderr": "",
+        "duration_ms": 942,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "file_writes_denied",
+      "passed": true,
+      "result": {
+        "container_id": "425ca999bf158ebe33f16c20ffacff9a608e78c1c47dd5851ae215c2e0f6cad4",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 0,
+        "termination_reason": null,
+        "stdout": "{\"outputs\": [27]}\n",
+        "stderr": "",
+        "duration_ms": 881,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "network_unreachable",
+      "passed": true,
+      "result": {
+        "container_id": "110e79d89c6f038096f042be40d69c5f2b5bdbe9935f25489fc3f76316a1ba82",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 0,
+        "termination_reason": null,
+        "stdout": "{\"outputs\": [101]}\n",
+        "stderr": "",
+        "duration_ms": 1065,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "child_process_denied",
+      "passed": true,
+      "result": {
+        "container_id": "09964dc2729d1a24b17b01b7ad269645c62e06368c4ab15bfad3d00a1199def9",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 0,
+        "termination_reason": null,
+        "stdout": "{\"outputs\": [11]}\n",
+        "stderr": "",
+        "duration_ms": 1005,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "memory_limit",
+      "passed": true,
+      "result": {
+        "container_id": "c1943d5e7084c7956e45dc4e468f11a621d57614bd654b9e27e940f2a49346ff",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 1,
+        "termination_reason": null,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 1, in solve\nMemoryError",
+        "duration_ms": 940,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "cpu_limit",
+      "passed": true,
+      "result": {
+        "container_id": "0866157be02d6150c4db9646c82be8285f55646f1db12755932eae22f95a382d",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 137,
+        "termination_reason": null,
+        "stdout": "",
+        "stderr": "",
+        "duration_ms": 4136,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 6.0,
+        "output_bytes": 8192
+      }
+    },
+    {
+      "id": "wall_limit",
+      "passed": true,
+      "result": {
+        "container_id": "1284b13f4a2b89b48ca4f8bc3f4fd9cc23c468b77b8dd9b89761c1bf8fa0599d",
+        "image_id": "sha256:67fd5f7b4b120eaa3308775fe87aff98a2492287576bd6656ef785d54a1b5605",
+        "exit_code": 137,
+        "termination_reason": "wall_time",
+        "stdout": "",
+        "stderr": "",
+        "duration_ms": 4118,
+        "kernel_policy": {
+          "uid": 65534,
+          "limits": {
+            "cpu": [
+              2,
+              2
+            ],
+            "as": [
+              134217728,
+              134217728
+            ],
+            "fsize": [
+              0,
+              0
+            ],
+            "nproc": [
+              1,
+              1
+            ],
+            "nofile": [
+              128,
+              128
+            ]
+          },
+          "interfaces": [
+            "lo"
+          ],
+          "capabilities_effective": 0,
+          "no_new_privileges": true
+        },
+        "engine_policy": {
+          "memory_bytes": 134217728,
+          "cpus": 0.5,
+          "network": "none",
+          "user": "65534:65534",
+          "host_mounts": [],
+          "ulimits": {
+            "cpu": 2,
+            "as": 2147483648,
+            "fsize": 0,
+            "nproc": 16,
+            "nofile": 128
+          },
+          "storage_path": "D:\\genai-portfolio\\.tools\\wslc-code"
+        },
+        "wall_seconds": 1.5,
+        "output_bytes": 8192
+      }
+    }
+  ]
+}

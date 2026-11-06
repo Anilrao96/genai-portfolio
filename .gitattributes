@@ -3,3 +3,5 @@ docs/mcp-*.json text eol=lf
 docs/mcp-eval/* text eol=lf
 docs/pipeline-*.json text eol=lf
 docs/pipeline-eval/* text eol=lf
+docs/code-*.json text eol=lf
+docs/code-eval/* text eol=lf

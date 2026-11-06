@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "run_id": "8ee14f886fa7",
+  "created_at": "2026-11-06T12:35:23.295460+00:00",
+  "adapter": "recorded-code-native-isolation-replay-v1",
+  "framework_version": "0.1.0",
+  "python": "3.13.13",
+  "dataset_sha256": "7a9a6d1aa32a04c4825802903eed0ee85a5b0a96e2096e0c101977270b9d4afd",
+  "evaluation_sha256": "a8f5df0fc6c3f46379ef3242f4bdb58dacdc51b36835fdf55d525e0e38574ad7",
+  "config": {
+    "concurrency": 1,
+    "timeout_s": 5,
+    "retries": 0,
+    "repetitions": 1
+  },
+  "provenance": {
+    "mode": "recorded_live_stage_replay",
+    "model": "qwen3:4b",
+    "capture_sha256": "a8d99e8c93cec59cc8c485efb090eed9429405a63f48df2b7c40b6d9a5ce43e4",
+    "fresh_model_calls": false,
+    "fresh_candidate_execution": false,
+    "trace_note": "ToolEvents represent recorded LangGraph stages; policy fields are captured observations.",
+    "latency_note": "Replay overhead only; actual timings are in the source capture.",
+    "evaluates": "Small authored outcome and stage contracts; does not rerun isolation controls or establish general program correctness."
+  },
+  "summary": {
+    "count": 3,
+    "passed": 3,
+    "pass_rate": 1.0,
+    "errors": 0,
+    "latency_p50_ms": 0.04,
+    "latency_p95_ms": 0.066,
+    "known_success_cost_usd": null,
+    "cost_coverage": 0.0,
+    "slices": {
+      "code": {
+        "count": 3,
+        "passed": 3,
+        "pass_rate": 1.0
+      },
+      "generation": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      },
+      "limits": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      },
+      "repair": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      }
+    },
+    "metrics": {
+      "json_contract": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "max_tool_calls": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "tool_path": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "repair-from-error",
+      "repetition": 0,
+      "tags": [
+        "code",
+        "repair"
+      ],
+      "status": "ok",
+      "latency_ms": 0.066,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"passed\", \"executions\": 2, \"model_calls\": 1, \"tests_passed\": 4, \"native_isolation\": true}",
+        "trace": [
+          {
+            "name": "execute",
+            "arguments": {
+              "attempt": 1,
+              "passed": false,
+              "feedback": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero"
+            },
+            "output": "Traceback (most recent call last):\n  File \"<string>\", line 18, in <module>\n    outputs=[scope[\"solve\"](value) for value in request[\"inputs\"]]\n             ~~~~~~~~~~~~~~^^^^^^^\n  File \"<candidate>\", line 2, in solve\nZeroDivisionError: division by zero",
+            "error": null
+          },
+          {
+            "name": "repair",
+            "arguments": {
+              "model_note": "Fixed the ZeroDivisionError by checking for empty list and returning 0. The original code would throw ZeroDivisionError when len(data) is 0.",
+              "usage": {
+                "input_tokens": 254,
+                "output_tokens": 73
+              },
+              "duration_ms": 21763
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "execute",
+            "arguments": {
+              "attempt": 2,
+              "passed": true,
+              "feedback": null
+            },
+            "output": null,
+            "error": null
+          }
+        ],
+        "input_tokens": 254,
+        "output_tokens": 73,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 3/3; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 3; limit 6; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "case_id": "generate-and-test",
+      "repetition": 0,
+      "tags": [
+        "code",
+        "generation"
+      ],
+      "status": "ok",
+      "latency_ms": 0.04,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"passed\", \"executions\": 1, \"model_calls\": 1, \"tests_passed\": 4, \"native_isolation\": true}",
+        "trace": [
+          {
+            "name": "generate",
+            "arguments": {
+              "model_note": "This code uses regex to find all lowercase letter sequences, converts the whole string to lowercase, removes duplicates by converting to a set, then sorts alphabetically. It handles punctuation by only matching letters, as per the task description.",
+              "usage": {
+                "input_tokens": 170,
+                "output_tokens": 98
+              },
+              "duration_ms": 16073
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "execute",
+            "arguments": {
+              "attempt": 1,
+              "passed": true,
+              "feedback": null
+            },
+            "output": null,
+            "error": null
+          }
+        ],
+        "input_tokens": 170,
+        "output_tokens": 98,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 2/2; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 2; limit 6; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "case_id": "wall-bound-no-retry",
+      "repetition": 0,
+      "tags": [
+        "code",
+        "limits"
+      ],
+      "status": "ok",
+      "latency_ms": 0.027,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"limited\", \"executions\": 1, \"model_calls\": 0, \"tests_passed\": null, \"native_isolation\": true}",
+        "trace": [
+          {
+            "name": "execute",
+            "arguments": {
+              "attempt": 1,
+              "passed": false,
+              "feedback": "Execution stopped at the wall_time limit."
+            },
+            "output": "Execution stopped at the wall_time limit.",
+            "error": null
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 1/1; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 1; limit 1; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    }
+  ]
+}

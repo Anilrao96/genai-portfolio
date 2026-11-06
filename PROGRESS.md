@@ -28,13 +28,17 @@ Evidence: `docs/mcp-live.json`, `docs/mcp-browser.json`, `docs/mcp-browser-saved
 
 Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots and `docs/pipeline-eval/`. Actual CPU repair took about **31s**; two refused proposals for a zero quantity took about **68s** before quarantine. Cached extraction/replay made no model calls. The separate browser repair took about **37s**. This is a bounded fictional CSV/order contract with approved aliases, not arbitrary ETL or generated script execution. New aliases and missing facts require review.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All five completed MVPs have verified delivery. Clearflow source, tests, documentation and fictional evidence were committed as `379b8c25350a888b747a07c7e60ff5256d9205b5`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
+**Project 06 completed as an MVP:** Repair Bench uses actual LangGraph generation/execute/repair nodes, local Qwen3 and fresh inspected native WSL OCI containers. Nine actual isolation controls passed before generated code was enabled. A failing mean function was corrected using its real `ZeroDivisionError`; word generation passed all four authored examples; a sleeping candidate stopped without model retry. The full suite passes **195 tests** (21 code workflow/policy/API checks). **3/3 HTTP workflows**, actual browser repair, saved history, desktop/mobile checks and **3/3 existing Eval Lab replays** passed.
+
+Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-assistant-live.json`, `docs/code-browser.json`, screenshots and `docs/code-eval/`. API repair/generation took **30.9s / 20.4s**, and the separate browser repair **17.6s**. The runtime is a project-owned D:-backed WSL 3.0.3 session with Python 3.13.18, unprivileged UID, no host mounts/network, hard address-space/process/file/CPU limits and bounded output. Swap-cgroup enforcement is unavailable; hard 128 MB address space and one-process limits supplement it. Nonempty regular-file writes are denied; empty-file metadata inside the disposable container is not a read-only filesystem. Scope is two small pure-function contracts, not general repository repair or proof of program correctness.
+
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. The first five MVPs have verified delivery. Project 06 has passed acceptance and is awaiting the staged review and normal authorized commit/push in this session. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Resume project 06, the self-correcting code assistant. Verify a genuine isolation runtime and resource/file/network enforcement before any generated program executes. Docker was previously unavailable; consider supported alternatives using current primary documentation, or record the blocker and continue independent work.
+1. Complete project 06 GitHub delivery, then start project 08, the full-stack app builder: structured specification, backend/frontend/QA roles, confined generated workspace and actual isolated build/tests. Reuse the verified native container boundary; do not execute generated build scripts on Windows.
 2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
@@ -43,5 +47,5 @@ Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots a
 - 24 GB system RAM; Intel i5-9300H; about 688 GB available on D: at initial inspection.
 - NVIDIA GTX 1650 with 4 GB VRAM detected by Ollama; automatic GPU inference hit the 120-second read timeout. CPU inference works.
 - The dedicated portfolio Ollama at `127.0.0.1:11435` has `qwen2.5:1.5b` (about 986 MB), `qwen3:4b` (about 2.5 GB) and `nomic-embed-text:v1.5` (about 274 MB) under `.models` on D:. The existing default instance remains independent. Chat choices exclude embedding-only models; Local AI Studio retains its verified smaller default.
-- Docker not found in PATH. Gemini key/budget not configured by this task.
+- Native WSL 3.0.3 containers are verified for project 06 with storage under this checkout on D:. Docker CLI/Compose are still absent; project 09 remains unfinished. Gemini key/budget are not configured by this task.
 - The normal filesystem sandbox restricts local sockets and uv executable creation; verified commands may need narrowly scoped approval review.
