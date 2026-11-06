@@ -24,14 +24,14 @@ Evidence: `docs/rag-live.json`, `docs/rag-persistence.json`, `docs/rag-browser.j
 
 Evidence: `docs/mcp-live.json`, `docs/mcp-browser.json`, `docs/mcp-browser-saved.json`, screenshots and `docs/mcp-eval/`. CPU API requests took about **75s / 58s**, with the separate browser decision about **69s**. All six final probe handoff notes required a labeled tool fallback because the model kept inserting numeric literals; original model outputs remain inspectable. Model plan proposals and review approval still drive the workflow and are checked. Incorrect cents/dollars prose and a refused correct no-fit analysis are preserved in failure captures. Qualitative prose is not semantically proven, and this is a fixed fictional catalog rather than general web research.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI, SQL and RAG delivery are verified. RAG source was remotely verified at `1e15240c560baedfef96f88b5246405bebc2bc89`. MCP source/evidence passed acceptance and is pending the authorized staged review, commit and push in this session. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All four completed MVPs have verified delivery. MCP source, tests, documentation and fictional evidence were committed as `62961bb1090ca2f58bb4508b29f665ae66a210b6`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Deliver the verified project 01 commit to GitHub and confirm remote main equals local HEAD.
-2. Resume project 05: detect schema drift, propose constrained repairs, validate/quarantine/replay data and retain audit evidence. Do not execute unrestricted model-generated patches.
+1. Resume project 05: detect schema drift, propose constrained repairs, validate/quarantine/replay data and retain audit evidence. Do not execute unrestricted model-generated patches.
+2. Keep completed applications and Agent Eval Lab intact; finish and push the next working milestone with the same evidence checks.
 
 ## Known dependencies
 
