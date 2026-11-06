@@ -1,0 +1,634 @@
+{
+  "verified_at": "2026-11-06T08:50:24.775533+00:00",
+  "kind": "live_local_agentic_rag",
+  "model": "qwen3:4b",
+  "inference_mode": "cpu",
+  "cases": [
+    {
+      "id": "returns",
+      "question": "How long do customers have to return unused products?",
+      "initial_query": "",
+      "passed": true,
+      "http_status": 200,
+      "wall_ms": 33695.7,
+      "response": {
+        "status": "answered",
+        "question": "How long do customers have to return unused products?",
+        "answer": "Customers have 30 calendar days to return unused products [returns-policy-50d37f04-1]",
+        "reason": "Source IDs and quoted passages were matched to retrieved content.",
+        "citations": [
+          {
+            "chunk_id": "returns-policy-50d37f04-1",
+            "document_id": "returns-policy",
+            "title": "Returns and refunds",
+            "quote": "Northstar Retail accepts unused products within 30 calendar days of delivery.",
+            "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy."
+          }
+        ],
+        "trace": [
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "How long do customers have to return unused products?",
+              "attempt": 1
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "returns-policy-50d37f04-1",
+                  "document_id": "returns-policy",
+                  "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy.",
+                  "title": "Returns and refunds",
+                  "vector_similarity": 0.828825,
+                  "score": 0.0327869,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "pickup-hours-0d1f2a18-1",
+                  "document_id": "pickup-hours",
+                  "content": "In this fictional Northstar pickup depot, collection is available on Saturdays from 10:00 to 14:00 UTC. Customers must show a pickup code before receiving a parcel. This note describes demonstration opening hours only.",
+                  "title": "Fictional pickup depot hours",
+                  "vector_similarity": 0.623672,
+                  "score": 0.0312576,
+                  "lexical_rank": 3
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "returns-policy-50d37f04-1",
+                "pickup-hours-0d1f2a18-1"
+              ]
+            },
+            "result": {
+              "sufficient": true,
+              "relevant_chunk_ids": [
+                "returns-policy-50d37f04-1"
+              ],
+              "rewritten_query": "",
+              "reason": "S1 explicitly states 30 calendar days for unused products."
+            }
+          },
+          {
+            "tool": "compose_answer",
+            "input": {
+              "chunk_ids": [
+                "returns-policy-50d37f04-1"
+              ]
+            },
+            "result": {
+              "abstain": false,
+              "claim_count": 1
+            }
+          },
+          {
+            "tool": "validate_citations",
+            "input": {
+              "claim_count": 1
+            },
+            "result": {
+              "valid": true,
+              "reason": null
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 627,
+          "output_tokens": 146
+        },
+        "model_call_count": 2,
+        "retrieval_attempts": 1,
+        "recovery_used": false,
+        "elapsed_ms": 33629.2,
+        "model": "qwen3:4b",
+        "embedding_model": "nomic-embed-text:v1.5"
+      }
+    },
+    {
+      "id": "shipping",
+      "question": "How long does standard delivery take after dispatch?",
+      "initial_query": "",
+      "passed": true,
+      "http_status": 200,
+      "wall_ms": 29837.7,
+      "response": {
+        "status": "answered",
+        "question": "How long does standard delivery take after dispatch?",
+        "answer": "Standard delivery takes 3 to 5 business days after dispatch [shipping-guide-bfbe32d8-1]",
+        "reason": "Source IDs and quoted passages were matched to retrieved content.",
+        "citations": [
+          {
+            "chunk_id": "shipping-guide-bfbe32d8-1",
+            "document_id": "shipping-guide",
+            "title": "Shipping and delivery",
+            "quote": "Northstar Retail standard delivery takes 3 to 5 business days after dispatch.",
+            "content": "Northstar Retail standard delivery takes 3 to 5 business days after dispatch. Express delivery takes 1 to 2 business days after dispatch. Warehouse processing normally takes 1 business day before dispatch. Delivery estimates exclude public holidays. Tracking is available after the carrier scans the parcel. This is fictional sample documentation."
+          }
+        ],
+        "trace": [
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "How long does standard delivery take after dispatch?",
+              "attempt": 1
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "shipping-guide-bfbe32d8-1",
+                  "document_id": "shipping-guide",
+                  "content": "Northstar Retail standard delivery takes 3 to 5 business days after dispatch. Express delivery takes 1 to 2 business days after dispatch. Warehouse processing normally takes 1 business day before dispatch. Delivery estimates exclude public holidays. Tracking is available after the carrier scans the parcel. This is fictional sample documentation.",
+                  "title": "Shipping and delivery",
+                  "vector_similarity": 0.816427,
+                  "score": 0.0327869,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "returns-policy-50d37f04-1",
+                  "document_id": "returns-policy",
+                  "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy.",
+                  "title": "Returns and refunds",
+                  "vector_similarity": 0.641095,
+                  "score": 0.032002,
+                  "lexical_rank": 2
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "shipping-guide-bfbe32d8-1",
+                "returns-policy-50d37f04-1"
+              ]
+            },
+            "result": {
+              "sufficient": true,
+              "relevant_chunk_ids": [
+                "shipping-guide-bfbe32d8-1"
+              ],
+              "rewritten_query": "",
+              "reason": "S1 explicitly states standard delivery takes 3-5 business days after dispatch."
+            }
+          },
+          {
+            "tool": "compose_answer",
+            "input": {
+              "chunk_ids": [
+                "shipping-guide-bfbe32d8-1"
+              ]
+            },
+            "result": {
+              "abstain": false,
+              "claim_count": 1
+            }
+          },
+          {
+            "tool": "validate_citations",
+            "input": {
+              "claim_count": 1
+            },
+            "result": {
+              "valid": true,
+              "reason": null
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 634,
+          "output_tokens": 163
+        },
+        "model_call_count": 2,
+        "retrieval_attempts": 1,
+        "recovery_used": false,
+        "elapsed_ms": 29766.5,
+        "model": "qwen3:4b",
+        "embedding_model": "nomic-embed-text:v1.5"
+      }
+    },
+    {
+      "id": "outside-library",
+      "question": "What discount do platinum members receive?",
+      "initial_query": "",
+      "passed": true,
+      "http_status": 200,
+      "wall_ms": 15090.5,
+      "response": {
+        "status": "abstained",
+        "question": "What discount do platinum members receive?",
+        "answer": "I do not have enough verified information in this library to answer that.",
+        "reason": "The retrieved passages did not provide enough evidence after the bounded search.",
+        "citations": [],
+        "trace": [
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "What discount do platinum members receive?",
+              "attempt": 1
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "warranty-guide-e1cd14f6-1",
+                  "document_id": "warranty-guide",
+                  "content": "Northstar Retail provides a 12-month warranty for defects in materials or workmanship, starting on the delivery date. Normal wear, accidental damage and unauthorized repairs are excluded. Warranty requests require an order ID and a description of the defect. Approved claims receive a repair or replacement. These are fictional demonstration terms.",
+                  "title": "Product warranty",
+                  "vector_similarity": 0.532219,
+                  "score": 0.0322665,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "support-hours-5cf8871f-1",
+                  "document_id": "support-hours",
+                  "content": "Northstar customer support is available Monday through Friday from 09:00 to 17:00 UTC. General support requests receive an initial response within 2 business days. Customers should include an order ID when asking about an order. The support team does not ask for account passwords. This is a fictional reference document.",
+                  "title": "Customer support hours",
+                  "vector_similarity": 0.518511,
+                  "score": 0.0315136,
+                  "lexical_rank": 2
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "warranty-guide-e1cd14f6-1",
+                "support-hours-5cf8871f-1"
+              ]
+            },
+            "result": {
+              "sufficient": false,
+              "relevant_chunk_ids": [],
+              "rewritten_query": "What discount do platinum members receive?",
+              "reason": "No passage mentions discounts or platinum members."
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 385,
+          "output_tokens": 48
+        },
+        "model_call_count": 1,
+        "retrieval_attempts": 1,
+        "recovery_used": false,
+        "elapsed_ms": 15050.1,
+        "model": "qwen3:4b",
+        "embedding_model": "nomic-embed-text:v1.5"
+      }
+    },
+    {
+      "id": "recovery",
+      "question": "How long do customers have to return unused products?",
+      "initial_query": "severity-one paging incident timeline",
+      "passed": true,
+      "http_status": 200,
+      "wall_ms": 37648.7,
+      "response": {
+        "status": "answered",
+        "question": "How long do customers have to return unused products?",
+        "answer": "Customers have 30 calendar days to return unused products [returns-policy-50d37f04-1]",
+        "reason": "Source IDs and quoted passages were matched to retrieved content.",
+        "citations": [
+          {
+            "chunk_id": "returns-policy-50d37f04-1",
+            "document_id": "returns-policy",
+            "title": "Returns and refunds",
+            "quote": "Northstar Retail accepts unused products within 30 calendar days of delivery.",
+            "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy."
+          }
+        ],
+        "trace": [
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "severity-one paging incident timeline",
+              "attempt": 1
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "incident-response-6b256b7f-1",
+                  "document_id": "incident-response",
+                  "content": "For a severity-one service incident, Northstar pages the on-call engineer within 5 minutes. The incident commander posts a status update every 15 minutes until mitigation. Engineers record the impact, mitigation steps and current owner in the incident timeline. Paging instructions apply to service incidents, not retail return requests. This is a fictional operations runbook.",
+                  "title": "Severity-one incident response",
+                  "vector_similarity": 0.744068,
+                  "score": 0.0327869,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "incident-review-556c6c88-1",
+                  "document_id": "incident-review",
+                  "content": "Every Northstar severity-one incident requires a written review within 3 business days after resolution. The review includes a timeline, customer impact, contributing factors and follow-up actions with owners. The incident commander schedules a review meeting and tracks overdue actions in the operations backlog. This is fictional sample material.",
+                  "title": "Incident review and follow-up",
+                  "vector_similarity": 0.664694,
+                  "score": 0.0322581,
+                  "lexical_rank": 2
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "incident-response-6b256b7f-1",
+                "incident-review-556c6c88-1"
+              ]
+            },
+            "result": {
+              "sufficient": false,
+              "relevant_chunk_ids": [],
+              "rewritten_query": "How long do customers have to return unused products after purchase?",
+              "reason": "Passages discuss incident response, not product returns."
+            }
+          },
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "How long do customers have to return unused products after purchase?",
+              "attempt": 2
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "returns-policy-50d37f04-1",
+                  "document_id": "returns-policy",
+                  "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy.",
+                  "title": "Returns and refunds",
+                  "vector_similarity": 0.829874,
+                  "score": 0.0327869,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "pickup-hours-0d1f2a18-1",
+                  "document_id": "pickup-hours",
+                  "content": "In this fictional Northstar pickup depot, collection is available on Saturdays from 10:00 to 14:00 UTC. Customers must show a pickup code before receiving a parcel. This note describes demonstration opening hours only.",
+                  "title": "Fictional pickup depot hours",
+                  "vector_similarity": 0.619296,
+                  "score": 0.0312576,
+                  "lexical_rank": 3
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "returns-policy-50d37f04-1",
+                "pickup-hours-0d1f2a18-1"
+              ]
+            },
+            "result": {
+              "sufficient": true,
+              "relevant_chunk_ids": [
+                "returns-policy-50d37f04-1"
+              ],
+              "rewritten_query": "",
+              "reason": "S1 explicitly states 30 calendar days for unused products."
+            }
+          },
+          {
+            "tool": "compose_answer",
+            "input": {
+              "chunk_ids": [
+                "returns-policy-50d37f04-1"
+              ]
+            },
+            "result": {
+              "abstain": false,
+              "claim_count": 1
+            }
+          },
+          {
+            "tool": "validate_citations",
+            "input": {
+              "claim_count": 1
+            },
+            "result": {
+              "valid": true,
+              "reason": null
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 1018,
+          "output_tokens": 201
+        },
+        "model_call_count": 3,
+        "retrieval_attempts": 2,
+        "recovery_used": true,
+        "elapsed_ms": 37606.7,
+        "model": "qwen3:4b",
+        "embedding_model": "nomic-embed-text:v1.5"
+      }
+    },
+    {
+      "id": "new-document",
+      "question": "When can a customer collect a parcel on Saturday, and what must they show?",
+      "initial_query": "",
+      "passed": true,
+      "http_status": 200,
+      "wall_ms": 33997.7,
+      "response": {
+        "status": "answered",
+        "question": "When can a customer collect a parcel on Saturday, and what must they show?",
+        "answer": "Customers can collect parcels on Saturdays from 10:00 to 14:0:00 UTC [pickup-hours-0d1f2a18-1]\n\nCustomers must show a pickup code to collect a parcel [pickup-hours-0d1f2a18-1]",
+        "reason": "Source IDs and quoted passages were matched to retrieved content.",
+        "citations": [
+          {
+            "chunk_id": "pickup-hours-0d1f2a18-1",
+            "document_id": "pickup-hours",
+            "title": "Fictional pickup depot hours",
+            "quote": "collection is available on Saturdays from 10:00 to 14:00 UTC",
+            "content": "In this fictional Northstar pickup depot, collection is available on Saturdays from 10:00 to 14:00 UTC. Customers must show a pickup code before receiving a parcel. This note describes demonstration opening hours only."
+          },
+          {
+            "chunk_id": "pickup-hours-0d1f2a18-1",
+            "document_id": "pickup-hours",
+            "title": "Fictional pickup depot hours",
+            "quote": "Customers must show a pickup code before receiving a parcel",
+            "content": "In this fictional Northstar pickup depot, collection is available on Saturdays from 10:00 to 14:00 UTC. Customers must show a pickup code before receiving a parcel. This note describes demonstration opening hours only."
+          }
+        ],
+        "trace": [
+          {
+            "tool": "retrieve",
+            "input": {
+              "query": "When can a customer collect a parcel on Saturday, and what must they show?",
+              "attempt": 1
+            },
+            "result": {
+              "chunks": [
+                {
+                  "id": "pickup-hours-0d1f2a18-1",
+                  "document_id": "pickup-hours",
+                  "content": "In this fictional Northstar pickup depot, collection is available on Saturdays from 10:00 to 14:00 UTC. Customers must show a pickup code before receiving a parcel. This note describes demonstration opening hours only.",
+                  "title": "Fictional pickup depot hours",
+                  "vector_similarity": 0.771776,
+                  "score": 0.0327869,
+                  "lexical_rank": 1
+                },
+                {
+                  "id": "returns-policy-50d37f04-1",
+                  "document_id": "returns-policy",
+                  "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy.",
+                  "title": "Returns and refunds",
+                  "vector_similarity": 0.663427,
+                  "score": 0.0322581,
+                  "lexical_rank": 2
+                }
+              ]
+            }
+          },
+          {
+            "tool": "grade_retrieval",
+            "input": {
+              "chunk_ids": [
+                "pickup-hours-0d1f2a18-1",
+                "returns-policy-50d37f04-1"
+              ]
+            },
+            "result": {
+              "sufficient": true,
+              "relevant_chunk_ids": [
+                "pickup-hours-0d1f2a18-1"
+              ],
+              "rewritten_query": "",
+              "reason": "S1 explicitly states Saturday collection hours and required pickup code."
+            }
+          },
+          {
+            "tool": "compose_answer",
+            "input": {
+              "chunk_ids": [
+                "pickup-hours-0d1f2a18-1"
+              ]
+            },
+            "result": {
+              "abstain": false,
+              "claim_count": 2
+            }
+          },
+          {
+            "tool": "validate_citations",
+            "input": {
+              "claim_count": 2
+            },
+            "result": {
+              "valid": true,
+              "reason": null
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 626,
+          "output_tokens": 205
+        },
+        "model_call_count": 2,
+        "retrieval_attempts": 1,
+        "recovery_used": false,
+        "elapsed_ms": 33960.8,
+        "model": "qwen3:4b",
+        "embedding_model": "nomic-embed-text:v1.5"
+      }
+    }
+  ],
+  "seed": {
+    "added_documents": 0,
+    "added_chunks": 0,
+    "unchanged_documents": 8
+  },
+  "new_document_ingestion": {
+    "added_documents": 0,
+    "added_chunks": 0,
+    "unchanged_documents": 1
+  },
+  "catalog": {
+    "documents": [
+      {
+        "id": "billing-guide",
+        "title": "Billing and invoices",
+        "sha256": "ffa3536ba44b13b3c5498f37fbf579913d4d954208ee38e12adacce6001bd47b",
+        "created_at": "2026-11-06T08:42:01.656740+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "support-hours",
+        "title": "Customer support hours",
+        "sha256": "5cf8871f8ba2d7b8b81d6ed4820bd414af185c6f575ebb5f388d7e8f2acb160d",
+        "created_at": "2026-11-06T08:42:01.657446+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "pickup-hours",
+        "title": "Fictional pickup depot hours",
+        "sha256": "0d1f2a180df42349b950f92e0cfde0525936ae89561f8c86fe197fe348f333d8",
+        "created_at": "2026-11-06T08:42:01.798712+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "incident-review",
+        "title": "Incident review and follow-up",
+        "sha256": "556c6c8839fcdc464e7b9b7fb7569203ec4071b00e4bcab1e56369369af88ad6",
+        "created_at": "2026-11-06T08:42:01.658647+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "warranty-guide",
+        "title": "Product warranty",
+        "sha256": "e1cd14f62cac9bca14dd5441e5fd6cccacdcb29b05257c5a6829268f8e89da3f",
+        "created_at": "2026-11-06T08:42:01.656157+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "data-retention",
+        "title": "Reference data retention",
+        "sha256": "f567990f5e317df4705c4113867d254bb47321124368b6d596e33159fdf3be81",
+        "created_at": "2026-11-06T08:42:01.659136+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "returns-policy",
+        "title": "Returns and refunds",
+        "sha256": "50d37f045643b2c8714e1c72d54f5c28cfb3d0284fdc845afa1418b73879aa77",
+        "created_at": "2026-11-06T08:42:01.652975+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "incident-response",
+        "title": "Severity-one incident response",
+        "sha256": "6b256b7f61834c350127f0c301d9b8b6434ec102a5449da2cdb3a0e70ea67bfd",
+        "created_at": "2026-11-06T08:42:01.658133+00:00",
+        "chunks": 1
+      },
+      {
+        "id": "shipping-guide",
+        "title": "Shipping and delivery",
+        "sha256": "bfbe32d80c80c7dc8805e878dc54c3a58c2e424f7f96b9cad7f2752d435200f8",
+        "created_at": "2026-11-06T08:42:01.655437+00:00",
+        "chunks": 1
+      }
+    ],
+    "document_count": 9,
+    "chunk_count": 9,
+    "embedding_model": "nomic-embed-text:v1.5",
+    "dimension": 768,
+    "max_documents": 40,
+    "max_chunks": 300,
+    "configured_embedding_model": "nomic-embed-text:v1.5",
+    "default_model": "qwen3:4b"
+  },
+  "idempotent_seed": {
+    "added_documents": 0,
+    "added_chunks": 0,
+    "unchanged_documents": 8
+  },
+  "library_unchanged_by_questions": true,
+  "passed": true
+}

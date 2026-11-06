@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from portfolio_core.ollama import ModelServiceError, OllamaClient
+from portfolio_core.ollama import ModelServiceError, OllamaClient, chat_models
 from .assistant import DOMAIN, LangChainSqlModel, ModelError, SqlAssistant
 from .database import QueryError, ReadOnlyDatabase, SCHEMA, ensure_demo_database
 
@@ -79,7 +79,7 @@ def create_app(database=None, model_factory=None, catalog=None):
     @app.get("/api/models")
     async def models():
         try:
-            return {"models": await catalog.models()}
+            return {"models": chat_models(await catalog.models())}
         except ModelServiceError as exc:
             raise HTTPException(503, str(exc)) from exc
 
@@ -91,7 +91,7 @@ def create_app(database=None, model_factory=None, catalog=None):
             raise HTTPException(429, "A question is already being answered. Try again shortly.") from exc
         try:
             async with asyncio.timeout(150):
-                available = await catalog.models()
+                available = chat_models(await catalog.models())
                 if body.model not in {model["name"] for model in available}:
                     raise HTTPException(422, "Select an installed local model.")
                 result = await assistant_for(body.model).ask(body.question, body.row_limit)

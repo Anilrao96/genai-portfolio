@@ -1,0 +1,21 @@
+{
+  "verified_at": "2026-11-06T09:04:34.076Z",
+  "kind": "headless_edge_live_rag",
+  "model": "qwen3:4b",
+  "answer": "Customers have 30 calendar days to return unused products [returns-policy-50d37f04-1]",
+  "citations": [
+    {
+      "chunk_id": "returns-policy-50d37f04-1",
+      "document_id": "returns-policy",
+      "title": "Returns and refunds",
+      "quote": "Northstar Retail accepts unused products within 30 calendar days of delivery.",
+      "content": "Northstar Retail accepts unused products within 30 calendar days of delivery. Customers must provide an order ID and proof of purchase. Refunds go to the original payment method within 7 business days after the returned item passes inspection. Personalized items cannot be returned unless they arrive damaged. This is a fictional demonstration policy."
+    }
+  ],
+  "javascript_errors": [],
+  "elapsed_ms": 20089.2,
+  "answer_mode": "paraphrase",
+  "source_view_verified": true,
+  "embedding_model_excluded_from_chat_choices": true,
+  "mobile_no_horizontal_overflow": true
+}

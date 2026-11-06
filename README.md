@@ -2,7 +2,7 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-Current state: **2/10 new MVPs implemented and live-verified** (Local AI and SQL Assistant); Agent Eval Lab is completed existing work. The other eight apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). Completed projects are committed and pushed after verification; delivery status is recorded in PROGRESS.md.
+Current state: **3/10 new MVPs implemented and live-verified** (Agentic RAG, Local AI and SQL Assistant); Agent Eval Lab is completed existing work. The other seven apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). Completed projects are committed and pushed after verification; delivery status is recorded in PROGRESS.md.
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
@@ -12,10 +12,11 @@ Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-e
 
 | Project | What works | Start command |
 | --- | --- | --- |
+| [03 Reference Desk Agentic RAG](projects/p03_agentic_rag/README.md) | Persistent local vectors/full-text search, evidence grading, one recovery search, checked source passages and abstention | `scripts/Start-Rag.ps1` → port 8103 |
 | [04 Local AI Studio](projects/p04_local_ai/README.md) | Local chat, model selection, bounded requests and measured responses | `scripts/Start-LocalAI.ps1` → port 8104 |
 | [07 Retail Lens SQL Assistant](projects/p07_sql_assistant/README.md) | LangChain SQL planning, database-enforced read-only queries, visible results and summaries | `scripts/Start-SqlAssistant.ps1` → port 8107 |
 
-The portfolio regression suite has **77 passing offline tests**. SQL verification includes four actual local-model workflows, two deterministic scope-policy cases, four refused database operations, desktop/mobile browser checks and a six-case replay through the existing Agent Eval Lab. These authored checks are smoke evidence, not a broad model benchmark.
+The portfolio regression suite has **113 passing offline tests**. SQL verification includes four actual local-model workflows, two deterministic scope-policy cases and four refused database operations. RAG verification includes five live scenarios covering citations, abstention, search recovery and new-document ingestion. Both apps have desktop/mobile browser evidence and captured-outcome checks through the existing Agent Eval Lab. These authored checks are smoke evidence, not a broad model benchmark.
 
 ## Start the first application
 

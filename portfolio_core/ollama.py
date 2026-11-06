@@ -41,8 +41,8 @@ class OllamaClient:
         models = result.get("models")
         if not isinstance(models, list) or any(not isinstance(m, dict) or not isinstance(m.get("name"), str) for m in models):
             raise ModelServiceError("Ollama returned an invalid model list.")
-        return [{"name": m["name"], "size_bytes": m.get("size"), "details": m.get("details", {})} for m in models]
-
+        return [{"name": m["name"], "size_bytes": m.get("size"), "details": m.get("details", {}),
+                 "capabilities": m.get("capabilities", [])} for m in models]
     async def chat(self, model: str, messages: list[dict]):
         options = {"temperature": 0.4, "num_predict": 512, "num_ctx": 4096}
         if self.num_gpu is not None:
@@ -57,3 +57,8 @@ class OllamaClient:
         return {"answer": message["content"], "model": result.get("model", model),
                 "input_tokens": result.get("prompt_eval_count"), "output_tokens": result.get("eval_count"),
                 "generation_duration_ns": result.get("eval_duration")}
+
+
+def chat_models(models):
+    """Keep embedding-only models out of chat choices; tolerate older server metadata."""
+    return [model for model in models if not model.get("capabilities") or "completion" in model["capabilities"]]

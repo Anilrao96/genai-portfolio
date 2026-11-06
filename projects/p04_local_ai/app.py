@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from portfolio_core.ollama import ModelServiceError, OllamaClient
+from portfolio_core.ollama import ModelServiceError, OllamaClient, chat_models
 
 STATIC = Path(__file__).parent / "static"
 SYSTEM_PROMPT = "You are a helpful local assistant. Be concise and honest about uncertainty. Never claim you ran tools or accessed files; you have no tools."
@@ -73,7 +73,7 @@ def create_app(provider=None):
     @app.get("/api/models")
     async def models():
         try:
-            return {"models": await app.state.provider.models()}
+            return {"models": chat_models(await app.state.provider.models())}
         except ModelServiceError as exc:
             raise HTTPException(503, str(exc)) from exc
 
@@ -85,7 +85,7 @@ def create_app(provider=None):
             raise HTTPException(429, "A response is already being generated. Try again shortly.") from exc
         start = time.perf_counter()
         try:
-            available = await app.state.provider.models()
+            available = chat_models(await app.state.provider.models())
             if body.model not in {item["name"] for item in available}:
                 raise HTTPException(422, "Select a model installed on this Ollama instance.")
             messages = [{"role": "system", "content": SYSTEM_PROMPT}] + [m.model_dump() for m in body.messages]

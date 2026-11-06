@@ -1,0 +1,9 @@
+{
+  "kind": "separate_process_persistent_index_read",
+  "documents": 9,
+  "chunks": 9,
+  "metadata": {
+    "embedding_model": "nomic-embed-text:v1.5",
+    "dimension": "768"
+  }
+}
