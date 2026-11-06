@@ -1,0 +1,47 @@
+{
+  "verified_at": "2026-11-06T10:52:53.150Z",
+  "mode": "actual headless Edge model-backed repair",
+  "model": "qwen3:4b",
+  "batch_id": "8b733f209022444798888c320fd11639",
+  "plan_origin": "model",
+  "model_calls": 1,
+  "duration_ms": 37022,
+  "header_variant": 1,
+  "source_order_ids": [
+    "ORD-6002",
+    "ORD-6003"
+  ],
+  "quality_before": {
+    "missing_columns": [
+      "order_id"
+    ],
+    "unexpected_columns": [
+      "Order Number"
+    ],
+    "input_rows": 2,
+    "valid_rows": 0,
+    "invalid_rows": 2,
+    "issues": [
+      {
+        "row": 1,
+        "field": "headers",
+        "code": "schema_drift",
+        "message": "Canonical columns changed."
+      }
+    ],
+    "issues_truncated": false
+  },
+  "quality_after": {
+    "input_rows": 2,
+    "valid_rows": 2,
+    "invalid_rows": 0,
+    "issues": [],
+    "issues_truncated": false
+  },
+  "trace_opened": true,
+  "quarantine_replay_editor_verified": true,
+  "snapshot_restore_and_return_verified": true,
+  "embedding_model_excluded": true,
+  "javascript_errors": [],
+  "mobile_no_horizontal_overflow": true
+}

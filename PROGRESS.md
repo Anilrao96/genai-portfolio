@@ -24,14 +24,18 @@ Evidence: `docs/rag-live.json`, `docs/rag-persistence.json`, `docs/rag-browser.j
 
 Evidence: `docs/mcp-live.json`, `docs/mcp-browser.json`, `docs/mcp-browser-saved.json`, screenshots and `docs/mcp-eval/`. CPU API requests took about **75s / 58s**, with the separate browser decision about **69s**. All six final probe handoff notes required a labeled tool fallback because the model kept inserting numeric literals; original model outputs remain inspectable. Model plan proposals and review approval still drive the workflow and are checked. Incorrect cents/dollars prose and a refused correct no-fit analysis are preserved in failure captures. Qualitative prose is not semantically proven, and this is a fixed fictional catalog rather than general web research.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All four completed MVPs have verified delivery. MCP source, tests, documentation and fictional evidence were committed as `62961bb1090ca2f58bb4508b29f665ae66a210b6`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
+**Project 05 completed as an MVP:** Clearflow detects CSV schema/format drift, obtains a real local-model extraction plan, enforces a finite transformation language, validates every row and atomically promotes a SQLite snapshot. Invalid batches remain quarantined; corrected replay retains immutable parent/source hashes, and snapshot rollback preserves history. Validated plans are reused with their original learned-from batch ID. The full frozen suite passes **174 tests** (37 pipeline checks). **7/7 API cases**, actual browser repair, desktop/mobile checks and **3/3 existing Eval Lab replays** passed. The API checks also prove stale rollback refusal, full restoration and persistence through a separate SQLite connection.
+
+Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots and `docs/pipeline-eval/`. Actual CPU repair took about **31s**; two refused proposals for a zero quantity took about **68s** before quarantine. Cached extraction/replay made no model calls. The separate browser repair took about **37s**. This is a bounded fictional CSV/order contract with approved aliases, not arbitrary ETL or generated script execution. New aliases and missing facts require review.
+
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. The first four completed MVPs have verified delivery; MCP source was checked at `62961bb1090ca2f58bb4508b29f665ae66a210b6`. Clearflow source/evidence meets acceptance and is pending staged review, commit and authorized push in this session. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Resume project 05: detect schema drift, propose constrained repairs, validate/quarantine/replay data and retain audit evidence. Do not execute unrestricted model-generated patches.
-2. Keep completed applications and Agent Eval Lab intact; finish and push the next working milestone with the same evidence checks.
+1. Deliver project 05 and verify remote main equals local HEAD.
+2. Resume project 06, the self-correcting code assistant. Verify a genuine isolation runtime and resource/file/network enforcement before any generated program executes. Docker was previously unavailable; consider supported alternatives using current primary documentation, or record the blocker and continue independent work.
 
 ## Known dependencies
 

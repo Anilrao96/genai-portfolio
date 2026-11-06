@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "run_id": "3ffce9358152",
+  "created_at": "2026-11-06T10:47:12.047243+00:00",
+  "adapter": "recorded-pipeline-live-stage-replay-v1",
+  "framework_version": "0.1.0",
+  "python": "3.13.13",
+  "dataset_sha256": "b180aeffb287ade58b992cde9c3d5e5ece06d487aa68de998acbb62869431b58",
+  "evaluation_sha256": "43a1d5c95ec400ffa5a6b41cdd49d0dea27be0b1d01ed31c17429b777259c2fe",
+  "config": {
+    "concurrency": 1,
+    "timeout_s": 5,
+    "retries": 0,
+    "repetitions": 1
+  },
+  "provenance": {
+    "mode": "recorded_live_stage_replay",
+    "model": "qwen3:4b",
+    "capture_sha256": "53b77ff31657d20d7b2d17de1908bbb63babb0b27678533750bcdcbcbd5bbe1b",
+    "fresh_model_calls": false,
+    "trace_note": "ToolEvent entries represent recorded pipeline stages, not MCP or remote tools.",
+    "latency_note": "Replay overhead only; real HTTP/model timings are in the source capture.",
+    "evaluates": "Authored outcome and stage-path contracts, not arbitrary repair semantics or production data quality."
+  },
+  "summary": {
+    "count": 3,
+    "passed": 3,
+    "pass_rate": 1.0,
+    "errors": 0,
+    "latency_p50_ms": 0.112,
+    "latency_p95_ms": 0.129,
+    "known_success_cost_usd": null,
+    "cost_coverage": 0.0,
+    "slices": {
+      "pipeline": {
+        "count": 3,
+        "passed": 3,
+        "pass_rate": 1.0
+      },
+      "quarantine": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      },
+      "repair": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      },
+      "replay": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      }
+    },
+    "metrics": {
+      "json_contract": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "max_tool_calls": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "tool_path": {
+        "count": 3,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "model-repair",
+      "repetition": 0,
+      "tags": [
+        "pipeline",
+        "repair"
+      ],
+      "status": "ok",
+      "latency_ms": 0.112,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"committed\", \"plan_origin\": \"model\", \"valid_rows\": 2, \"model_calls_this_request\": 1}",
+        "trace": [
+          {
+            "name": "detect",
+            "arguments": {
+              "report": {
+                "missing_columns": [
+                  "currency",
+                  "customer",
+                  "order_id",
+                  "ordered_on",
+                  "quantity",
+                  "unit_price"
+                ],
+                "unexpected_columns": [
+                  "Buyer",
+                  "Currency",
+                  "Order Date",
+                  "Order Number",
+                  "Price USD",
+                  "Units"
+                ],
+                "input_rows": 2,
+                "valid_rows": 0,
+                "invalid_rows": 2,
+                "issues": [
+                  {
+                    "row": 1,
+                    "field": "headers",
+                    "code": "schema_drift",
+                    "message": "Canonical columns changed."
+                  }
+                ],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "missing_columns": [
+                "currency",
+                "customer",
+                "order_id",
+                "ordered_on",
+                "quantity",
+                "unit_price"
+              ],
+              "unexpected_columns": [
+                "Buyer",
+                "Currency",
+                "Order Date",
+                "Order Number",
+                "Price USD",
+                "Units"
+              ],
+              "input_rows": 2,
+              "valid_rows": 0,
+              "invalid_rows": 2,
+              "issues": [
+                {
+                  "row": 1,
+                  "field": "headers",
+                  "code": "schema_drift",
+                  "message": "Canonical columns changed."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "propose",
+            "arguments": {
+              "attempt": 1,
+              "proposal": {
+                "action": "repair",
+                "rules": [
+                  {
+                    "source": "Order Number",
+                    "target": "order_id",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Buyer",
+                    "target": "customer",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Units",
+                    "target": "quantity",
+                    "transform": "integral_decimal"
+                  },
+                  {
+                    "source": "Price USD",
+                    "target": "unit_price",
+                    "transform": "currency_usd"
+                  },
+                  {
+                    "source": "Currency",
+                    "target": "currency",
+                    "transform": "uppercase_usd"
+                  },
+                  {
+                    "source": "Order Date",
+                    "target": "ordered_on",
+                    "transform": "us_date"
+                  }
+                ],
+                "note": "All transforms selected from allowed transforms; no invented facts; uses sample data to confirm mappings."
+              },
+              "usage": {
+                "input_tokens": 685,
+                "output_tokens": 203
+              },
+              "duration_ms": 31263
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "validate_proposal",
+            "arguments": {
+              "report": {
+                "input_rows": 2,
+                "valid_rows": 2,
+                "invalid_rows": 0,
+                "issues": [],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "input_rows": 2,
+              "valid_rows": 2,
+              "invalid_rows": 0,
+              "issues": [],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "prepare_commit",
+            "arguments": {
+              "rows": 2,
+              "base_revision": 1
+            },
+            "output": null,
+            "error": null
+          }
+        ],
+        "input_tokens": 685,
+        "output_tokens": 203,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 4/4; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 4; limit 12; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "case_id": "quarantine",
+      "repetition": 0,
+      "tags": [
+        "pipeline",
+        "quarantine"
+      ],
+      "status": "ok",
+      "latency_ms": 0.095,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"quarantined\", \"plan_origin\": null, \"valid_rows\": 0, \"model_calls_this_request\": 2}",
+        "trace": [
+          {
+            "name": "detect",
+            "arguments": {
+              "report": {
+                "missing_columns": [
+                  "currency",
+                  "customer",
+                  "order_id",
+                  "ordered_on",
+                  "quantity",
+                  "unit_price"
+                ],
+                "unexpected_columns": [
+                  "Buyer",
+                  "Currency",
+                  "Order Date",
+                  "Order Number",
+                  "Price USD",
+                  "Units"
+                ],
+                "input_rows": 1,
+                "valid_rows": 0,
+                "invalid_rows": 1,
+                "issues": [
+                  {
+                    "row": 1,
+                    "field": "headers",
+                    "code": "schema_drift",
+                    "message": "Canonical columns changed."
+                  }
+                ],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "missing_columns": [
+                "currency",
+                "customer",
+                "order_id",
+                "ordered_on",
+                "quantity",
+                "unit_price"
+              ],
+              "unexpected_columns": [
+                "Buyer",
+                "Currency",
+                "Order Date",
+                "Order Number",
+                "Price USD",
+                "Units"
+              ],
+              "input_rows": 1,
+              "valid_rows": 0,
+              "invalid_rows": 1,
+              "issues": [
+                {
+                  "row": 1,
+                  "field": "headers",
+                  "code": "schema_drift",
+                  "message": "Canonical columns changed."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "validate_existing",
+            "arguments": {
+              "origin": "cached",
+              "report": {
+                "input_rows": 1,
+                "valid_rows": 0,
+                "invalid_rows": 1,
+                "issues": [
+                  {
+                    "row": 2,
+                    "field": "quantity",
+                    "code": "contract",
+                    "message": "Quantity must be between one and ten thousand."
+                  }
+                ],
+                "issues_truncated": false
+              },
+              "learned_from": "2c725682e67141708417f36343844d7e"
+            },
+            "output": {
+              "input_rows": 1,
+              "valid_rows": 0,
+              "invalid_rows": 1,
+              "issues": [
+                {
+                  "row": 2,
+                  "field": "quantity",
+                  "code": "contract",
+                  "message": "Quantity must be between one and ten thousand."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "propose",
+            "arguments": {
+              "attempt": 1,
+              "proposal": {
+                "action": "repair",
+                "rules": [
+                  {
+                    "source": "Order Number",
+                    "target": "order_id",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Buyer",
+                    "target": "customer",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Units",
+                    "target": "quantity",
+                    "transform": "integral_decimal"
+                  },
+                  {
+                    "source": "Price USD",
+                    "target": "unit_price",
+                    "transform": "currency_usd"
+                  },
+                  {
+                    "source": "Currency",
+                    "target": "currency",
+                    "transform": "uppercase_usd"
+                  },
+                  {
+                    "source": "Order Date",
+                    "target": "ordered_on",
+                    "transform": "us_date"
+                  }
+                ],
+                "note": "All transforms are approved per schema. No invented facts. Sample row validated."
+              },
+              "usage": {
+                "input_tokens": 650,
+                "output_tokens": 200
+              },
+              "duration_ms": 29818
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "validate_proposal",
+            "arguments": {
+              "report": {
+                "input_rows": 1,
+                "valid_rows": 0,
+                "invalid_rows": 1,
+                "issues": [
+                  {
+                    "row": 2,
+                    "field": "quantity",
+                    "code": "contract",
+                    "message": "Quantity must be between one and ten thousand."
+                  }
+                ],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "input_rows": 1,
+              "valid_rows": 0,
+              "invalid_rows": 1,
+              "issues": [
+                {
+                  "row": 2,
+                  "field": "quantity",
+                  "code": "contract",
+                  "message": "Quantity must be between one and ten thousand."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "reject_proposal",
+            "arguments": {
+              "message": "Repaired rows still violate the data contract."
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "propose",
+            "arguments": {
+              "attempt": 2,
+              "proposal": {
+                "action": "repair",
+                "rules": [
+                  {
+                    "source": "Order Number",
+                    "target": "order_id",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Buyer",
+                    "target": "customer",
+                    "transform": "trim"
+                  },
+                  {
+                    "source": "Units",
+                    "target": "quantity",
+                    "transform": "integral_decimal"
+                  },
+                  {
+                    "source": "Price USD",
+                    "target": "unit_price",
+                    "transform": "currency_usd"
+                  },
+                  {
+                    "source": "Currency",
+                    "target": "currency",
+                    "transform": "uppercase_usd"
+                  },
+                  {
+                    "source": "Order Date",
+                    "target": "ordered_on",
+                    "transform": "us_date"
+                  }
+                ],
+                "note": "All transforms are approved per schema. No invented facts. Quantities are parsed as integral_decimal (e.g., 0.0 → 0). Unit prices are converted to USD with $ sign and commas. Dates are in MM/DD/YYYY format per month_first profile."
+              },
+              "usage": {
+                "input_tokens": 702,
+                "output_tokens": 239
+              },
+              "duration_ms": 37709
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "validate_proposal",
+            "arguments": {
+              "report": {
+                "input_rows": 1,
+                "valid_rows": 0,
+                "invalid_rows": 1,
+                "issues": [
+                  {
+                    "row": 2,
+                    "field": "quantity",
+                    "code": "contract",
+                    "message": "Quantity must be between one and ten thousand."
+                  }
+                ],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "input_rows": 1,
+              "valid_rows": 0,
+              "invalid_rows": 1,
+              "issues": [
+                {
+                  "row": 2,
+                  "field": "quantity",
+                  "code": "contract",
+                  "message": "Quantity must be between one and ten thousand."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "reject_proposal",
+            "arguments": {
+              "message": "Repaired rows still violate the data contract."
+            },
+            "output": null,
+            "error": null
+          },
+          {
+            "name": "stop",
+            "arguments": {
+              "reason": "Repaired rows still violate the data contract."
+            },
+            "output": null,
+            "error": null
+          }
+        ],
+        "input_tokens": 1352,
+        "output_tokens": 439,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 2/2; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 9; limit 12; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "case_id": "corrected-replay",
+      "repetition": 0,
+      "tags": [
+        "pipeline",
+        "replay"
+      ],
+      "status": "ok",
+      "latency_ms": 0.129,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"committed\", \"plan_origin\": \"cached\", \"valid_rows\": 1, \"model_calls_this_request\": 0}",
+        "trace": [
+          {
+            "name": "detect",
+            "arguments": {
+              "report": {
+                "missing_columns": [
+                  "currency",
+                  "customer",
+                  "order_id",
+                  "ordered_on",
+                  "quantity",
+                  "unit_price"
+                ],
+                "unexpected_columns": [
+                  "Buyer",
+                  "Currency",
+                  "Order Date",
+                  "Order Number",
+                  "Price USD",
+                  "Units"
+                ],
+                "input_rows": 1,
+                "valid_rows": 0,
+                "invalid_rows": 1,
+                "issues": [
+                  {
+                    "row": 1,
+                    "field": "headers",
+                    "code": "schema_drift",
+                    "message": "Canonical columns changed."
+                  }
+                ],
+                "issues_truncated": false
+              }
+            },
+            "output": {
+              "missing_columns": [
+                "currency",
+                "customer",
+                "order_id",
+                "ordered_on",
+                "quantity",
+                "unit_price"
+              ],
+              "unexpected_columns": [
+                "Buyer",
+                "Currency",
+                "Order Date",
+                "Order Number",
+                "Price USD",
+                "Units"
+              ],
+              "input_rows": 1,
+              "valid_rows": 0,
+              "invalid_rows": 1,
+              "issues": [
+                {
+                  "row": 1,
+                  "field": "headers",
+                  "code": "schema_drift",
+                  "message": "Canonical columns changed."
+                }
+              ],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "validate_existing",
+            "arguments": {
+              "origin": "cached",
+              "report": {
+                "input_rows": 1,
+                "valid_rows": 1,
+                "invalid_rows": 0,
+                "issues": [],
+                "issues_truncated": false
+              },
+              "learned_from": "2c725682e67141708417f36343844d7e"
+            },
+            "output": {
+              "input_rows": 1,
+              "valid_rows": 1,
+              "invalid_rows": 0,
+              "issues": [],
+              "issues_truncated": false
+            },
+            "error": null
+          },
+          {
+            "name": "prepare_commit",
+            "arguments": {
+              "rows": 1,
+              "base_revision": 3
+            },
+            "output": null,
+            "error": null
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 3/3; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 3; limit 12; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    }
+  ]
+}

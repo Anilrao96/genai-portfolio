@@ -1,3 +1,5 @@
-# Preserve portable hashes for the new MCP evidence captures and reports.
+# Preserve portable hashes for evidence captures and reports.
 docs/mcp-*.json text eol=lf
 docs/mcp-eval/* text eol=lf
+docs/pipeline-*.json text eol=lf
+docs/pipeline-eval/* text eol=lf
