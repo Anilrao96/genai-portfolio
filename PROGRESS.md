@@ -20,15 +20,14 @@ Evidence: `docs/sql-assistant-live.json`, `docs/sql-assistant-browser.json`, des
 
 Evidence: `docs/rag-live.json`, `docs/rag-persistence.json`, `docs/rag-browser.json`, desktop/mobile screenshots and `docs/rag-eval/`. Initial grading/ID failures and a manually noticed time-format error are preserved separately. Final CPU HTTP examples took approximately 19–42 seconds; the UI request took about 20 seconds. Source/quote/literal checks do not prove semantic entailment; the library is bounded and does not resolve conflicting source versions.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI and SQL delivery are verified; the last metadata head before this session was `5177218481af489ff98cbc0c427d72e1bf96b2fb`. RAG implementation, documentation and evidence are complete and ready for the authorized commit/push. RAG delivery verification is pending. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI, SQL and RAG delivery are verified. RAG source, tests and fictional evidence were pushed and remotely verified at `1e15240c560baedfef96f88b5246405bebc2bc89`. This delivery record is committed and pushed separately. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Finish and remotely verify the RAG GitHub delivery before reporting it pushed.
-2. Start project 01: an actual MCP client/server, specialized research/analysis/review roles and structured shared state.
-3. Bound orchestration/tool calls and record actual protocol/tool traces, including a failure case. Keep using the existing Agent Eval Lab rather than rebuilding its evaluator.
+1. Start project 01: an actual MCP client/server, specialized research/analysis/review roles and structured shared state.
+2. Bound orchestration/tool calls and record actual protocol/tool traces, including a failure case. Keep using the existing Agent Eval Lab rather than rebuilding its evaluator.
 
 ## Known dependencies
 
