@@ -16,16 +16,15 @@ Evidence: `docs/local-ai-live.json`, `docs/local-ai-cpu-probe.json`, `docs/local
 
 Evidence: `docs/sql-assistant-live.json`, `docs/sql-assistant-browser.json`, desktop/mobile screenshots and `docs/sql-assistant-eval/`. The smaller model's failed join, unsupported-profit answer and currency conversion are preserved in the initial/unit failure captures. Qwen3's observed CPU HTTP requests took about 120 seconds cold and 25–32 seconds warm; the separate UI request took about 48 seconds. SQL is a fictional SQLite MVP; PostgreSQL remains an upgrade path.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI and the roadmap were remotely verified at `6dded5a2a939f122f3beb99b516e3b72cf57466d`. SQL implementation, documentation and evidence are complete and ready for the authorized commit/push; this session's delivery verification is pending. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI and the roadmap were remotely verified at `6dded5a2a939f122f3beb99b516e3b72cf57466d`. SQL implementation, documentation and evidence were committed, pushed and remotely verified at `9fd2c94fde9d3b15efdbd39a817fcae035281bb7`. This delivery record is committed and pushed separately. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Finish the SQL GitHub delivery and verify the exact remote main SHA before reporting it pushed.
-2. Start project 03: ingest fictional documents, persist a local index, retrieve source IDs and generate cited answers.
-3. Add bounded retrieval grading/query rewrite and abstention on insufficient evidence; test grounding and failure paths.
-4. Keep using the existing Agent Eval Lab contracts and reporting; do not rebuild or modify that repository.
+1. Start project 03: ingest fictional documents, persist a local index, retrieve source IDs and generate cited answers.
+2. Add bounded retrieval grading/query rewrite and abstention on insufficient evidence; test grounding and failure paths.
+3. Keep using the existing Agent Eval Lab contracts and reporting; do not rebuild or modify that repository.
 
 ## Known dependencies
 
