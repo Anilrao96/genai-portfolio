@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-11-06T10:11:39.046Z",
+  "mode": "actual headless Edge model request",
+  "model": "qwen3:4b",
+  "run_id": "c282a796c9044f6aa62ed7ef3add4dfd",
+  "status": "completed",
+  "recommended_plan": "team",
+  "duration_ms": 69252,
+  "counts": {
+    "model_calls": 3,
+    "tool_calls": 9,
+    "resource_reads": 3
+  },
+  "javascript_errors": [],
+  "trace_opened": true,
+  "history_survived_reload": true,
+  "embedding_model_excluded": true,
+  "mobile_no_horizontal_overflow": true
+}

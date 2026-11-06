@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Support Council · MCP agents</title><link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script></head>
+<body><main>
+<header><a class="brand" href="/">N / SUPPORT COUNCIL</a><span class="badge">LOCAL MODEL · REAL MCP</span></header>
+<section class="intro"><p class="eyebrow">01 / MULTI-AGENT DECISIONS</p><h1>Three perspectives.<br>One checked decision.</h1><p>Compare fictional support plans with a researcher, analyst and reviewer. Follow each handoff, exact quote and tool call.</p></section>
+<div class="workspace"><aside>
+<form id="decision-form"><h2>Set the brief</h2><label>Team size<input id="seats" type="number" min="1" max="500" value="12" required></label><label>Monthly budget · USD<input id="budget" type="number" min="0" max="100000" step="0.01" value="300" required></label><label class="check"><input id="support" type="checkbox" checked> Require 24-hour support</label><label>Goal<textarea id="goal" maxlength="500" rows="3" required>Choose the least expensive eligible plan.</textarea></label><label>Local model<select id="model" required><option value="">Loading models…</option></select></label><button id="submit" type="submit">Convene the council <span>↗</span></button><p class="hint">3 roles · up to 4 model calls · 240s maximum.<br>CPU decisions can take a minute or more.</p></form>
+<section class="history"><h3>Saved decisions</h3><div id="history">No saved decisions yet.</div></section>
+</aside><section class="results" aria-live="polite">
+<div class="status-line"><span class="dot"></span><span id="status">Ready for your brief</span></div>
+<div class="roles"><div><span>01</span><b>Researcher</b><small>Catalog coverage</small></div><div><span>02</span><b>Analyst</b><small>Exact tool quotes</small></div><div><span>03</span><b>Reviewer</b><small>Independent check</small></div></div>
+<div id="empty"><div class="glyph">◎</div><h2>A visible path to the answer</h2><p>Each role discovers its own MCP tools and reads versioned shared state. Pricing and eligibility are checked by deterministic tools.</p><div id="catalog" class="catalog"></div><p class="hint">Fictional Northstar catalog. No purchases or external accounts.</p></div>
+<div id="output" hidden><div class="decision-top"><p class="eyebrow" id="run-label"></p><h2 id="recommendation"></h2><p id="summary"></p></div><div class="table-wrap"><table><thead><tr><th>Plan</th><th>Monthly USD</th><th>Constraints</th></tr></thead><tbody id="quotes"></tbody></table></div><h3>Role handoffs <span class="muted">/ model notes</span></h3><div id="handoffs"></div><details><summary>Inspect MCP trace <span id="counts"></span></summary><div id="trace"></div></details></div>
+<p id="error" class="error" role="alert" hidden></p>
+</section></div><footer>Grounded arithmetic. Inspectable handoffs. Model notes may contain mistakes; the checked table is authoritative for this fictional catalog.</footer>
+</main></body></html>

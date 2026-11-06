@@ -1,0 +1,1398 @@
+{
+  "captured_at": "2026-11-06T09:58:39.259379+00:00",
+  "mode": "actual local model + actual MCP stdio",
+  "model": "qwen3:4b",
+  "inference": "CPU; LOCAL_AI_NUM_GPU=0",
+  "cases": [
+    {
+      "id": "eligible_team",
+      "expected_plan": "team",
+      "passed": true,
+      "response": {
+        "run": {
+          "id": "6d31eaf9746d42d8a3b3a11f211e718e",
+          "version": 3,
+          "status": "completed",
+          "requirements": {
+            "seats": 12,
+            "budget_cents": 30000,
+            "support_24h": true,
+            "goal": "Choose the least expensive eligible plan."
+          },
+          "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+          "research": {
+            "plan_ids": [
+              "basic",
+              "team",
+              "enterprise"
+            ],
+            "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+          },
+          "analysis": {
+            "recommended_plan": "team",
+            "note": "State: 1:12 seats, $300.00 budget, 24h support. Catalog shows 3 plans: Basic (no 24h), Team ($1800/seat), Enterprise ($2200/seat). Team fits 12 seats ($21,600) under $30k budget with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan.",
+            "quotes": [
+              {
+                "plan_id": "basic",
+                "monthly_cents": 14400,
+                "eligible": false,
+                "reasons": [
+                  "24h_support"
+                ]
+              },
+              {
+                "plan_id": "team",
+                "monthly_cents": 23600,
+                "eligible": true,
+                "reasons": []
+              },
+              {
+                "plan_id": "enterprise",
+                "monthly_cents": 31400,
+                "eligible": false,
+                "reasons": [
+                  "budget"
+                ]
+              }
+            ],
+            "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+          },
+          "review": {
+            "approved": true,
+            "note": "Verified: Team plan ($23,600) meets 12 seats, $30k budget, 24h support. Basic lacks 24h support. Enterprise exceeds budget. Least expensive eligible plan."
+          }
+        },
+        "error": null,
+        "trace": [
+          {
+            "kind": "discovery",
+            "role": "coordinator",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "create_decision",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "seats": {
+                      "title": "Seats",
+                      "type": "integer"
+                    },
+                    "budget_cents": {
+                      "title": "Budget Cents",
+                      "type": "integer"
+                    },
+                    "support_24h": {
+                      "title": "Support 24H",
+                      "type": "boolean"
+                    },
+                    "goal": {
+                      "title": "Goal",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "seats",
+                    "budget_cents",
+                    "support_24h",
+                    "goal"
+                  ],
+                  "title": "create_decisionArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "tool",
+            "role": "coordinator",
+            "name": "create_decision",
+            "arguments": {
+              "seats": 12,
+              "budget_cents": 30000,
+              "support_24h": true,
+              "goal": "Choose the least expensive eligible plan."
+            },
+            "is_error": false,
+            "duration_ms": 27,
+            "result": {
+              "id": "6d31eaf9746d42d8a3b3a11f211e718e",
+              "version": 0,
+              "status": "created",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": null,
+              "analysis": null,
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "researcher",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "list_plans",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "list_plansArguments"
+                }
+              },
+              {
+                "name": "publish_research",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "plan_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Plan Ids",
+                      "type": "array"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "plan_ids",
+                    "note"
+                  ],
+                  "title": "publish_researchArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "researcher",
+            "uri": "council://runs/6d31eaf9746d42d8a3b3a11f211e718e",
+            "version": 0
+          },
+          {
+            "kind": "tool",
+            "role": "researcher",
+            "name": "list_plans",
+            "arguments": {},
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "dataset": "Fictional Northstar Support plans \u2014 not real offers",
+              "currency": "USD",
+              "plans": [
+                {
+                  "id": "basic",
+                  "name": "Basic",
+                  "seat_cents": 1200,
+                  "base_cents": 0,
+                  "max_seats": 25,
+                  "support_24h": false
+                },
+                {
+                  "id": "team",
+                  "name": "Team",
+                  "seat_cents": 1800,
+                  "base_cents": 2000,
+                  "max_seats": 100,
+                  "support_24h": true
+                },
+                {
+                  "id": "enterprise",
+                  "name": "Enterprise",
+                  "seat_cents": 2200,
+                  "base_cents": 5000,
+                  "max_seats": 500,
+                  "support_24h": true
+                }
+              ],
+              "sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3"
+            }
+          },
+          {
+            "kind": "model",
+            "role": "researcher",
+            "output": {
+              "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+            },
+            "usage": {
+              "input_tokens": 511,
+              "output_tokens": 125
+            },
+            "duration_ms": 33837
+          },
+          {
+            "kind": "tool",
+            "role": "researcher",
+            "name": "publish_research",
+            "arguments": {
+              "expected_version": 0,
+              "plan_ids": [
+                "basic",
+                "team",
+                "enterprise"
+              ],
+              "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+            },
+            "is_error": false,
+            "duration_ms": 628,
+            "result": {
+              "id": "6d31eaf9746d42d8a3b3a11f211e718e",
+              "version": 1,
+              "status": "researched",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+              },
+              "analysis": null,
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "analyst",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "quote_plan",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "plan_id": {
+                      "title": "Plan Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "plan_id"
+                  ],
+                  "title": "quote_planArguments"
+                }
+              },
+              {
+                "name": "publish_analysis",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "recommended_plan": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Recommended Plan"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "recommended_plan",
+                    "note"
+                  ],
+                  "title": "publish_analysisArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "analyst",
+            "uri": "council://runs/6d31eaf9746d42d8a3b3a11f211e718e",
+            "version": 1
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "basic"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "basic",
+              "monthly_cents": 14400,
+              "eligible": false,
+              "reasons": [
+                "24h_support"
+              ]
+            }
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "team"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "team",
+              "monthly_cents": 23600,
+              "eligible": true,
+              "reasons": []
+            }
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "enterprise"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "enterprise",
+              "monthly_cents": 31400,
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            }
+          },
+          {
+            "kind": "model",
+            "role": "analyst",
+            "output": {
+              "note": "State: 1:12 seats, $300.00 budget, 24h support. Catalog shows 3 plans: Basic (no 24h), Team ($1800/seat), Enterprise ($2200/seat). Team fits 12 seats ($21,600) under $30k budget with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan.",
+              "recommended_plan": "team"
+            },
+            "usage": {
+              "input_tokens": 507,
+              "output_tokens": 121
+            },
+            "duration_ms": 24531
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "publish_analysis",
+            "arguments": {
+              "expected_version": 1,
+              "note": "State: 1:12 seats, $300.00 budget, 24h support. Catalog shows 3 plans: Basic (no 24h), Team ($1800/seat), Enterprise ($2200/seat). Team fits 12 seats ($21,600) under $30k budget with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan.",
+              "recommended_plan": "team"
+            },
+            "is_error": false,
+            "duration_ms": 538,
+            "result": {
+              "id": "6d31eaf9746d42d8a3b3a11f211e718e",
+              "version": 2,
+              "status": "analyzed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+              },
+              "analysis": {
+                "recommended_plan": "team",
+                "note": "State: 1:12 seats, $300.00 budget, 24h support. Catalog shows 3 plans: Basic (no 24h), Team ($1800/seat), Enterprise ($2200/seat). Team fits 12 seats ($21,600) under $30k budget with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan.",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "eligible": true,
+                    "reasons": []
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "reviewer",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "verify_decision",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "verify_decisionArguments"
+                }
+              },
+              {
+                "name": "publish_review",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "approved": {
+                      "title": "Approved",
+                      "type": "boolean"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "approved",
+                    "note"
+                  ],
+                  "title": "publish_reviewArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "reviewer",
+            "uri": "council://runs/6d31eaf9746d42d8a3b3a11f211e718e",
+            "version": 2
+          },
+          {
+            "kind": "tool",
+            "role": "reviewer",
+            "name": "verify_decision",
+            "arguments": {},
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "valid": true,
+              "quotes": [
+                {
+                  "plan_id": "basic",
+                  "monthly_cents": 14400,
+                  "eligible": false,
+                  "reasons": [
+                    "24h_support"
+                  ]
+                },
+                {
+                  "plan_id": "team",
+                  "monthly_cents": 23600,
+                  "eligible": true,
+                  "reasons": []
+                },
+                {
+                  "plan_id": "enterprise",
+                  "monthly_cents": 31400,
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                }
+              ],
+              "recommended_plan": "team",
+              "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties.",
+              "version": 2
+            }
+          },
+          {
+            "kind": "model",
+            "role": "reviewer",
+            "output": {
+              "note": "Verified: Team plan ($23,600) meets 12 seats, $30k budget, 24h support. Basic lacks 24h support. Enterprise exceeds budget. Least expensive eligible plan.",
+              "approved": true
+            },
+            "usage": {
+              "input_tokens": 786,
+              "output_tokens": 61
+            },
+            "duration_ms": 22923
+          },
+          {
+            "kind": "tool",
+            "role": "reviewer",
+            "name": "publish_review",
+            "arguments": {
+              "expected_version": 2,
+              "note": "Verified: Team plan ($23,600) meets 12 seats, $30k budget, 24h support. Basic lacks 24h support. Enterprise exceeds budget. Least expensive eligible plan.",
+              "approved": true
+            },
+            "is_error": false,
+            "duration_ms": 1016,
+            "result": {
+              "id": "6d31eaf9746d42d8a3b3a11f211e718e",
+              "version": 3,
+              "status": "completed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $300.00 budget, 24h support required. Catalog shows 3 plans: Basic (no 24h), Team (24h, $1800/seat), Enterprise (24h, $2200/seat). Team plan fits 12 seats under $300.00 ($21,600) with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan."
+              },
+              "analysis": {
+                "recommended_plan": "team",
+                "note": "State: 1:12 seats, $300.00 budget, 24h support. Catalog shows 3 plans: Basic (no 24h), Team ($1800/seat), Enterprise ($2200/seat). Team fits 12 seats ($21,600) under $30k budget with $8,400 base cost. Enterprise exceeds budget. Basic lacks 24h support. Team is least expensive eligible plan.",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "eligible": true,
+                    "reasons": []
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": {
+                "approved": true,
+                "note": "Verified: Team plan ($23,600) meets 12 seats, $30k budget, 24h support. Basic lacks 24h support. Enterprise exceeds budget. Least expensive eligible plan."
+              }
+            }
+          }
+        ],
+        "counts": {
+          "model_calls": 3,
+          "tool_calls": 9,
+          "resource_reads": 3
+        },
+        "limits": {
+          "model_calls": 4,
+          "tool_calls": 12,
+          "resource_reads": 3,
+          "seconds": 240
+        },
+        "duration_ms": 89446,
+        "model": "qwen3:4b"
+      }
+    },
+    {
+      "id": "no_eligible_plan",
+      "expected_plan": null,
+      "passed": true,
+      "response": {
+        "run": {
+          "id": "100542dace6d421599bad0afedb36f09",
+          "version": 3,
+          "status": "completed",
+          "requirements": {
+            "seats": 12,
+            "budget_cents": 1000,
+            "support_24h": true,
+            "goal": "Choose the least expensive eligible plan."
+          },
+          "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+          "research": {
+            "plan_ids": [
+              "basic",
+              "team",
+              "enterprise"
+            ],
+            "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+          },
+          "analysis": {
+            "recommended_plan": null,
+            "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+            "quotes": [
+              {
+                "plan_id": "basic",
+                "monthly_cents": 14400,
+                "eligible": false,
+                "reasons": [
+                  "24h_support",
+                  "budget"
+                ]
+              },
+              {
+                "plan_id": "team",
+                "monthly_cents": 23600,
+                "eligible": false,
+                "reasons": [
+                  "budget"
+                ]
+              },
+              {
+                "plan_id": "enterprise",
+                "monthly_cents": 31400,
+                "eligible": false,
+                "reasons": [
+                  "budget"
+                ]
+              }
+            ],
+            "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+          },
+          "review": {
+            "approved": true,
+            "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+          }
+        },
+        "error": null,
+        "trace": [
+          {
+            "kind": "discovery",
+            "role": "coordinator",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "create_decision",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "seats": {
+                      "title": "Seats",
+                      "type": "integer"
+                    },
+                    "budget_cents": {
+                      "title": "Budget Cents",
+                      "type": "integer"
+                    },
+                    "support_24h": {
+                      "title": "Support 24H",
+                      "type": "boolean"
+                    },
+                    "goal": {
+                      "title": "Goal",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "seats",
+                    "budget_cents",
+                    "support_24h",
+                    "goal"
+                  ],
+                  "title": "create_decisionArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "tool",
+            "role": "coordinator",
+            "name": "create_decision",
+            "arguments": {
+              "seats": 12,
+              "budget_cents": 1000,
+              "support_24h": true,
+              "goal": "Choose the least expensive eligible plan."
+            },
+            "is_error": false,
+            "duration_ms": 364,
+            "result": {
+              "id": "100542dace6d421599bad0afedb36f09",
+              "version": 0,
+              "status": "created",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": null,
+              "analysis": null,
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "researcher",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "list_plans",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "list_plansArguments"
+                }
+              },
+              {
+                "name": "publish_research",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "plan_ids": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "title": "Plan Ids",
+                      "type": "array"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "plan_ids",
+                    "note"
+                  ],
+                  "title": "publish_researchArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "researcher",
+            "uri": "council://runs/100542dace6d421599bad0afedb36f09",
+            "version": 0
+          },
+          {
+            "kind": "tool",
+            "role": "researcher",
+            "name": "list_plans",
+            "arguments": {},
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "dataset": "Fictional Northstar Support plans \u2014 not real offers",
+              "currency": "USD",
+              "plans": [
+                {
+                  "id": "basic",
+                  "name": "Basic",
+                  "seat_cents": 1200,
+                  "base_cents": 0,
+                  "max_seats": 25,
+                  "support_24h": false
+                },
+                {
+                  "id": "team",
+                  "name": "Team",
+                  "seat_cents": 1800,
+                  "base_cents": 2000,
+                  "max_seats": 100,
+                  "support_24h": true
+                },
+                {
+                  "id": "enterprise",
+                  "name": "Enterprise",
+                  "seat_cents": 2200,
+                  "base_cents": 5000,
+                  "max_seats": 500,
+                  "support_24h": true
+                }
+              ],
+              "sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3"
+            }
+          },
+          {
+            "kind": "model",
+            "role": "researcher",
+            "output": {
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+            },
+            "usage": {
+              "input_tokens": 504,
+              "output_tokens": 148
+            },
+            "duration_ms": 27839
+          },
+          {
+            "kind": "tool",
+            "role": "researcher",
+            "name": "publish_research",
+            "arguments": {
+              "expected_version": 0,
+              "plan_ids": [
+                "basic",
+                "team",
+                "enterprise"
+              ],
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+            },
+            "is_error": false,
+            "duration_ms": 25,
+            "result": {
+              "id": "100542dace6d421599bad0afedb36f09",
+              "version": 1,
+              "status": "researched",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+              },
+              "analysis": null,
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "analyst",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "quote_plan",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "plan_id": {
+                      "title": "Plan Id",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "plan_id"
+                  ],
+                  "title": "quote_planArguments"
+                }
+              },
+              {
+                "name": "publish_analysis",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "recommended_plan": {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ],
+                      "title": "Recommended Plan"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "recommended_plan",
+                    "note"
+                  ],
+                  "title": "publish_analysisArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "analyst",
+            "uri": "council://runs/100542dace6d421599bad0afedb36f09",
+            "version": 1
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "basic"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "basic",
+              "monthly_cents": 14400,
+              "eligible": false,
+              "reasons": [
+                "24h_support",
+                "budget"
+              ]
+            }
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "team"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "team",
+              "monthly_cents": 23600,
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            }
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "enterprise"
+            },
+            "is_error": false,
+            "duration_ms": 2,
+            "result": {
+              "plan_id": "enterprise",
+              "monthly_cents": 31400,
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            }
+          },
+          {
+            "kind": "model",
+            "role": "analyst",
+            "output": {
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+              "recommended_plan": null
+            },
+            "usage": {
+              "input_tokens": 528,
+              "output_tokens": 155
+            },
+            "duration_ms": 30416
+          },
+          {
+            "kind": "tool",
+            "role": "analyst",
+            "name": "publish_analysis",
+            "arguments": {
+              "expected_version": 1,
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+              "recommended_plan": null
+            },
+            "is_error": false,
+            "duration_ms": 18,
+            "result": {
+              "id": "100542dace6d421599bad0afedb36f09",
+              "version": 2,
+              "status": "analyzed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+              },
+              "analysis": {
+                "recommended_plan": null,
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support",
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": null
+            }
+          },
+          {
+            "kind": "discovery",
+            "role": "reviewer",
+            "protocol_version": "2026-07-28",
+            "tools": [
+              {
+                "name": "verify_decision",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {},
+                  "title": "verify_decisionArguments"
+                }
+              },
+              {
+                "name": "publish_review",
+                "input_schema": {
+                  "type": "object",
+                  "properties": {
+                    "expected_version": {
+                      "title": "Expected Version",
+                      "type": "integer"
+                    },
+                    "approved": {
+                      "title": "Approved",
+                      "type": "boolean"
+                    },
+                    "note": {
+                      "title": "Note",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expected_version",
+                    "approved",
+                    "note"
+                  ],
+                  "title": "publish_reviewArguments"
+                }
+              }
+            ],
+            "resource_templates": [
+              "council://runs/{run_id}"
+            ]
+          },
+          {
+            "kind": "resource",
+            "role": "reviewer",
+            "uri": "council://runs/100542dace6d421599bad0afedb36f09",
+            "version": 2
+          },
+          {
+            "kind": "tool",
+            "role": "reviewer",
+            "name": "verify_decision",
+            "arguments": {},
+            "is_error": false,
+            "duration_ms": 3,
+            "result": {
+              "valid": true,
+              "quotes": [
+                {
+                  "plan_id": "basic",
+                  "monthly_cents": 14400,
+                  "eligible": false,
+                  "reasons": [
+                    "24h_support",
+                    "budget"
+                  ]
+                },
+                {
+                  "plan_id": "team",
+                  "monthly_cents": 23600,
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                },
+                {
+                  "plan_id": "enterprise",
+                  "monthly_cents": 31400,
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                }
+              ],
+              "recommended_plan": null,
+              "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties.",
+              "version": 2
+            }
+          },
+          {
+            "kind": "model",
+            "role": "reviewer",
+            "output": {
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+              "approved": true
+            },
+            "usage": {
+              "input_tokens": 845,
+              "output_tokens": 154
+            },
+            "duration_ms": 38632
+          },
+          {
+            "kind": "tool",
+            "role": "reviewer",
+            "name": "publish_review",
+            "arguments": {
+              "expected_version": 2,
+              "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+              "approved": true
+            },
+            "is_error": false,
+            "duration_ms": 18,
+            "result": {
+              "id": "100542dace6d421599bad0afedb36f09",
+              "version": 3,
+              "status": "completed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+              },
+              "analysis": {
+                "recommended_plan": null,
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints.",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support",
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": {
+                "approved": true,
+                "note": "State: 12 seats, $10.00 budget (1000 cents), 24h support required. Catalog shows 3 plans: Basic (1200 cents/seat, no 24h), Team (1800 cents/seat, 24h), Enterprise (2200 cents/seat, 24h). Team plan meets all requirements at 12*1800 = 21600 cents ($216.00) but exceeds budget. No eligible plan fits $10.00 budget with 24h support. Must state no solution exists per constraints."
+              }
+            }
+          }
+        ],
+        "counts": {
+          "model_calls": 3,
+          "tool_calls": 9,
+          "resource_reads": 3
+        },
+        "limits": {
+          "model_calls": 4,
+          "tool_calls": 12,
+          "resource_reads": 3,
+          "seconds": 240
+        },
+        "duration_ms": 103101,
+        "model": "qwen3:4b"
+      }
+    }
+  ],
+  "separate_connection_persistence": true,
+  "protocol_failures": {
+    "checks": [
+      {
+        "case": "analyst_cannot_publish_review",
+        "is_error": true,
+        "response": [
+          "Unknown tool: publish_review"
+        ]
+      },
+      {
+        "case": "stale_handoff_rejected",
+        "is_error": true,
+        "response": [
+          "Error executing tool publish_analysis: Stale or out-of-order handoff; expected version does not match this stage."
+        ]
+      },
+      {
+        "case": "other_run_resource_rejected",
+        "is_error": true
+      }
+    ],
+    "state_unchanged": true,
+    "discovery": [
+      {
+        "kind": "discovery",
+        "role": "analyst",
+        "protocol_version": "2026-07-28",
+        "tools": [
+          {
+            "name": "quote_plan",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "plan_id": {
+                  "title": "Plan Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "plan_id"
+              ],
+              "title": "quote_planArguments"
+            }
+          },
+          {
+            "name": "publish_analysis",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "expected_version": {
+                  "title": "Expected Version",
+                  "type": "integer"
+                },
+                "recommended_plan": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "title": "Recommended Plan"
+                },
+                "note": {
+                  "title": "Note",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "expected_version",
+                "recommended_plan",
+                "note"
+              ],
+              "title": "publish_analysisArguments"
+            }
+          }
+        ],
+        "resource_templates": [
+          "council://runs/{run_id}"
+        ]
+      }
+    ]
+  }
+}

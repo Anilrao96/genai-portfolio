@@ -1,0 +1,802 @@
+{
+  "schema_version": 1,
+  "run_id": "497b49dd009b",
+  "created_at": "2026-11-06T10:16:36.523891+00:00",
+  "adapter": "recorded-mcp-live-trace-replay-v1",
+  "framework_version": "0.1.0",
+  "python": "3.13.13",
+  "dataset_sha256": "79eeadf9b75113de742300c8ec18951eb6058257ac418c6e49ce0fcaa4e574f6",
+  "evaluation_sha256": "ad693e51d298e65e5d6a844c2f56479546b559605f2c17674beb60916a5173ce",
+  "config": {
+    "concurrency": 1,
+    "timeout_s": 5,
+    "retries": 0,
+    "repetitions": 1
+  },
+  "provenance": {
+    "mode": "recorded_live_trace_replay",
+    "model": "qwen3:4b",
+    "capture_sha256": "1c4595f902b75f728fc09432733794fc79d0c3d6c867e6043bb04986c392f4d0",
+    "fresh_model_calls": false,
+    "latency_note": "Replay overhead only; actual CPU/MCP timing is in the capture.",
+    "evaluates": "Selection, state and ordered actual MCP tools; not semantic accuracy of model notes."
+  },
+  "summary": {
+    "count": 2,
+    "passed": 2,
+    "pass_rate": 1.0,
+    "errors": 0,
+    "latency_p50_ms": 0.042,
+    "latency_p95_ms": 0.064,
+    "known_success_cost_usd": null,
+    "cost_coverage": 0.0,
+    "slices": {
+      "eligible": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      },
+      "mcp": {
+        "count": 2,
+        "passed": 2,
+        "pass_rate": 1.0
+      },
+      "no-fit": {
+        "count": 1,
+        "passed": 1,
+        "pass_rate": 1.0
+      }
+    },
+    "metrics": {
+      "json_contract": {
+        "count": 2,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "max_tool_calls": {
+        "count": 2,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      },
+      "tool_path": {
+        "count": 2,
+        "mean_score": 1.0,
+        "pass_rate": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "case_id": "eligible-team",
+      "repetition": 0,
+      "tags": [
+        "mcp",
+        "eligible"
+      ],
+      "status": "ok",
+      "latency_ms": 0.064,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"completed\", \"recommended_plan\": \"team\", \"version\": 3, \"approved\": true}",
+        "trace": [
+          {
+            "name": "create_decision",
+            "arguments": {
+              "seats": 12,
+              "budget_cents": 30000,
+              "support_24h": true,
+              "goal": "Choose the least expensive eligible plan."
+            },
+            "output": {
+              "id": "2e3972c5831f4ece90cee7414b3e7b9b",
+              "version": 0,
+              "status": "created",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": null,
+              "analysis": null,
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "list_plans",
+            "arguments": {},
+            "output": {
+              "dataset": "Fictional Northstar Support plans — not real offers",
+              "currency": "USD",
+              "plans": [
+                {
+                  "id": "basic",
+                  "name": "Basic",
+                  "seat_cents": 1200,
+                  "base_cents": 0,
+                  "max_seats": 25,
+                  "support_24h": false
+                },
+                {
+                  "id": "team",
+                  "name": "Team",
+                  "seat_cents": 1800,
+                  "base_cents": 2000,
+                  "max_seats": 100,
+                  "support_24h": true
+                },
+                {
+                  "id": "enterprise",
+                  "name": "Enterprise",
+                  "seat_cents": 2200,
+                  "base_cents": 5000,
+                  "max_seats": 500,
+                  "support_24h": true
+                }
+              ],
+              "sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3"
+            },
+            "error": null
+          },
+          {
+            "name": "publish_research",
+            "arguments": {
+              "expected_version": 0,
+              "plan_ids": [
+                "basic",
+                "team",
+                "enterprise"
+              ],
+              "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "2e3972c5831f4ece90cee7414b3e7b9b",
+              "version": 1,
+              "status": "researched",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": null,
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "basic"
+            },
+            "output": {
+              "plan_id": "basic",
+              "monthly_cents": 14400,
+              "monthly_usd": "144.00",
+              "eligible": false,
+              "reasons": [
+                "24h_support"
+              ]
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "team"
+            },
+            "output": {
+              "plan_id": "team",
+              "monthly_cents": 23600,
+              "monthly_usd": "236.00",
+              "eligible": true,
+              "reasons": []
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "enterprise"
+            },
+            "output": {
+              "plan_id": "enterprise",
+              "monthly_cents": 31400,
+              "monthly_usd": "314.00",
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            },
+            "error": null
+          },
+          {
+            "name": "publish_analysis",
+            "arguments": {
+              "expected_version": 1,
+              "note": "Team has the lowest tool-computed monthly cost among eligible plans.",
+              "recommended_plan": "team",
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "2e3972c5831f4ece90cee7414b3e7b9b",
+              "version": 2,
+              "status": "analyzed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": {
+                "recommended_plan": "team",
+                "note": "Team has the lowest tool-computed monthly cost among eligible plans.",
+                "note_source": "tool_fallback",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "monthly_usd": "144.00",
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "monthly_usd": "236.00",
+                    "eligible": true,
+                    "reasons": []
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "monthly_usd": "314.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "verify_decision",
+            "arguments": {},
+            "output": {
+              "valid": true,
+              "quotes": [
+                {
+                  "plan_id": "basic",
+                  "monthly_cents": 14400,
+                  "monthly_usd": "144.00",
+                  "eligible": false,
+                  "reasons": [
+                    "24h_support"
+                  ]
+                },
+                {
+                  "plan_id": "team",
+                  "monthly_cents": 23600,
+                  "monthly_usd": "236.00",
+                  "eligible": true,
+                  "reasons": []
+                },
+                {
+                  "plan_id": "enterprise",
+                  "monthly_cents": 31400,
+                  "monthly_usd": "314.00",
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                }
+              ],
+              "recommended_plan": "team",
+              "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties.",
+              "version": 2
+            },
+            "error": null
+          },
+          {
+            "name": "publish_review",
+            "arguments": {
+              "expected_version": 2,
+              "note": "The tool recomputation agrees with the saved selection rule.",
+              "approved": true,
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "2e3972c5831f4ece90cee7414b3e7b9b",
+              "version": 3,
+              "status": "completed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 30000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": {
+                "recommended_plan": "team",
+                "note": "Team has the lowest tool-computed monthly cost among eligible plans.",
+                "note_source": "tool_fallback",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "monthly_usd": "144.00",
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "monthly_usd": "236.00",
+                    "eligible": true,
+                    "reasons": []
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "monthly_usd": "314.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": {
+                "approved": true,
+                "note": "The tool recomputation agrees with the saved selection rule.",
+                "note_source": "tool_fallback"
+              }
+            },
+            "error": null
+          }
+        ],
+        "input_tokens": 1835,
+        "output_tokens": 228,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 7/7; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 9; limit 12; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    },
+    {
+      "case_id": "no-fit",
+      "repetition": 0,
+      "tags": [
+        "mcp",
+        "no-fit"
+      ],
+      "status": "ok",
+      "latency_ms": 0.042,
+      "attempts": 1,
+      "prediction": {
+        "answer": "{\"status\": \"completed\", \"recommended_plan\": null, \"version\": 3, \"approved\": true}",
+        "trace": [
+          {
+            "name": "create_decision",
+            "arguments": {
+              "seats": 12,
+              "budget_cents": 1000,
+              "support_24h": true,
+              "goal": "Choose the least expensive eligible plan."
+            },
+            "output": {
+              "id": "53e3ba2cca9242ff9773a4992ef4b0a3",
+              "version": 0,
+              "status": "created",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": null,
+              "analysis": null,
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "list_plans",
+            "arguments": {},
+            "output": {
+              "dataset": "Fictional Northstar Support plans — not real offers",
+              "currency": "USD",
+              "plans": [
+                {
+                  "id": "basic",
+                  "name": "Basic",
+                  "seat_cents": 1200,
+                  "base_cents": 0,
+                  "max_seats": 25,
+                  "support_24h": false
+                },
+                {
+                  "id": "team",
+                  "name": "Team",
+                  "seat_cents": 1800,
+                  "base_cents": 2000,
+                  "max_seats": 100,
+                  "support_24h": true
+                },
+                {
+                  "id": "enterprise",
+                  "name": "Enterprise",
+                  "seat_cents": 2200,
+                  "base_cents": 5000,
+                  "max_seats": 500,
+                  "support_24h": true
+                }
+              ],
+              "sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3"
+            },
+            "error": null
+          },
+          {
+            "name": "publish_research",
+            "arguments": {
+              "expected_version": 0,
+              "plan_ids": [
+                "basic",
+                "team",
+                "enterprise"
+              ],
+              "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "53e3ba2cca9242ff9773a4992ef4b0a3",
+              "version": 1,
+              "status": "researched",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": null,
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "basic"
+            },
+            "output": {
+              "plan_id": "basic",
+              "monthly_cents": 14400,
+              "monthly_usd": "144.00",
+              "eligible": false,
+              "reasons": [
+                "24h_support",
+                "budget"
+              ]
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "team"
+            },
+            "output": {
+              "plan_id": "team",
+              "monthly_cents": 23600,
+              "monthly_usd": "236.00",
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            },
+            "error": null
+          },
+          {
+            "name": "quote_plan",
+            "arguments": {
+              "plan_id": "enterprise"
+            },
+            "output": {
+              "plan_id": "enterprise",
+              "monthly_cents": 31400,
+              "monthly_usd": "314.00",
+              "eligible": false,
+              "reasons": [
+                "budget"
+              ]
+            },
+            "error": null
+          },
+          {
+            "name": "publish_analysis",
+            "arguments": {
+              "expected_version": 1,
+              "note": "The tool quotes show that no catalog plan meets every constraint.",
+              "recommended_plan": null,
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "53e3ba2cca9242ff9773a4992ef4b0a3",
+              "version": 2,
+              "status": "analyzed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": {
+                "recommended_plan": null,
+                "note": "The tool quotes show that no catalog plan meets every constraint.",
+                "note_source": "tool_fallback",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "monthly_usd": "144.00",
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support",
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "monthly_usd": "236.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "monthly_usd": "314.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": null
+            },
+            "error": null
+          },
+          {
+            "name": "verify_decision",
+            "arguments": {},
+            "output": {
+              "valid": true,
+              "quotes": [
+                {
+                  "plan_id": "basic",
+                  "monthly_cents": 14400,
+                  "monthly_usd": "144.00",
+                  "eligible": false,
+                  "reasons": [
+                    "24h_support",
+                    "budget"
+                  ]
+                },
+                {
+                  "plan_id": "team",
+                  "monthly_cents": 23600,
+                  "monthly_usd": "236.00",
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                },
+                {
+                  "plan_id": "enterprise",
+                  "monthly_cents": 31400,
+                  "monthly_usd": "314.00",
+                  "eligible": false,
+                  "reasons": [
+                    "budget"
+                  ]
+                }
+              ],
+              "recommended_plan": null,
+              "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties.",
+              "version": 2
+            },
+            "error": null
+          },
+          {
+            "name": "publish_review",
+            "arguments": {
+              "expected_version": 2,
+              "note": "The tool recomputation agrees with the saved selection rule.",
+              "approved": true,
+              "note_source": "tool_fallback"
+            },
+            "output": {
+              "id": "53e3ba2cca9242ff9773a4992ef4b0a3",
+              "version": 3,
+              "status": "completed",
+              "requirements": {
+                "seats": 12,
+                "budget_cents": 1000,
+                "support_24h": true,
+                "goal": "Choose the least expensive eligible plan."
+              },
+              "catalog_sha256": "6d3405c744d8ef8b0ba00e9df96fd22e8d434ab3a84d7a16a1774f5c6f13ffe3",
+              "research": {
+                "plan_ids": [
+                  "basic",
+                  "team",
+                  "enterprise"
+                ],
+                "note": "The catalog covers Basic, Team and Enterprise. Capacity and around-the-clock support must be checked against the brief.",
+                "note_source": "tool_fallback"
+              },
+              "analysis": {
+                "recommended_plan": null,
+                "note": "The tool quotes show that no catalog plan meets every constraint.",
+                "note_source": "tool_fallback",
+                "quotes": [
+                  {
+                    "plan_id": "basic",
+                    "monthly_cents": 14400,
+                    "monthly_usd": "144.00",
+                    "eligible": false,
+                    "reasons": [
+                      "24h_support",
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "team",
+                    "monthly_cents": 23600,
+                    "monthly_usd": "236.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  },
+                  {
+                    "plan_id": "enterprise",
+                    "monthly_cents": 31400,
+                    "monthly_usd": "314.00",
+                    "eligible": false,
+                    "reasons": [
+                      "budget"
+                    ]
+                  }
+                ],
+                "rule": "Least monthly cost among plans meeting every constraint; plan ID breaks ties."
+              },
+              "review": {
+                "approved": true,
+                "note": "The tool recomputation agrees with the saved selection rule.",
+                "note_source": "tool_fallback"
+              }
+            },
+            "error": null
+          }
+        ],
+        "input_tokens": 1841,
+        "output_tokens": 147,
+        "cost_usd": null
+      },
+      "metrics": [
+        {
+          "name": "json_contract",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Strict JSON object, types, values and extra-key policy",
+          "passed": true
+        },
+        {
+          "name": "tool_path",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Successful ordered subsequence 7/7; arguments matched",
+          "passed": true
+        },
+        {
+          "name": "max_tool_calls",
+          "score": 1.0,
+          "threshold": 1.0,
+          "reason": "Observed 9; limit 12; unknown usage fails closed",
+          "passed": true
+        }
+      ],
+      "error_type": null,
+      "passed": true
+    }
+  ]
+}

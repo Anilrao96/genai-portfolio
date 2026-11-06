@@ -20,14 +20,18 @@ Evidence: `docs/sql-assistant-live.json`, `docs/sql-assistant-browser.json`, des
 
 Evidence: `docs/rag-live.json`, `docs/rag-persistence.json`, `docs/rag-browser.json`, desktop/mobile screenshots and `docs/rag-eval/`. Initial grading/ID failures and a manually noticed time-format error are preserved separately. Final CPU HTTP examples took approximately 19–42 seconds; the UI request took about 20 seconds. Source/quote/literal checks do not prove semantic entailment; the library is bounded and does not resolve conflicting source versions.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI, SQL and RAG delivery are verified. RAG source, tests and fictional evidence were pushed and remotely verified at `1e15240c560baedfef96f88b5246405bebc2bc89`. This delivery record is committed and pushed separately. Reuse this one repository for all ten applications and shared code.
+**Project 01 completed as an MVP:** Support Council uses three specialized LangChain/Qwen3 roles and actual MCP SDK 2.3.0 stdio clients/servers. Role-specific tools and run-scoped resources carry versioned SQLite handoffs; integer-cent pricing and the least-cost eligible selection are checked independently. The full suite passes **137 tests** (24 MCP/state/API). **2/2 live decisions**, three actual negative protocol probes, persisted state, desktop/mobile browser checks and **2/2 Agent Eval Lab replays** passed. The actual negotiated MCP protocol is `2026-07-28`.
+
+Evidence: `docs/mcp-live.json`, `docs/mcp-browser.json`, `docs/mcp-browser-saved.json`, screenshots and `docs/mcp-eval/`. CPU API requests took about **75s / 58s**, with the separate browser decision about **69s**. All six final probe handoff notes required a labeled tool fallback because the model kept inserting numeric literals; original model outputs remain inspectable. Model plan proposals and review approval still drive the workflow and are checked. Incorrect cents/dollars prose and a refused correct no-fit analysis are preserved in failure captures. Qualitative prose is not semantically proven, and this is a fixed fictional catalog rather than general web research.
+
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. Local AI, SQL and RAG delivery are verified. RAG source was remotely verified at `1e15240c560baedfef96f88b5246405bebc2bc89`. MCP source/evidence passed acceptance and is pending the authorized staged review, commit and push in this session. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Start project 01: an actual MCP client/server, specialized research/analysis/review roles and structured shared state.
-2. Bound orchestration/tool calls and record actual protocol/tool traces, including a failure case. Keep using the existing Agent Eval Lab rather than rebuilding its evaluator.
+1. Deliver the verified project 01 commit to GitHub and confirm remote main equals local HEAD.
+2. Resume project 05: detect schema drift, propose constrained repairs, validate/quarantine/replay data and retain audit evidence. Do not execute unrestricted model-generated patches.
 
 ## Known dependencies
 

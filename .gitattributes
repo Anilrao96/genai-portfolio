@@ -1,0 +1,3 @@
+# Preserve portable hashes for the new MCP evidence captures and reports.
+docs/mcp-*.json text eol=lf
+docs/mcp-eval/* text eol=lf

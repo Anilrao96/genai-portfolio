@@ -1,0 +1,9 @@
+{
+  "dataset": "Fictional Northstar Support plans — not real offers",
+  "currency": "USD",
+  "plans": [
+    {"id": "basic", "name": "Basic", "seat_cents": 1200, "base_cents": 0, "max_seats": 25, "support_24h": false},
+    {"id": "team", "name": "Team", "seat_cents": 1800, "base_cents": 2000, "max_seats": 100, "support_24h": true},
+    {"id": "enterprise", "name": "Enterprise", "seat_cents": 2200, "base_cents": 5000, "max_seats": 500, "support_24h": true}
+  ]
+}

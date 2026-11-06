@@ -5,7 +5,8 @@
   "scripts": {
     "test:ui": "node scripts/check-ui.cjs",
     "test:sql-ui": "node scripts/check-sql-ui.cjs",
-    "test:rag-ui": "node scripts/check-rag-ui.cjs"
+    "test:rag-ui": "node scripts/check-rag-ui.cjs",
+    "test:mcp-ui": "node scripts/check-mcp-ui.cjs"
   },
   "devDependencies": {
     "playwright": "^1.64.1"
