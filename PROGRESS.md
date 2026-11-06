@@ -28,14 +28,14 @@ Evidence: `docs/mcp-live.json`, `docs/mcp-browser.json`, `docs/mcp-browser-saved
 
 Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots and `docs/pipeline-eval/`. Actual CPU repair took about **31s**; two refused proposals for a zero quantity took about **68s** before quarantine. Cached extraction/replay made no model calls. The separate browser repair took about **37s**. This is a bounded fictional CSV/order contract with approved aliases, not arbitrary ETL or generated script execution. New aliases and missing facts require review.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. The first four completed MVPs have verified delivery; MCP source was checked at `62961bb1090ca2f58bb4508b29f665ae66a210b6`. Clearflow source/evidence meets acceptance and is pending staged review, commit and authorized push in this session. Reuse this one repository for all ten applications and shared code.
+**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All five completed MVPs have verified delivery. Clearflow source, tests, documentation and fictional evidence were committed as `379b8c25350a888b747a07c7e60ff5256d9205b5`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Deliver project 05 and verify remote main equals local HEAD.
-2. Resume project 06, the self-correcting code assistant. Verify a genuine isolation runtime and resource/file/network enforcement before any generated program executes. Docker was previously unavailable; consider supported alternatives using current primary documentation, or record the blocker and continue independent work.
+1. Resume project 06, the self-correcting code assistant. Verify a genuine isolation runtime and resource/file/network enforcement before any generated program executes. Docker was previously unavailable; consider supported alternatives using current primary documentation, or record the blocker and continue independent work.
+2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
 
