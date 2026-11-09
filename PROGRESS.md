@@ -38,14 +38,13 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 
 **Project 09 completed as an MVP.** Clearflow runs under Docker Engine 25.0.3 and Compose 5.6.0 in the owned D-backed WSL session. Fresh startup and startup after recreation were healthy in **5.73s / 5.75s**. A missing model caused the readiness command to exit 1. One CPU Qwen3 call repaired two drifted rows in **94.04s HTTP**. A duplicate made zero calls. The same named volume held an identical four-order snapshot and original batch after `compose down` and container recreation. Headless Edge reopened the saved repair trace with no JavaScript errors or mobile horizontal overflow. [Live run](docs/docker-agent-live.json) · [Edge screenshot](docs/docker-agent-desktop.png).
 
-**Git:** eight completed MVPs have verified delivery on `main`. The Clearflow Docker Agent is ready for its authorized commit and push. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**Git:** nine completed MVPs have verified delivery on `main`. Clearflow Docker Agent was pushed as `bc88dc82f6ede594d8436cab563e01ec0c8c80a8` and matched remote main after the push. This record follows in a separate commit. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Deliver the verified project 09 commit and confirm remote main matches local HEAD.
-2. Begin project 10 with image input limits, validated Gemini responses and speech using the local Windows adapter. The live provider call needs a securely configured Gemini key and an agreed budget.
+1. Begin project 10 with image input limits, validated Gemini responses and speech using the local Windows adapter. The live provider call needs a securely configured Gemini key and an agreed budget.
 
 ## Known dependencies
 
