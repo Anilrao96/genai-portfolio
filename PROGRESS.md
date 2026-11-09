@@ -36,13 +36,13 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 
 **Project 02 completed as an MVP:** Relay captures short English questions in Edge, transcribes with Whisper tiny.en CPU int8, streams `qwen2.5:1.5b` replies and speaks them with local Windows speech. Two live API cases passed, including two separately streamed WAV chunks. Explicit cancel during recognition or after the first model delta and disconnect release the active turn. Edge captured from a synthetic microphone and completed real Web Audio playback. Its **5.39s** server turn had a **352ms** first model token. The API cases took **5.61s / 13.29s**, and an earlier cold turn took **24.66s**. The frozen suite passed **233 tests**, including 18 voice tests. Evidence includes `docs/voice-live.json`, `docs/voice-browser.json`, `docs/voice-demo.wav` and desktop/mobile screenshots. Relay supports 12-second, turn-based recordings.
 
-**Git:** seven completed MVPs have verified delivery on `main`. Relay has met acceptance and is pending the authorized push. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**Git:** eight completed MVPs have verified delivery on `main`. Relay was pushed as `5bd8f19729164984c51c33b4587ebe2e3db08535` and matched remote main after the push. This delivery record follows in a separate commit. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Finish Relay delivery, then begin project 09. Verify a Docker-compatible CLI and actual Compose startup with health checks and persistence on D:.
+1. Begin project 09. Verify a Docker-compatible CLI and actual Compose startup with health checks and persistence on D:.
 2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
