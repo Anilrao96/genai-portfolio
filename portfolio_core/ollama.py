@@ -1,4 +1,5 @@
 """Small async adapter for the documented Ollama HTTP API."""
+import json
 from urllib.parse import urlsplit
 
 import httpx
@@ -57,6 +58,40 @@ class OllamaClient:
         return {"answer": message["content"], "model": result.get("model", model),
                 "input_tokens": result.get("prompt_eval_count"), "output_tokens": result.get("eval_count"),
                 "generation_duration_ns": result.get("eval_duration")}
+
+    async def stream_chat(self, model: str, messages: list[dict]):
+        """Yield local chat deltas and require a complete provider response."""
+        options = {"temperature": 0.2, "num_predict": 96, "num_ctx": 2048}
+        if self.num_gpu is not None:
+            options["num_gpu"] = self.num_gpu
+        payload = {"model": model, "messages": messages, "stream": True,
+                   "keep_alive": "5m", "options": options}
+        if model.startswith("qwen3"):
+            payload["think"] = False
+        try:
+            async with httpx.AsyncClient(base_url=self.base_url, transport=self.transport,
+                                        timeout=httpx.Timeout(30, connect=5), trust_env=False) as client:
+                async with client.stream("POST", "/api/chat", json=payload) as response:
+                    response.raise_for_status()
+                    async for line in response.aiter_lines():
+                        if not line:
+                            continue
+                        if len(line) > 16000:
+                            raise ValueError("Oversized Ollama stream event.")
+                        event = json.loads(line)
+                        if not isinstance(event, dict) or event.get("error"):
+                            raise ValueError("Invalid Ollama stream event.")
+                        message = event.get("message", {})
+                        content = message.get("content", "") if isinstance(message, dict) else None
+                        if not isinstance(content, str):
+                            raise ValueError("Invalid Ollama message.")
+                        if content:
+                            yield content
+                        if event.get("done") is True:
+                            return
+            raise ModelServiceError("Ollama ended the voice reply before it was complete.")
+        except (httpx.HTTPError, ValueError) as exc:
+            raise ModelServiceError("The local model could not finish this voice reply. Check Ollama and retry.") from exc
 
 
 def chat_models(models):

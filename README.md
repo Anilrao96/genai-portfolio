@@ -2,7 +2,7 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-**7/10 new MVPs are implemented and live-verified.** Assembly, the full-stack app builder, is the latest addition. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestones. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**8/10 new MVPs are implemented and live-verified.** Relay, the local voice agent, is the latest addition. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestones. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
@@ -13,6 +13,7 @@ Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-e
 | Project | What works | Start command |
 | --- | --- | --- |
 | [01 Support Council MCP Agents](projects/p01_mcp_agents/README.md) | Three specialized local-model roles, actual scoped MCP discovery/tools/resources, checked pricing, versioned handoffs and traces | `scripts/Start-McpAgents.ps1` → port 8101 |
+| [02 Relay Voice Agent](projects/p02_voice_agent/README.md) | Browser capture, local Whisper recognition, streamed Ollama text and speech, playback and cancellation | `scripts/Start-Voice.ps1` → port 8102 after setup |
 | [03 Reference Desk Agentic RAG](projects/p03_agentic_rag/README.md) | Persistent local vectors/full-text search, evidence grading, one recovery search, checked source passages and abstention | `scripts/Start-Rag.ps1` → port 8103 |
 | [04 Local AI Studio](projects/p04_local_ai/README.md) | Local chat, model selection, bounded requests and measured responses | `scripts/Start-LocalAI.ps1` → port 8104 |
 | [05 Clearflow Self-Healing Pipeline](projects/p05_self_healing_pipeline/README.md) | Model-proposed finite repairs, exact validation, atomic snapshots, quarantine/replay and reversible rollback | `scripts/Start-Pipeline.ps1` → port 8105 |
@@ -20,7 +21,7 @@ Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-e
 | [07 Retail Lens SQL Assistant](projects/p07_sql_assistant/README.md) | LangChain SQL planning, database-enforced read-only queries, visible results and summaries | `scripts/Start-SqlAssistant.ps1` → port 8107 |
 | [08 Assembly App Builder](projects/p08_app_builder/README.md) | Three local model roles generate, build and test a FastAPI and React tracker, with an interactive isolated preview | `scripts/Start-AppBuilder.ps1` → port 8108 after setup |
 
-The portfolio regression suite has **215 passing offline tests**. SQL verification covers model workflows and refused database operations. RAG covers citations, abstention and search recovery. MCP verifies role-scoped protocol calls and checked selections, with labeled tool fallbacks for numeric notes. Pipeline verification covers model repair, extractor reuse, quarantine, replay and rollback. Code Assistant passed nine isolation controls and live generation and repair. Assembly passed five isolation controls and ten live API checks, with a generated reading list exercised in Edge. Captured-outcome checks in the earlier apps reuse Agent Eval Lab.
+The portfolio regression suite has **233 passing offline tests**. SQL verification covers model workflows and refused database operations. RAG covers citations, abstention and search recovery. MCP verifies role-scoped protocol calls and checked selections, with labeled tool fallbacks for numeric notes. Pipeline verification covers model repair, extractor reuse, quarantine, replay and rollback. Code Assistant passed nine isolation controls and live generation and repair. Assembly passed five isolation controls and ten live API checks. Relay passed actual voice input, streamed speech, cancellation and browser capture and playback using a synthetic microphone. Captured-outcome checks in the earlier apps reuse Agent Eval Lab.
 
 ## Start the first application
 

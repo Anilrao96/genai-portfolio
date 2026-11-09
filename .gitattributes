@@ -6,3 +6,4 @@ docs/pipeline-eval/* text eol=lf
 docs/code-*.json text eol=lf
 docs/code-eval/* text eol=lf
 docs/app-*.json text eol=lf
+docs/voice-*.json text eol=lf

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Relay · Local voice agent</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a href="/">R / RELAY</a><span id="runtime">LOCAL VOICE</span></header>
+    <section class="intro">
+      <p class="eyebrow">02 / VOICE AI AGENT</p>
+      <h1>Ask out loud.</h1>
+      <p>Record a short question and hear the reply. Recognition, generation and speech run locally.</p>
+    </section>
+    <section class="console" aria-label="Voice controls">
+      <div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="status">
+        <p id="status" aria-live="polite">Checking speech setup…</p>
+        <p id="hint">Up to 12 seconds per question. Audio stays in this session.</p>
+        <p id="error" role="alert" hidden></p>
+      </div>
+      <div class="actions">
+        <button id="record" type="button" disabled>Record question</button>
+        <button id="send" type="button" hidden>Stop and send</button>
+        <button id="cancel" class="secondary" type="button" disabled>Cancel</button>
+        <button id="replay" class="secondary" type="button" disabled>Replay reply</button>
+      </div>
+    </section>
+    <section class="messages" aria-label="Voice turn">
+      <article><p class="eyebrow">01 / RECOGNIZED</p><h2>Your question</h2><p id="transcript">The transcript appears here.</p></article>
+      <article><p class="eyebrow">02 / GENERATED</p><h2>Relay’s reply</h2><p id="reply">The reply appears as it is generated.</p></article>
+    </section>
+    <section class="timing" aria-label="Server timing">
+      <div><span>TRANSCRIPTION</span><output id="stt-time">—</output></div>
+      <div><span>FIRST MODEL TOKEN</span><output id="token-time">—</output></div>
+      <div><span>FIRST SPEECH READY</span><output id="audio-time">—</output></div>
+      <div><span>COMPLETE TURN</span><output id="total-time">—</output></div>
+    </section>
+    <footer id="engines">Local processing · English speech · No saved voice history</footer>
+  </main>
+</body>
+</html>

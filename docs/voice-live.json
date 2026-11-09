@@ -1,0 +1,291 @@
+{
+  "captured_at": "2026-11-09T16:30:19.429567+00:00",
+  "mode": "real CPU voice API with synthetic English input",
+  "stt_model": "Systran/faster-whisper-tiny.en",
+  "stt_revision": "0d3d19a32d3338f10357c0889762bd8d64bbdeba",
+  "stt_weights_sha256": "1a5afae06a4db91c975c9a9d78be5cc110ee4ea022ad57d55492e4550e936b2a",
+  "voice": "Microsoft Zira Desktop",
+  "cases": [
+    {
+      "id": "single_fact",
+      "passed": true,
+      "spoken_input": "What is the capital of France? Please answer in one short sentence.",
+      "transcript": "What is the capital of France? Please answer in one short sentence.",
+      "reply": "The capital of France is Paris.",
+      "input_wav_sha256": "59d8f068812f926581ae625c9b7b261973bb29b476ee3c30d357b5f8d146436f",
+      "input_duration_ms": 6030,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "transcribing",
+          "received_ms": 24
+        },
+        {
+          "type": "transcript",
+          "text": "What is the capital of France? Please answer in one short sentence.",
+          "elapsed_ms": 2820,
+          "model_load_ms": 562,
+          "decode_ms": 946,
+          "received_ms": 2847
+        },
+        {
+          "type": "stage",
+          "stage": "replying",
+          "received_ms": 2847
+        },
+        {
+          "type": "delta",
+          "text": "The",
+          "first_token_ms": 110,
+          "received_ms": 2941
+        },
+        {
+          "type": "delta",
+          "text": " capital",
+          "first_token_ms": 110,
+          "received_ms": 3020
+        },
+        {
+          "type": "delta",
+          "text": " of",
+          "first_token_ms": 110,
+          "received_ms": 3087
+        },
+        {
+          "type": "delta",
+          "text": " France",
+          "first_token_ms": 110,
+          "received_ms": 3153
+        },
+        {
+          "type": "delta",
+          "text": " is",
+          "first_token_ms": 110,
+          "received_ms": 3221
+        },
+        {
+          "type": "delta",
+          "text": " Paris",
+          "first_token_ms": 110,
+          "received_ms": 3289
+        },
+        {
+          "type": "delta",
+          "text": ".",
+          "first_token_ms": 110,
+          "received_ms": 3372
+        },
+        {
+          "type": "audio",
+          "index": 1,
+          "elapsed_ms": 5611,
+          "bytes": 84044,
+          "duration_ms": 2625,
+          "sha256": "0214d600d2c9ba6537fea631b1bf0d9e9420c02bf952c80132836bb3b0c763c3",
+          "received_ms": 5626
+        },
+        {
+          "type": "done",
+          "model": "qwen2.5:1.5b",
+          "audio_chunks": 1,
+          "clipped": false,
+          "timing": {
+            "stt_ms": 2820,
+            "model_wait_ms": 537,
+            "tts_ms": 2256,
+            "first_token_ms": 110,
+            "first_audio_ms": 5611,
+            "total_ms": 5613
+          },
+          "received_ms": 5626
+        }
+      ],
+      "done": {
+        "type": "done",
+        "model": "qwen2.5:1.5b",
+        "audio_chunks": 1,
+        "clipped": false,
+        "timing": {
+          "stt_ms": 2820,
+          "model_wait_ms": 537,
+          "tts_ms": 2256,
+          "first_token_ms": 110,
+          "first_audio_ms": 5611,
+          "total_ms": 5613
+        },
+        "received_ms": 5626
+      }
+    },
+    {
+      "id": "two_sentences",
+      "passed": true,
+      "spoken_input": "Please repeat exactly: The library is open. Read a book today.",
+      "transcript": "Please repeat exactly. The library is open. Read a book today.",
+      "reply": "The library is open. You should read a book today.",
+      "input_wav_sha256": "fd5bc8437a0a4bd06cf4844eb06d3a60c297ea0c25431c579a450d9402713dbf",
+      "input_duration_ms": 6275,
+      "events": [
+        {
+          "type": "stage",
+          "stage": "transcribing",
+          "received_ms": 24
+        },
+        {
+          "type": "transcript",
+          "text": "Please repeat exactly. The library is open. Read a book today.",
+          "elapsed_ms": 4576,
+          "model_load_ms": 1458,
+          "decode_ms": 1575,
+          "received_ms": 4649
+        },
+        {
+          "type": "stage",
+          "stage": "replying",
+          "received_ms": 4649
+        },
+        {
+          "type": "delta",
+          "text": "The",
+          "first_token_ms": 543,
+          "received_ms": 5130
+        },
+        {
+          "type": "delta",
+          "text": " library",
+          "first_token_ms": 543,
+          "received_ms": 5259
+        },
+        {
+          "type": "delta",
+          "text": " is",
+          "first_token_ms": 543,
+          "received_ms": 5375
+        },
+        {
+          "type": "delta",
+          "text": " open",
+          "first_token_ms": 543,
+          "received_ms": 5528
+        },
+        {
+          "type": "delta",
+          "text": ".",
+          "first_token_ms": 543,
+          "received_ms": 5644
+        },
+        {
+          "type": "audio",
+          "index": 1,
+          "elapsed_ms": 10074,
+          "bytes": 68364,
+          "duration_ms": 2135,
+          "sha256": "cff144eb9ff2aa5de8af522937efa21157074c21d092f9b5609619312fe81d74",
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " You",
+          "first_token_ms": 543,
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " should",
+          "first_token_ms": 543,
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " read",
+          "first_token_ms": 543,
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " a",
+          "first_token_ms": 543,
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " book",
+          "first_token_ms": 543,
+          "received_ms": 10095
+        },
+        {
+          "type": "delta",
+          "text": " today",
+          "first_token_ms": 543,
+          "received_ms": 10096
+        },
+        {
+          "type": "delta",
+          "text": ".",
+          "first_token_ms": 543,
+          "received_ms": 10096
+        },
+        {
+          "type": "audio",
+          "index": 2,
+          "elapsed_ms": 13289,
+          "bytes": 67244,
+          "duration_ms": 2100,
+          "sha256": "885c9ccad15430a2a469d0e550f150437fe6996a770f3ee4320b6e1b959bc638",
+          "received_ms": 13309
+        },
+        {
+          "type": "done",
+          "model": "qwen2.5:1.5b",
+          "audio_chunks": 2,
+          "clipped": false,
+          "timing": {
+            "stt_ms": 4576,
+            "model_wait_ms": 1052,
+            "tts_ms": 7661,
+            "first_token_ms": 543,
+            "first_audio_ms": 10073,
+            "total_ms": 13290
+          },
+          "received_ms": 13310
+        }
+      ],
+      "done": {
+        "type": "done",
+        "model": "qwen2.5:1.5b",
+        "audio_chunks": 2,
+        "clipped": false,
+        "timing": {
+          "stt_ms": 4576,
+          "model_wait_ms": 1052,
+          "tts_ms": 7661,
+          "first_token_ms": 543,
+          "first_audio_ms": 10073,
+          "total_ms": 13290
+        },
+        "received_ms": 13310
+      }
+    }
+  ],
+  "complete": true,
+  "cancel": {
+    "passed": true,
+    "mode": "explicit cancel",
+    "after": "transcription started",
+    "released_ms_from_turn_start": 538
+  },
+  "disconnect": {
+    "passed": true,
+    "mode": "client disconnect",
+    "after": "transcription started",
+    "released_ms_from_turn_start": 449
+  },
+  "cancel_after_delta": {
+    "passed": true,
+    "mode": "explicit cancel",
+    "after": "first model delta",
+    "released_ms_from_turn_start": 3239
+  },
+  "demo_sha256": "0987f636971e5452dfb7928b02b8e1be2c8240247c93fea2f8a5169a66045670",
+  "demo_duration_ms": 11010,
+  "passed": true
+}

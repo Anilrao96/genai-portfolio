@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-11-09T16:29:29.201Z",
+  "passed": true,
+  "mode": "actual Edge AudioWorklet and voice API with a synthetic microphone device",
+  "physical_microphone_used": false,
+  "stt_model": "Whisper tiny.en",
+  "model": "qwen2.5:1.5b",
+  "transcript": "What is the capital of France? Please answer in one short sentence.",
+  "reply": "The capital of France is Paris.",
+  "request_bytes": 212012,
+  "streamed_text_deltas": 7,
+  "audio_chunks": 1,
+  "timing": {
+    "stt_ms": 2622,
+    "model_wait_ms": 872,
+    "tts_ms": 1893,
+    "first_token_ms": 352,
+    "first_audio_ms": 5387,
+    "total_ms": 5389
+  },
+  "web_audio_scheduled_and_ended": true,
+  "playback_cancelled": true,
+  "recording_cancelled_without_upload": true,
+  "permission_denial": "simulated NotAllowedError through the browser API",
+  "no_horizontal_overflow_at_390": true,
+  "javascript_errors": [],
+  "external_requests": []
+}

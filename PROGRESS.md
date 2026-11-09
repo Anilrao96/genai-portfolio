@@ -34,13 +34,15 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 
 **Project 08 completed as an MVP:** Assembly generates Python tracker functions and a React component within a fixed item tracker contract. A third model role reviews actual results and selects edge cases. The live `qwen2.5-coder:1.5b` CPU HTTP build used three calls and passed **10/10** isolated API checks in **65.5s**. Five toolchain isolation controls and the full **215-test** suite passed. Edge added two fictional books, marked one done, deleted the other and recovered the remaining item after reload. The preview uses a separate local origin and a journal limited to 30 requests. The evidence includes the passing build, browser interactions, screenshots and earlier model failures.
 
-**Git:** seven completed MVPs have verified delivery on `main`. Assembly was pushed as `cb542b9fe26b8cdc8f981d164f94a71829b2c8b6` and matched remote main after the push. This delivery record follows in a separate commit. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**Project 02 completed as an MVP:** Relay captures short English questions in Edge, transcribes with Whisper tiny.en CPU int8, streams `qwen2.5:1.5b` replies and speaks them with local Windows speech. Two live API cases passed, including two separately streamed WAV chunks. Explicit cancel during recognition or after the first model delta and disconnect release the active turn. Edge captured from a synthetic microphone and completed real Web Audio playback. Its **5.39s** server turn had a **352ms** first model token. The API cases took **5.61s / 13.29s**, and an earlier cold turn took **24.66s**. The frozen suite passed **233 tests**, including 18 voice tests. Evidence includes `docs/voice-live.json`, `docs/voice-browser.json`, `docs/voice-demo.wav` and desktop/mobile screenshots. Relay supports 12-second, turn-based recordings.
+
+**Git:** seven completed MVPs have verified delivery on `main`. Relay has met acceptance and is pending the authorized push. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Begin project 02 with microphone capture, local speech recognition and a measured model response.
+1. Finish Relay delivery, then begin project 09. Verify a Docker-compatible CLI and actual Compose startup with health checks and persistence on D:.
 2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
