@@ -1,0 +1,60 @@
+{
+  "captured_at": "2026-11-09T15:45:42.408Z",
+  "run_id": "171ffca9bf7b43dcbadbb063d3e84310",
+  "title": "Reading Room",
+  "mode": "actual Edge generated React and isolated FastAPI preview using saved live model build",
+  "fresh_model_calls": 0,
+  "passed": true,
+  "requests": [
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "method": "PATCH",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "method": "DELETE",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "replayed_requests": 6,
+  "container_execution_ms": [
+    3291,
+    3552,
+    4916,
+    4166,
+    2960,
+    3182
+  ],
+  "final_items": [
+    {
+      "id": 1,
+      "title": "The Cedar Atlas",
+      "done": true
+    }
+  ],
+  "reset_verified": true,
+  "state_and_build_survived_reload": true,
+  "model_choices_exclude_embeddings": true,
+  "no_horizontal_overflow_at_390": true,
+  "javascript_errors": [],
+  "external_requests": []
+}

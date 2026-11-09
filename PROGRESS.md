@@ -1,6 +1,6 @@
 # Sprint progress
 
-Last updated: 6 November 2026, Asia/Kolkata.
+Last updated: 9 November 2026, Asia/Kolkata.
 
 ## Existing completed work
 
@@ -32,13 +32,15 @@ Evidence: `docs/pipeline-live.json`, `docs/pipeline-browser.json`, screenshots a
 
 Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-assistant-live.json`, `docs/code-browser.json`, screenshots and `docs/code-eval/`. API repair/generation took **30.9s / 20.4s**, and the separate browser repair **17.6s**. The runtime is a project-owned D:-backed WSL 3.0.3 session with Python 3.13.18, unprivileged UID, no host mounts/network, hard address-space/process/file/CPU limits and bounded output. Swap-cgroup enforcement is unavailable; hard 128 MB address space and one-process limits supplement it. Nonempty regular-file writes are denied; empty-file metadata inside the disposable container is not a read-only filesystem. Scope is two small pure-function contracts, not general repository repair or proof of program correctness.
 
-**Git:** published to `https://github.com/Anilrao96/genai-portfolio`, branch `main`. All six completed MVPs have verified delivery. Repair Bench source, tests, documentation and fictional evidence were committed as `ff0909b4028a465101259caec075988962f8ada3`, pushed normally and checked against remote main. This delivery record is committed/pushed separately. Reuse this one repository for all ten applications and shared code.
+**Project 08 completed as an MVP:** Assembly generates Python tracker functions and a React component within a fixed item tracker contract. A third model role reviews actual results and selects edge cases. The live `qwen2.5-coder:1.5b` CPU HTTP build used three calls and passed **10/10** isolated API checks in **65.5s**. Five toolchain isolation controls and the full **215-test** suite passed. Edge added two fictional books, marked one done, deleted the other and recovered the remaining item after reload. The preview uses a separate local origin and a journal limited to 30 requests. The evidence includes the passing build, browser interactions, screenshots and earlier model failures.
+
+**Git:** six completed MVPs have verified delivery on `main`. Assembly has met acceptance and is pending the authorized push. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Start project 08, the full-stack app builder: structured specification, backend/frontend/QA roles, confined generated workspace and actual isolated build/tests. Reuse the verified native container boundary; do not execute generated build scripts on Windows.
+1. Finish the Assembly delivery, then begin project 02 with microphone capture, local speech recognition and a measured model response.
 2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
 
 ## Known dependencies
@@ -46,6 +48,6 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 - Working Python 3.13 exists under the existing uv installation; the Python 3.10 launcher registration is stale.
 - 24 GB system RAM; Intel i5-9300H; about 688 GB available on D: at initial inspection.
 - NVIDIA GTX 1650 with 4 GB VRAM detected by Ollama; automatic GPU inference hit the 120-second read timeout. CPU inference works.
-- The dedicated portfolio Ollama at `127.0.0.1:11435` has `qwen2.5:1.5b` (about 986 MB), `qwen3:4b` (about 2.5 GB) and `nomic-embed-text:v1.5` (about 274 MB) under `.models` on D:. The existing default instance remains independent. Chat choices exclude embedding-only models; Local AI Studio retains its verified smaller default.
+- The dedicated portfolio Ollama at `127.0.0.1:11435` has `qwen2.5:1.5b` and `qwen2.5-coder:1.5b` (about 986 MB each), `qwen3:4b` (about 2.5 GB) and `nomic-embed-text:v1.5` (about 274 MB) under `.models` on D:. Chat choices exclude embedding-only models.
 - Native WSL 3.0.3 containers are verified for project 06 with storage under this checkout on D:. Docker CLI/Compose are still absent; project 09 remains unfinished. Gemini key/budget are not configured by this task.
 - The normal filesystem sandbox restricts local sockets and uv executable creation; verified commands may need narrowly scoped approval review.

@@ -1,0 +1,807 @@
+{
+  "captured_at": "2026-11-09T15:38:27.676077+00:00",
+  "mode": "actual local HTTP build with backend/frontend/QA model roles and native OCI build/ASGI tests",
+  "inference": "CPU; num_gpu=0; role-specific context and output token caps",
+  "complete": true,
+  "passed": true,
+  "http_duration_ms": 84798,
+  "persisted_full_record_matches": true,
+  "scope": "Core generation/build/API acceptance only; interactive browser preview remains separate.",
+  "run": {
+    "id": "c9edb49a8022428e8a716caf48f5a528",
+    "spec": {
+      "title": "Reading Room",
+      "item_label": "book",
+      "brief": "A calm reading list for fictional books. Add titles, mark books finished, and remove them."
+    },
+    "model": "qwen2.5-coder:1.5b",
+    "created_at": "2026-11-09T15:37:03.216615+00:00",
+    "status": "passed",
+    "model_calls": 3,
+    "build_attempts": 1,
+    "trace": [
+      {
+        "stage": "backend",
+        "source": "from itertools import count\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, HTTPException, Response\nfrom pydantic import BaseModel, StrictBool, StringConstraints\n\napp = FastAPI()\nitems = {}\nnext_id = count(1)\n\n\nclass CreateItem(BaseModel):\n    title: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=80)]\n\n\nclass UpdateItem(BaseModel):\n    done: StrictBool\n\nfrom itertools import count\n\nitems = {}\nnext_id = count(1)\n\ndef list_items():\n    return list(items.values())\n\ndef create_item(title):\n    item_id = next(next_id)\n    items[item_id] = {'id': item_id, 'title': title, 'done': False}\n    return items[item_id]\n\ndef update_item(item_id, done):\n    items[item_id]['done'] = done\n    return items[item_id]\n\ndef delete_item(item_id):\n    del items[item_id]\n\n@app.get('/api/items')\nasync def api_list():\n    return list_items()\n\n\n@app.post('/api/items', status_code=201)\nasync def api_create(payload: CreateItem):\n    return create_item(payload.title)\n\n\n@app.patch('/api/items/{item_id}')\nasync def api_update(item_id: int, payload: UpdateItem):\n    if item_id not in items:\n        raise HTTPException(status_code=404, detail='Item not found')\n    return update_item(item_id, payload.done)\n\n\n@app.delete('/api/items/{item_id}', status_code=204)\nasync def api_delete(item_id: int):\n    if item_id not in items:\n        raise HTTPException(status_code=404, detail='Item not found')\n    delete_item(item_id)\n    return Response(status_code=204)\n",
+        "note": "The backend role generated the tracker functions for the trusted FastAPI routes.",
+        "source_sha256": "9ed71fc1ee3c2452966e0cfbee1095585ee362e895366c1a4e261808de3d22e1",
+        "usage": {
+          "input_tokens": 233,
+          "output_tokens": 107
+        },
+        "duration_ms": 9939,
+        "repair": false
+      },
+      {
+        "stage": "frontend",
+        "source": "import React, { useState } from 'react';\n\nconst App = ({ title, itemLabel, items, input, onInput, onAdd, onToggle, onDelete, busy, loading, error }) => {\n  return (\n    <main>\n      <h1>{title}</h1>\n      <form onSubmit={onAdd}>\n        <label htmlFor=\"item-input\">Add {itemLabel}: </label>\n        <input\n          id=\"item-input\"\n          type=\"text\"\n          value={input}\n          onChange={onInput}\n          data-testid=\"item-input\"\n        />\n        <button type=\"submit\">Add</button>\n      </form>\n      {loading && <p>Loading...</p>}\n      {error && <p>Error: {error}</p>}\n      {items.length === 0 && <p>No {itemLabel} in the list.</p>}\n      {items.map((item, index) => (\n        <li key={index}>\n          <input\n            type=\"checkbox\"\n            checked={item.done}\n            onChange={() => onToggle(item)}\n            data-testid=\"item-toggle\"\n          />\n          <span data-testid=\"item-label\">{item.title}</span>\n          <button\n            type=\"button\"\n            onClick={() => onDelete(item.id)}\n            data-testid=\"item-delete\"\n          >\n            Delete\n          </button>\n        </li>\n      ))}\n    </main>\n  );\n};\n\nexport default App;",
+        "note": "The frontend role generated the React component for the trusted request helper.",
+        "source_sha256": "4953b66722028c42d57a341088ac52050f715b9b441dce66a0c3142cde2c76e7",
+        "usage": {
+          "input_tokens": 295,
+          "output_tokens": 296
+        },
+        "duration_ms": 23421,
+        "repair": false
+      },
+      {
+        "stage": "build_and_core_qa",
+        "execution": {
+          "container_id": "127314a91fd18c106bd6895b834875689e8cbd4fe8b143e2fbb1d3097c1072c4",
+          "image_id": "sha256:e6e01f1ba4a6228ca4ed1239070784ab94d5de902737daf73248381a19ecb5f2",
+          "exit_code": 0,
+          "termination_reason": null,
+          "duration_ms": 3571,
+          "result": {
+            "build_passed": true,
+            "stage": "validated",
+            "responses": [
+              {
+                "status": 200,
+                "body": []
+              },
+              {
+                "status": 201,
+                "body": {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              },
+              {
+                "status": 200,
+                "body": [
+                  {
+                    "id": 1,
+                    "title": "Cedar Stories",
+                    "done": false
+                  }
+                ]
+              },
+              {
+                "status": 200,
+                "body": {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": true
+                }
+              },
+              {
+                "status": 204,
+                "body": null
+              },
+              {
+                "status": 200,
+                "body": []
+              },
+              {
+                "status": 404,
+                "body": {
+                  "detail": "Item not found"
+                }
+              },
+              {
+                "status": 422,
+                "body": {
+                  "detail": [
+                    {
+                      "type": "string_too_short",
+                      "loc": [
+                        "body",
+                        "title"
+                      ],
+                      "msg": "String should have at least 1 character",
+                      "input": "   ",
+                      "ctx": {
+                        "min_length": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "backend_policy": {
+              "address_space": [
+                268435456,
+                268435456
+              ],
+              "processes": [
+                1,
+                1
+              ],
+              "file_size": [
+                0,
+                0
+              ]
+            },
+            "transport": "actual HTTPX ASGI requests to generated FastAPI, inside native OCI container",
+            "bundle_bytes": 225725,
+            "kernel_policy": {
+              "uid": 65534,
+              "capabilities_effective": 0,
+              "no_new_privileges": true,
+              "interfaces": [
+                "lo"
+              ],
+              "limits": {
+                "cpu": [
+                  8,
+                  8
+                ],
+                "as": [
+                  2147483648,
+                  2147483648
+                ],
+                "nproc": [
+                  32,
+                  32
+                ],
+                "fsize": [
+                  2097152,
+                  2097152
+                ],
+                "nofile": [
+                  128,
+                  128
+                ]
+              }
+            }
+          },
+          "stderr": "",
+          "retained_stdout_bytes": 302072,
+          "retained_stderr_bytes": 0,
+          "engine_policy": {
+            "network": "none",
+            "host_mounts": [],
+            "memory_bytes": 402653184,
+            "cpus": 0.5,
+            "user": "65534:65534",
+            "ulimits": {
+              "cpu": 8,
+              "as": 2147483648,
+              "nproc": 32,
+              "fsize": 2097152,
+              "nofile": 128
+            }
+          }
+        },
+        "tests": [
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": []
+            },
+            "actual": {
+              "status": 200,
+              "body": []
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "POST",
+              "path": "/api/items",
+              "body": {
+                "title": "  Cedar Stories  "
+              }
+            },
+            "expected": {
+              "status": 201,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": false
+              }
+            },
+            "actual": {
+              "status": 201,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": false
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": [
+                {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              ]
+            },
+            "actual": {
+              "status": 200,
+              "body": [
+                {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              ]
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "PATCH",
+              "path": "/api/items/1",
+              "body": {
+                "done": true
+              }
+            },
+            "expected": {
+              "status": 200,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": true
+              }
+            },
+            "actual": {
+              "status": 200,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": true
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "DELETE",
+              "path": "/api/items/1"
+            },
+            "expected": {
+              "status": 204,
+              "body": null
+            },
+            "actual": {
+              "status": 204,
+              "body": null
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": []
+            },
+            "actual": {
+              "status": 200,
+              "body": []
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "PATCH",
+              "path": "/api/items/999",
+              "body": {
+                "done": false
+              }
+            },
+            "expected": {
+              "status": 404
+            },
+            "actual": {
+              "status": 404,
+              "body": {
+                "detail": "Item not found"
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "POST",
+              "path": "/api/items",
+              "body": {
+                "title": "   "
+              }
+            },
+            "expected": {
+              "status": 422
+            },
+            "actual": {
+              "status": 422,
+              "body": {
+                "detail": [
+                  {
+                    "type": "string_too_short",
+                    "loc": [
+                      "body",
+                      "title"
+                    ],
+                    "msg": "String should have at least 1 character",
+                    "input": "   ",
+                    "ctx": {
+                      "min_length": 1
+                    }
+                  }
+                ]
+              }
+            },
+            "passed": true
+          }
+        ]
+      },
+      {
+        "stage": "qa_review",
+        "review": {
+          "approved": true,
+          "findings": [
+            "The backend code is implemented according to the provided contract.",
+            "The FastAPI app is set up correctly with routes for listing, creating, updating, and deleting items.",
+            "The item tracker uses an in-memory dictionary to store items, with IDs starting from 1.",
+            "The item tracker validates titles to ensure they are not blank, whitespace, or exceed 80 characters using Pydantic's StringConstraints."
+          ],
+          "scenarios": [
+            "missing_title",
+            "missing_delete"
+          ]
+        },
+        "usage": {
+          "input_tokens": 1558,
+          "output_tokens": 118
+        },
+        "duration_ms": 32853
+      },
+      {
+        "stage": "qa_scenarios",
+        "execution": {
+          "container_id": "7fbb9a6a4c0af2fe946eaa75976b511ceeacaee9e247aaa7f1f5d306c135c185",
+          "image_id": "sha256:e6e01f1ba4a6228ca4ed1239070784ab94d5de902737daf73248381a19ecb5f2",
+          "exit_code": 0,
+          "termination_reason": null,
+          "duration_ms": 3352,
+          "result": {
+            "build_passed": true,
+            "stage": "validated",
+            "responses": [
+              {
+                "status": 200,
+                "body": []
+              },
+              {
+                "status": 201,
+                "body": {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              },
+              {
+                "status": 200,
+                "body": [
+                  {
+                    "id": 1,
+                    "title": "Cedar Stories",
+                    "done": false
+                  }
+                ]
+              },
+              {
+                "status": 200,
+                "body": {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": true
+                }
+              },
+              {
+                "status": 204,
+                "body": null
+              },
+              {
+                "status": 200,
+                "body": []
+              },
+              {
+                "status": 404,
+                "body": {
+                  "detail": "Item not found"
+                }
+              },
+              {
+                "status": 422,
+                "body": {
+                  "detail": [
+                    {
+                      "type": "string_too_short",
+                      "loc": [
+                        "body",
+                        "title"
+                      ],
+                      "msg": "String should have at least 1 character",
+                      "input": "   ",
+                      "ctx": {
+                        "min_length": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "status": 422,
+                "body": {
+                  "detail": [
+                    {
+                      "type": "missing",
+                      "loc": [
+                        "body",
+                        "title"
+                      ],
+                      "msg": "Field required",
+                      "input": {}
+                    }
+                  ]
+                }
+              },
+              {
+                "status": 404,
+                "body": {
+                  "detail": "Item not found"
+                }
+              }
+            ],
+            "backend_policy": {
+              "address_space": [
+                268435456,
+                268435456
+              ],
+              "processes": [
+                1,
+                1
+              ],
+              "file_size": [
+                0,
+                0
+              ]
+            },
+            "transport": "actual HTTPX ASGI requests to generated FastAPI, inside native OCI container",
+            "kernel_policy": {
+              "uid": 65534,
+              "capabilities_effective": 0,
+              "no_new_privileges": true,
+              "interfaces": [
+                "lo"
+              ],
+              "limits": {
+                "cpu": [
+                  8,
+                  8
+                ],
+                "as": [
+                  2147483648,
+                  2147483648
+                ],
+                "nproc": [
+                  32,
+                  32
+                ],
+                "fsize": [
+                  2097152,
+                  2097152
+                ],
+                "nofile": [
+                  128,
+                  128
+                ]
+              }
+            }
+          },
+          "stderr": "",
+          "retained_stdout_bytes": 1238,
+          "retained_stderr_bytes": 0,
+          "engine_policy": {
+            "network": "none",
+            "host_mounts": [],
+            "memory_bytes": 402653184,
+            "cpus": 0.5,
+            "user": "65534:65534",
+            "ulimits": {
+              "cpu": 8,
+              "as": 2147483648,
+              "nproc": 32,
+              "fsize": 2097152,
+              "nofile": 128
+            }
+          }
+        },
+        "tests": [
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": []
+            },
+            "actual": {
+              "status": 200,
+              "body": []
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "POST",
+              "path": "/api/items",
+              "body": {
+                "title": "  Cedar Stories  "
+              }
+            },
+            "expected": {
+              "status": 201,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": false
+              }
+            },
+            "actual": {
+              "status": 201,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": false
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": [
+                {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              ]
+            },
+            "actual": {
+              "status": 200,
+              "body": [
+                {
+                  "id": 1,
+                  "title": "Cedar Stories",
+                  "done": false
+                }
+              ]
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "PATCH",
+              "path": "/api/items/1",
+              "body": {
+                "done": true
+              }
+            },
+            "expected": {
+              "status": 200,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": true
+              }
+            },
+            "actual": {
+              "status": 200,
+              "body": {
+                "id": 1,
+                "title": "Cedar Stories",
+                "done": true
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "DELETE",
+              "path": "/api/items/1"
+            },
+            "expected": {
+              "status": 204,
+              "body": null
+            },
+            "actual": {
+              "status": 204,
+              "body": null
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "GET",
+              "path": "/api/items"
+            },
+            "expected": {
+              "status": 200,
+              "body": []
+            },
+            "actual": {
+              "status": 200,
+              "body": []
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "PATCH",
+              "path": "/api/items/999",
+              "body": {
+                "done": false
+              }
+            },
+            "expected": {
+              "status": 404
+            },
+            "actual": {
+              "status": 404,
+              "body": {
+                "detail": "Item not found"
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "POST",
+              "path": "/api/items",
+              "body": {
+                "title": "   "
+              }
+            },
+            "expected": {
+              "status": 422
+            },
+            "actual": {
+              "status": 422,
+              "body": {
+                "detail": [
+                  {
+                    "type": "string_too_short",
+                    "loc": [
+                      "body",
+                      "title"
+                    ],
+                    "msg": "String should have at least 1 character",
+                    "input": "   ",
+                    "ctx": {
+                      "min_length": 1
+                    }
+                  }
+                ]
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "POST",
+              "path": "/api/items",
+              "body": {}
+            },
+            "expected": {
+              "status": 422
+            },
+            "actual": {
+              "status": 422,
+              "body": {
+                "detail": [
+                  {
+                    "type": "missing",
+                    "loc": [
+                      "body",
+                      "title"
+                    ],
+                    "msg": "Field required",
+                    "input": {}
+                  }
+                ]
+              }
+            },
+            "passed": true
+          },
+          {
+            "request": {
+              "method": "DELETE",
+              "path": "/api/items/999"
+            },
+            "expected": {
+              "status": 404
+            },
+            "actual": {
+              "status": 404,
+              "body": {
+                "detail": "Item not found"
+              }
+            },
+            "passed": true
+          }
+        ]
+      }
+    ],
+    "error": null,
+    "limits": {
+      "model_calls": 6,
+      "build_attempts": 2,
+      "workflow_seconds": 540
+    },
+    "manifest": {
+      "spec": {
+        "title": "Reading Room",
+        "item_label": "book",
+        "brief": "A calm reading list for fictional books. Add titles, mark books finished, and remove them."
+      },
+      "files": {
+        "App.jsx": "4953b66722028c42d57a341088ac52050f715b9b441dce66a0c3142cde2c76e7",
+        "backend.py": "9ed71fc1ee3c2452966e0cfbee1095585ee362e895366c1a4e261808de3d22e1"
+      },
+      "execution": "OCI containers only; never import generated source on Windows"
+    },
+    "bundle_sha256": "0124c820148b213590925334d3ed65cbc11d128059fe245929aa615ede5fa3eb",
+    "tests_passed": 10,
+    "tests_total": 10,
+    "qa": {
+      "approved": true,
+      "findings": [
+        "The backend code is implemented according to the provided contract.",
+        "The FastAPI app is set up correctly with routes for listing, creating, updating, and deleting items.",
+        "The item tracker uses an in-memory dictionary to store items, with IDs starting from 1.",
+        "The item tracker validates titles to ensure they are not blank, whitespace, or exceed 80 characters using Pydantic's StringConstraints."
+      ],
+      "scenarios": [
+        "missing_title",
+        "missing_delete"
+      ]
+    },
+    "duration_ms": 84402
+  }
+}

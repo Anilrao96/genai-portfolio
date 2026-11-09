@@ -5,3 +5,4 @@ docs/pipeline-*.json text eol=lf
 docs/pipeline-eval/* text eol=lf
 docs/code-*.json text eol=lf
 docs/code-eval/* text eol=lf
+docs/app-*.json text eol=lf

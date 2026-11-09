@@ -2,7 +2,7 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-Current state: **6/10 new MVPs implemented and live-verified** (MCP Agents, Agentic RAG, Local AI, Self-Healing Pipeline, Code Assistant and SQL Assistant); Agent Eval Lab is completed existing work. The other four apps remain scheduled work. GitHub destination: [Anilrao96/genai-portfolio](https://github.com/Anilrao96/genai-portfolio). Completed projects are committed and pushed after verification; delivery status is recorded in PROGRESS.md.
+**7/10 new MVPs are implemented and live-verified.** Assembly, the full-stack app builder, is the latest addition. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestones. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
@@ -18,8 +18,9 @@ Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-e
 | [05 Clearflow Self-Healing Pipeline](projects/p05_self_healing_pipeline/README.md) | Model-proposed finite repairs, exact validation, atomic snapshots, quarantine/replay and reversible rollback | `scripts/Start-Pipeline.ps1` → port 8105 |
 | [06 Repair Bench Code Assistant](projects/p06_code_assistant/README.md) | Real LangGraph generation/repair, inspected native WSL containers, hard resource limits, actual test feedback and saved attempts | `scripts/Start-CodeAssistant.ps1` → port 8106; run its setup first |
 | [07 Retail Lens SQL Assistant](projects/p07_sql_assistant/README.md) | LangChain SQL planning, database-enforced read-only queries, visible results and summaries | `scripts/Start-SqlAssistant.ps1` → port 8107 |
+| [08 Assembly App Builder](projects/p08_app_builder/README.md) | Three local model roles generate, build and test a FastAPI and React tracker, with an interactive isolated preview | `scripts/Start-AppBuilder.ps1` → port 8108 after setup |
 
-The portfolio regression suite has **195 passing offline tests**. SQL verification covers model workflows and refused database operations; RAG covers citations, abstention and search recovery. MCP verifies actual role-scoped protocol calls and checked selections; numeric model notes use labeled tool fallbacks. Pipeline verification covers real model repair, saved-extractor reuse, whole-batch quarantine, corrected-source replay and snapshot rollback. Code Assistant also passed nine actual container isolation controls and real model generation/repair through API and browser. Captured-outcome checks reuse the existing Agent Eval Lab. These authored checks are smoke evidence, not a broad model benchmark.
+The portfolio regression suite has **215 passing offline tests**. SQL verification covers model workflows and refused database operations. RAG covers citations, abstention and search recovery. MCP verifies role-scoped protocol calls and checked selections, with labeled tool fallbacks for numeric notes. Pipeline verification covers model repair, extractor reuse, quarantine, replay and rollback. Code Assistant passed nine isolation controls and live generation and repair. Assembly passed five isolation controls and ten live API checks, with a generated reading list exercised in Edge. Captured-outcome checks in the earlier apps reuse Agent Eval Lab.
 
 ## Start the first application
 

@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!package.json
+!package-lock.json
+!requirements.txt
+!runner.py
+!entry.jsx

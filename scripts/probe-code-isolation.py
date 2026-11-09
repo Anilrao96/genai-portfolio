@@ -11,6 +11,7 @@ from projects.p06_code_assistant.session import READY,STORAGE
 
 
 def main():
+    capture = ROOT / ('.runtime/code-isolation-probe.json' if '--ensure' in sys.argv else 'docs/code-isolation.json')
     if '--ensure' in sys.argv:
         try:
             verify_ready();print('Current session/image/bootstrap isolation proof is valid.');return
@@ -26,7 +27,7 @@ def main():
         result=execute(code,[None],**limits)
         passed=bool(condition(result));cases.append({'id':name,'passed':passed,'result':result})
         print(name,'PASS' if passed else 'FAIL',result['duration_ms'],'ms',flush=True)
-        (ROOT/'docs/code-isolation.json').write_text(json.dumps({'complete':False,'cases':cases},indent=2),encoding='utf8',newline='\n')
+        capture.write_text(json.dumps({'complete':False,'cases':cases},indent=2),encoding='utf8',newline='\n')
     check('function_runs','def solve(value): return 42',lambda r:r['exit_code']==0 and json.loads(r['stdout'])['outputs']==[42])
     check('host_files_unmapped', '''def solve(value):
     import os
@@ -63,7 +64,7 @@ def main():
             'creator_pid':json.loads(READY.read_text())['creator_pid'],'storage_path':str(STORAGE),
             'host_canary_unchanged':unchanged,'cases':cases,
             'limits_note':'runc receives setup address-space/thread limits; the trusted bootstrap lowers hard AS/nproc limits before candidate input. Swap cgroup support is unavailable, so the 128MB hard RLIMIT_AS supplements the memory cgroup.'}
-    (ROOT/'docs/code-isolation.json').write_text(json.dumps(output,indent=2),encoding='utf8',newline='\n')
+    capture.write_text(json.dumps(output,indent=2),encoding='utf8',newline='\n')
     assert output['passed'],'An isolation control failed; do not run model-generated code.'
     (ROOT/'.runtime/code-isolation-verified.json').write_text(json.dumps({k:output[k] for k in ['image_id','bootstrap_sha256','creator_pid','captured_at','passed']}),encoding='utf8')
     print('All nine isolation controls passed; model execution may now be enabled.')

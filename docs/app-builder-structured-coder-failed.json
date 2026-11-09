@@ -1,0 +1,31 @@
+{
+  "captured_at": "2026-11-09T15:32:43.830851+00:00",
+  "mode": "actual local HTTP build with backend/frontend/QA model roles and native OCI build/ASGI tests",
+  "inference": "CPU; num_gpu=0; role-specific context and output token caps",
+  "complete": true,
+  "passed": false,
+  "http_duration_ms": 48864,
+  "persisted_full_record_matches": true,
+  "scope": "Core generation/build/API acceptance only; interactive browser preview remains separate.",
+  "run": {
+    "id": "f0c1c7a3d4314ccaa1a8755726b4b045",
+    "spec": {
+      "title": "Reading Room",
+      "item_label": "book",
+      "brief": "A calm reading list for fictional books. Add titles, mark books finished, and remove them."
+    },
+    "model": "qwen2.5-coder:1.5b",
+    "created_at": "2026-11-09T15:31:55.343578+00:00",
+    "status": "failed",
+    "model_calls": 1,
+    "build_attempts": 0,
+    "trace": [],
+    "error": "The local model did not return a valid structured response.",
+    "limits": {
+      "model_calls": 6,
+      "build_attempts": 2,
+      "workflow_seconds": 540
+    },
+    "duration_ms": 48191
+  }
+}
