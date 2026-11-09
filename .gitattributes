@@ -7,3 +7,4 @@ docs/code-*.json text eol=lf
 docs/code-eval/* text eol=lf
 docs/app-*.json text eol=lf
 docs/voice-*.json text eol=lf
+docs/docker-agent-*.json text eol=lf

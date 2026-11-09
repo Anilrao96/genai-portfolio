@@ -36,14 +36,16 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 
 **Project 02 completed as an MVP:** Relay captures short English questions in Edge, transcribes with Whisper tiny.en CPU int8, streams `qwen2.5:1.5b` replies and speaks them with local Windows speech. Two live API cases passed, including two separately streamed WAV chunks. Explicit cancel during recognition or after the first model delta and disconnect release the active turn. Edge captured from a synthetic microphone and completed real Web Audio playback. Its **5.39s** server turn had a **352ms** first model token. The API cases took **5.61s / 13.29s**, and an earlier cold turn took **24.66s**. The frozen suite passed **233 tests**, including 18 voice tests. Evidence includes `docs/voice-live.json`, `docs/voice-browser.json`, `docs/voice-demo.wav` and desktop/mobile screenshots. Relay supports 12-second, turn-based recordings.
 
-**Git:** eight completed MVPs have verified delivery on `main`. Relay was pushed as `5bd8f19729164984c51c33b4587ebe2e3db08535` and matched remote main after the push. This delivery record follows in a separate commit. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**Project 09 completed as an MVP.** Clearflow runs under Docker Engine 25.0.3 and Compose 5.6.0 in the owned D-backed WSL session. Fresh startup and startup after recreation were healthy in **5.73s / 5.75s**. A missing model caused the readiness command to exit 1. One CPU Qwen3 call repaired two drifted rows in **94.04s HTTP**. A duplicate made zero calls. The same named volume held an identical four-order snapshot and original batch after `compose down` and container recreation. Headless Edge reopened the saved repair trace with no JavaScript errors or mobile horizontal overflow. [Live run](docs/docker-agent-live.json) · [Edge screenshot](docs/docker-agent-desktop.png).
+
+**Git:** eight completed MVPs have verified delivery on `main`. The Clearflow Docker Agent is ready for its authorized commit and push. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 **Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
 
 ## Next actions
 
-1. Begin project 09. Verify a Docker-compatible CLI and actual Compose startup with health checks and persistence on D:.
-2. Keep completed projects and Agent Eval Lab intact; record actual execution evidence before marking the next MVP complete.
+1. Deliver the verified project 09 commit and confirm remote main matches local HEAD.
+2. Begin project 10 with image input limits, validated Gemini responses and speech using the local Windows adapter. The live provider call needs a securely configured Gemini key and an agreed budget.
 
 ## Known dependencies
 
@@ -51,5 +53,5 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 - 24 GB system RAM; Intel i5-9300H; about 688 GB available on D: at initial inspection.
 - NVIDIA GTX 1650 with 4 GB VRAM detected by Ollama; automatic GPU inference hit the 120-second read timeout. CPU inference works.
 - The dedicated portfolio Ollama at `127.0.0.1:11435` has `qwen2.5:1.5b` and `qwen2.5-coder:1.5b` (about 986 MB each), `qwen3:4b` (about 2.5 GB) and `nomic-embed-text:v1.5` (about 274 MB) under `.models` on D:. Chat choices exclude embedding-only models.
-- Native WSL 3.0.3 containers are verified for project 06 with storage under this checkout on D:. Docker CLI/Compose are still absent; project 09 remains unfinished. Gemini key/budget are not configured by this task.
+- The native WSL 3.0.3 session keeps the verified Docker and Compose runtime and named volumes under this checkout on D:. Compose's build command requires a newer Buildx than the bundled plugin reports, so the launcher builds through native `wslc build`. Gemini key and budget are still pending.
 - The normal filesystem sandbox restricts local sockets and uv executable creation; verified commands may need narrowly scoped approval review.

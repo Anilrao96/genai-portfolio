@@ -1,0 +1,16 @@
+*
+!portfolio_core/
+!portfolio_core/**
+!projects/
+!projects/__init__.py
+!projects/p05_self_healing_pipeline/
+!projects/p05_self_healing_pipeline/**
+!projects/p09_docker_agent/
+!projects/p09_docker_agent/requirements-linux.txt
+!projects/p09_docker_agent/healthcheck.py
+!projects/p09_docker_agent/__init__.py
+!projects/p09_docker_agent/transport.py
+**/__pycache__/
+**/*.pyc
+**/.env*
+**/.runtime/

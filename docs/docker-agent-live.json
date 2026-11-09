@@ -1,0 +1,601 @@
+{
+  "complete": true,
+  "verified_at": "2026-11-09T17:36:02.840432+00:00",
+  "mode": "native WSL Docker image build and real Compose with local CPU inference",
+  "docker": "25.0.3",
+  "compose": "5.6.0",
+  "image": {
+    "id": "sha256:2b0d384910aeed6ee28c99b72954c34eb3a3aaf42bc0456926ba7096b8d664f1",
+    "bytes": 105437267,
+    "context_sha256": "6cfe0fb5b3a87fa3632931c0caf7b48eb4e4da16f8a0f8ca3f90ee06af544574"
+  },
+  "model": "qwen3:4b",
+  "project": "genai-portfolio-docker-qa-2f897b0b",
+  "first_start": {
+    "container": "ccd7c8ec758eb06cd2d617b93b365a53e777a6c2e7a610dcfec9466f03f83c18",
+    "health": "healthy",
+    "elapsed_ms": 5731
+  },
+  "recreated": {
+    "container": "84226b615d057f6ced7e0fa63cc1f08f8a6e98ef11f000afe8988671c89e5f82",
+    "health": "healthy",
+    "elapsed_ms": 5746
+  },
+  "missing_model_healthcheck": {
+    "exit": 1,
+    "output": "The required local model is missing."
+  },
+  "audit_volume": {
+    "name": "genai-portfolio-docker-qa-2f897b0b_audit",
+    "retained_after_down": true,
+    "snapshot_and_batch_unchanged": true,
+    "source_sha256": "6b714fbb616a4403db31569762c44a71bb1119b5df040218cdd5152775ebba9a"
+  },
+  "storage": "Filesystem     1024-blocks   Used Available Capacity Mounted on\n/dev/sdc           1992552 401508   1469804      22% /var/lib/docker",
+  "runtime": {
+    "nonroot_uid_gid": "10001:10001",
+    "root_read_only": true,
+    "capabilities_dropped": "ALL",
+    "published_ports": [],
+    "guest_socket": "/tmp/clearflow.sock",
+    "windows_bind": "127.0.0.1"
+  },
+  "baseline": {
+    "http_status": 200,
+    "http_elapsed_ms": 551,
+    "result": {
+      "batch_id": "e664f5b78a684098a3be60b83fa69b6f",
+      "status": "committed",
+      "model": "qwen3:4b",
+      "model_calls": 0,
+      "plan_origin": "baseline",
+      "trace": [
+        {
+          "step": "detect",
+          "report": {
+            "missing_columns": [],
+            "unexpected_columns": [],
+            "input_rows": 2,
+            "valid_rows": 2,
+            "invalid_rows": 0,
+            "issues": [],
+            "issues_truncated": false
+          }
+        },
+        {
+          "step": "validate_existing",
+          "origin": "baseline",
+          "report": {
+            "input_rows": 2,
+            "valid_rows": 2,
+            "invalid_rows": 0,
+            "issues": [],
+            "issues_truncated": false
+          },
+          "learned_from": null
+        },
+        {
+          "step": "prepare_commit",
+          "rows": 2,
+          "base_revision": 0
+        }
+      ],
+      "before": {
+        "missing_columns": [],
+        "unexpected_columns": [],
+        "input_rows": 2,
+        "valid_rows": 2,
+        "invalid_rows": 0,
+        "issues": [],
+        "issues_truncated": false
+      },
+      "after": {
+        "input_rows": 2,
+        "valid_rows": 2,
+        "invalid_rows": 0,
+        "issues": [],
+        "issues_truncated": false
+      },
+      "plan": [
+        {
+          "source": "order_id",
+          "target": "order_id",
+          "transform": "trim"
+        },
+        {
+          "source": "customer",
+          "target": "customer",
+          "transform": "trim"
+        },
+        {
+          "source": "quantity",
+          "target": "quantity",
+          "transform": "integer"
+        },
+        {
+          "source": "unit_price",
+          "target": "unit_price",
+          "transform": "decimal_usd"
+        },
+        {
+          "source": "currency",
+          "target": "currency",
+          "transform": "usd"
+        },
+        {
+          "source": "ordered_on",
+          "target": "ordered_on",
+          "transform": "iso_date"
+        }
+      ],
+      "error": null,
+      "limits": {
+        "model_calls": 2,
+        "seconds": 180,
+        "batch_rows": 200
+      },
+      "extractor_learned_from": "e664f5b78a684098a3be60b83fa69b6f",
+      "duration_ms": 13,
+      "model_calls_this_request": 0,
+      "committed_revision": 1,
+      "active_revision_at_finish": 1,
+      "snapshot_totals_at_finish": {
+        "orders": 2,
+        "units": 3,
+        "revenue_cents": 6500
+      }
+    }
+  },
+  "repair": {
+    "http_status": 200,
+    "http_elapsed_ms": 94039,
+    "result": {
+      "batch_id": "1d649d0332a04faa9d09207dae4d58b7",
+      "status": "committed",
+      "model": "qwen3:4b",
+      "model_calls": 1,
+      "plan_origin": "model",
+      "trace": [
+        {
+          "step": "detect",
+          "report": {
+            "missing_columns": [
+              "currency",
+              "customer",
+              "order_id",
+              "ordered_on",
+              "quantity",
+              "unit_price"
+            ],
+            "unexpected_columns": [
+              "Buyer",
+              "Currency",
+              "Order Date",
+              "Order Number",
+              "Price USD",
+              "Units"
+            ],
+            "input_rows": 2,
+            "valid_rows": 0,
+            "invalid_rows": 2,
+            "issues": [
+              {
+                "row": 1,
+                "field": "headers",
+                "code": "schema_drift",
+                "message": "Canonical columns changed."
+              }
+            ],
+            "issues_truncated": false
+          }
+        },
+        {
+          "step": "propose",
+          "attempt": 1,
+          "proposal": {
+            "action": "repair",
+            "rules": [
+              {
+                "source": "Order Number",
+                "target": "order_id",
+                "transform": "trim"
+              },
+              {
+                "source": "Buyer",
+                "target": "customer",
+                "transform": "trim"
+              },
+              {
+                "source": "Units",
+                "target": "quantity",
+                "transform": "integral_decimal"
+              },
+              {
+                "source": "Price USD",
+                "target": "unit_price",
+                "transform": "currency_usd"
+              },
+              {
+                "source": "Currency",
+                "target": "currency",
+                "transform": "uppercase_usd"
+              },
+              {
+                "source": "Order Date",
+                "target": "ordered_on",
+                "transform": "us_date"
+              }
+            ],
+            "note": "All transforms match the sample data and approved aliases. No invented facts."
+          },
+          "usage": {
+            "input_tokens": 685,
+            "output_tokens": 199
+          },
+          "duration_ms": 92512
+        },
+        {
+          "step": "validate_proposal",
+          "report": {
+            "input_rows": 2,
+            "valid_rows": 2,
+            "invalid_rows": 0,
+            "issues": [],
+            "issues_truncated": false
+          }
+        },
+        {
+          "step": "prepare_commit",
+          "rows": 2,
+          "base_revision": 1
+        }
+      ],
+      "before": {
+        "missing_columns": [
+          "currency",
+          "customer",
+          "order_id",
+          "ordered_on",
+          "quantity",
+          "unit_price"
+        ],
+        "unexpected_columns": [
+          "Buyer",
+          "Currency",
+          "Order Date",
+          "Order Number",
+          "Price USD",
+          "Units"
+        ],
+        "input_rows": 2,
+        "valid_rows": 0,
+        "invalid_rows": 2,
+        "issues": [
+          {
+            "row": 1,
+            "field": "headers",
+            "code": "schema_drift",
+            "message": "Canonical columns changed."
+          }
+        ],
+        "issues_truncated": false
+      },
+      "after": {
+        "input_rows": 2,
+        "valid_rows": 2,
+        "invalid_rows": 0,
+        "issues": [],
+        "issues_truncated": false
+      },
+      "plan": [
+        {
+          "source": "Order Number",
+          "target": "order_id",
+          "transform": "trim"
+        },
+        {
+          "source": "Buyer",
+          "target": "customer",
+          "transform": "trim"
+        },
+        {
+          "source": "Units",
+          "target": "quantity",
+          "transform": "integral_decimal"
+        },
+        {
+          "source": "Price USD",
+          "target": "unit_price",
+          "transform": "currency_usd"
+        },
+        {
+          "source": "Currency",
+          "target": "currency",
+          "transform": "uppercase_usd"
+        },
+        {
+          "source": "Order Date",
+          "target": "ordered_on",
+          "transform": "us_date"
+        }
+      ],
+      "error": null,
+      "limits": {
+        "model_calls": 2,
+        "seconds": 180,
+        "batch_rows": 200
+      },
+      "extractor_learned_from": "1d649d0332a04faa9d09207dae4d58b7",
+      "duration_ms": 92514,
+      "model_calls_this_request": 1,
+      "committed_revision": 2,
+      "active_revision_at_finish": 2,
+      "snapshot_totals_at_finish": {
+        "orders": 4,
+        "units": 8,
+        "revenue_cents": 252485
+      }
+    }
+  },
+  "repeat": {
+    "http_status": 200,
+    "http_elapsed_ms": 811,
+    "result": {
+      "batch_id": "1d649d0332a04faa9d09207dae4d58b7",
+      "status": "committed",
+      "model": "qwen3:4b",
+      "model_calls": 1,
+      "plan_origin": "model",
+      "trace": [
+        {
+          "step": "detect",
+          "report": {
+            "missing_columns": [
+              "currency",
+              "customer",
+              "order_id",
+              "ordered_on",
+              "quantity",
+              "unit_price"
+            ],
+            "unexpected_columns": [
+              "Buyer",
+              "Currency",
+              "Order Date",
+              "Order Number",
+              "Price USD",
+              "Units"
+            ],
+            "input_rows": 2,
+            "valid_rows": 0,
+            "invalid_rows": 2,
+            "issues": [
+              {
+                "row": 1,
+                "field": "headers",
+                "code": "schema_drift",
+                "message": "Canonical columns changed."
+              }
+            ],
+            "issues_truncated": false
+          }
+        },
+        {
+          "step": "propose",
+          "attempt": 1,
+          "proposal": {
+            "action": "repair",
+            "rules": [
+              {
+                "source": "Order Number",
+                "target": "order_id",
+                "transform": "trim"
+              },
+              {
+                "source": "Buyer",
+                "target": "customer",
+                "transform": "trim"
+              },
+              {
+                "source": "Units",
+                "target": "quantity",
+                "transform": "integral_decimal"
+              },
+              {
+                "source": "Price USD",
+                "target": "unit_price",
+                "transform": "currency_usd"
+              },
+              {
+                "source": "Currency",
+                "target": "currency",
+                "transform": "uppercase_usd"
+              },
+              {
+                "source": "Order Date",
+                "target": "ordered_on",
+                "transform": "us_date"
+              }
+            ],
+            "note": "All transforms match the sample data and approved aliases. No invented facts."
+          },
+          "usage": {
+            "input_tokens": 685,
+            "output_tokens": 199
+          },
+          "duration_ms": 92512
+        },
+        {
+          "step": "validate_proposal",
+          "report": {
+            "input_rows": 2,
+            "valid_rows": 2,
+            "invalid_rows": 0,
+            "issues": [],
+            "issues_truncated": false
+          }
+        },
+        {
+          "step": "prepare_commit",
+          "rows": 2,
+          "base_revision": 1
+        }
+      ],
+      "before": {
+        "missing_columns": [
+          "currency",
+          "customer",
+          "order_id",
+          "ordered_on",
+          "quantity",
+          "unit_price"
+        ],
+        "unexpected_columns": [
+          "Buyer",
+          "Currency",
+          "Order Date",
+          "Order Number",
+          "Price USD",
+          "Units"
+        ],
+        "input_rows": 2,
+        "valid_rows": 0,
+        "invalid_rows": 2,
+        "issues": [
+          {
+            "row": 1,
+            "field": "headers",
+            "code": "schema_drift",
+            "message": "Canonical columns changed."
+          }
+        ],
+        "issues_truncated": false
+      },
+      "after": {
+        "input_rows": 2,
+        "valid_rows": 2,
+        "invalid_rows": 0,
+        "issues": [],
+        "issues_truncated": false
+      },
+      "plan": [
+        {
+          "source": "Order Number",
+          "target": "order_id",
+          "transform": "trim"
+        },
+        {
+          "source": "Buyer",
+          "target": "customer",
+          "transform": "trim"
+        },
+        {
+          "source": "Units",
+          "target": "quantity",
+          "transform": "integral_decimal"
+        },
+        {
+          "source": "Price USD",
+          "target": "unit_price",
+          "transform": "currency_usd"
+        },
+        {
+          "source": "Currency",
+          "target": "currency",
+          "transform": "uppercase_usd"
+        },
+        {
+          "source": "Order Date",
+          "target": "ordered_on",
+          "transform": "us_date"
+        }
+      ],
+      "error": null,
+      "limits": {
+        "model_calls": 2,
+        "seconds": 180,
+        "batch_rows": 200
+      },
+      "extractor_learned_from": "1d649d0332a04faa9d09207dae4d58b7",
+      "duration_ms": 92514,
+      "model_calls_this_request": 0,
+      "committed_revision": 2,
+      "active_revision_at_finish": 2,
+      "snapshot_totals_at_finish": {
+        "orders": 4,
+        "units": 8,
+        "revenue_cents": 252485
+      },
+      "idempotent_replay": true,
+      "current_active_revision": 2
+    }
+  },
+  "snapshot": {
+    "active_revision": 2,
+    "records": [
+      {
+        "order_id": "ORD-1001",
+        "customer": "Aster Labs",
+        "quantity": 2,
+        "unit_price_cents": 1250,
+        "currency": "USD",
+        "ordered_on": "2026-11-01"
+      },
+      {
+        "order_id": "ORD-1002",
+        "customer": "Birch Works",
+        "quantity": 1,
+        "unit_price_cents": 4000,
+        "currency": "USD",
+        "ordered_on": "2026-11-02"
+      },
+      {
+        "order_id": "ORD-2001",
+        "customer": "Cedar Studio",
+        "quantity": 3,
+        "unit_price_cents": 1995,
+        "currency": "USD",
+        "ordered_on": "2026-11-03"
+      },
+      {
+        "order_id": "ORD-2002",
+        "customer": "Dune Systems",
+        "quantity": 2,
+        "unit_price_cents": 120000,
+        "currency": "USD",
+        "ordered_on": "2026-11-04"
+      }
+    ],
+    "totals": {
+      "orders": 4,
+      "units": 8,
+      "revenue_cents": 252485
+    },
+    "revisions": [
+      {
+        "revision": 0,
+        "batch_id": null,
+        "orders": 0
+      },
+      {
+        "revision": 2,
+        "batch_id": "1d649d0332a04faa9d09207dae4d58b7",
+        "orders": 4
+      },
+      {
+        "revision": 1,
+        "batch_id": "e664f5b78a684098a3be60b83fa69b6f",
+        "orders": 2
+      }
+    ]
+  },
+  "browser": {
+    "browser": "headless Edge",
+    "loaded_recreated_container": true,
+    "persisted_repair_trace_opened": true,
+    "orders": 4,
+    "valid_repaired_rows": "2 / 2",
+    "mobile_no_horizontal_overflow": true,
+    "javascript_errors": []
+  }
+}

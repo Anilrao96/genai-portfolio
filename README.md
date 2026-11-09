@@ -2,7 +2,7 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
-**8/10 new MVPs are implemented and live-verified.** Relay, the local voice agent, is the latest addition. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestones. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
+**9/10 new MVPs are implemented and live-verified.** The latest runs Clearflow in Docker Compose with a persistent audit volume on D:. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestone. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
 
@@ -20,8 +20,9 @@ Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-e
 | [06 Repair Bench Code Assistant](projects/p06_code_assistant/README.md) | Real LangGraph generation/repair, inspected native WSL containers, hard resource limits, actual test feedback and saved attempts | `scripts/Start-CodeAssistant.ps1` → port 8106; run its setup first |
 | [07 Retail Lens SQL Assistant](projects/p07_sql_assistant/README.md) | LangChain SQL planning, database-enforced read-only queries, visible results and summaries | `scripts/Start-SqlAssistant.ps1` → port 8107 |
 | [08 Assembly App Builder](projects/p08_app_builder/README.md) | Three local model roles generate, build and test a FastAPI and React tracker, with an interactive isolated preview | `scripts/Start-AppBuilder.ps1` → port 8108 after setup |
+| [09 Clearflow Docker Agent](projects/p09_docker_agent/README.md) | Real Docker Compose startup and readiness, Qwen3 CPU repair and audit data retained across container recreation | `scripts/Start-DockerAgent.ps1` → port 8109 |
 
-The portfolio regression suite has **233 passing offline tests**. SQL verification covers model workflows and refused database operations. RAG covers citations, abstention and search recovery. MCP verifies role-scoped protocol calls and checked selections, with labeled tool fallbacks for numeric notes. Pipeline verification covers model repair, extractor reuse, quarantine, replay and rollback. Code Assistant passed nine isolation controls and live generation and repair. Assembly passed five isolation controls and ten live API checks. Relay passed actual voice input, streamed speech, cancellation and browser capture and playback using a synthetic microphone. Captured-outcome checks in the earlier apps reuse Agent Eval Lab.
+The portfolio regression suite has **237 passing offline tests**. SQL verification covers model workflows and refused database operations. RAG covers citations, abstention and search recovery. MCP verifies role-scoped protocol calls and checked selections, with labeled tool fallbacks for numeric notes. Pipeline verification covers model repair, extractor reuse, quarantine, replay and rollback. Code Assistant passed nine isolation controls and live generation and repair. Assembly passed five isolation controls and ten live API checks. Relay passed actual voice input, streamed speech, cancellation and browser capture and playback using a synthetic microphone. The Docker Agent passed fresh Compose readiness, model repair and audit persistence after container recreation. Captured-outcome checks in the earlier apps reuse Agent Eval Lab.
 
 ## Start the first application
 

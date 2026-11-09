@@ -41,6 +41,6 @@ Every project needs: an actual AI path, reproducible setup and one-command start
 - Agent Eval Lab is completed external work at `D:\agent-eval-lab`, repository `https://github.com/Anilrao96/agent-eval-lab`. Reuse its `AgentInput`, `Prediction`, `ToolEvent` adapter contracts and reports. Do not recreate its evaluator.
 - Python/FastAPI for shared services; React for the generated full-stack application. Use project-specific libraries where they materially serve the named architecture.
 - Default Ollama instance is loopback port 11435 with weights under this project on D:. Do not change the existing user-wide Ollama configuration.
-- Docker CLI was not detected in PATH. Project 06 now uses the already-installed native WSL 3.0.3 container API/CLI with a separate D:-backed session and verified isolation. Docker CLI/Compose availability remains a dependency for project 09; native OCI execution alone does not complete its acceptance criteria.
+- The Windows PATH has no Docker CLI. Projects 06 and 08 use the owned D-backed native WSL 3.0.3 container session for isolated execution. Project 09 uses the Docker 25.0.3 Engine and pinned Compose 5.6.0 plugin in that session. Image build, Compose readiness, local inference and persistent audit data were verified.
 - No API key or paid usage is assumed. Gemini live verification remains a dependency until a provider and budget are configured.
 - Hourly continuation stops by 19 November 00:00 local time; no catch-up or startup-trigger behavior is assumed.

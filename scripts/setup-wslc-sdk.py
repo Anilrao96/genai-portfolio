@@ -23,7 +23,9 @@ def main():
     with zipfile.ZipFile(archive) as package:
         for name in ('include/wslcsdk.h','runtimes/win-x64/native/wslcsdk.dll'):
             target=dest/Path(name).name;content=package.read(name)
-            if target.exists() and target.read_bytes()!=content:raise ValueError('Existing SDK file changed; preserving it.')
+            if target.exists():
+                if target.read_bytes()!=content:raise ValueError('Existing SDK file changed; preserving it.')
+                continue
             target.write_bytes(content)
     print(json.dumps({'sdk':VERSION,'path':str(dest),'sha256':SHA256}))
 
