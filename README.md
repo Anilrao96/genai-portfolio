@@ -48,6 +48,8 @@ For the browser check, with both services running: `npm ci --cache .cache/npm`, 
 
 Read [ROADMAP.md](ROADMAP.md) for the fourteen-day sequence and acceptance criteria; [PROGRESS.md](PROGRESS.md) and [progress.json](progress.json) record resumable state. Project numbers follow the article; implementation order follows dependencies.
 
+The [portfolio walkthrough](docs/portfolio-walkthrough.md) collects the demo steps, prerequisites and evidence for the delivered apps.
+
 ## Working agreement
 
 - Build useful, tested MVPs with an explicit scope and honest limitations. Two weeks is a target conditioned on available computer time, dependencies and credentials.

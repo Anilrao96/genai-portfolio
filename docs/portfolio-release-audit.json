@@ -1,0 +1,236 @@
+{
+  "captured_at": "2026-11-10T02:41:33.323634+00:00",
+  "source_commit": "42242bb3d7e5e5ae33a52f86e003da12fa4c7755",
+  "mode": "Git archive and new frozen Python environment on D:",
+  "install": {
+    "python": "3.13.13",
+    "packages": 78,
+    "offline_dependency_cache": true,
+    "lock_sha256": "958fe3d5e7eec028d29731a4ff67e3b133d7e06b698c1ee7ca3f5024426e93cd",
+    "initial_error": "uv discovered a stale Python registry entry",
+    "explicit_python_path_verified": true,
+    "updated_setup_left_lockfile_unchanged": true
+  },
+  "offline_suite": {
+    "passed": 237,
+    "duration_seconds": 131.69
+  },
+  "clean_live_demo": {
+    "project": "p04_local_ai",
+    "launcher": "scripts/Start-LocalAI.ps1",
+    "model": "qwen2.5:1.5b",
+    "mode": "headless Edge with existing local Ollama, CPU",
+    "health_http_status": 200,
+    "chat_http_status": 200,
+    "browser": {
+      "verified_at": "2026-11-10T02:39:57.083Z",
+      "kind": "headless_edge_live_ui",
+      "prompt": "What is 17 + 25? Reply with only the number.",
+      "answer": "42",
+      "javascript_errors": [],
+      "mobile_no_horizontal_overflow": true,
+      "new_conversation_clears_messages": true
+    }
+  },
+  "projects": [
+    {
+      "project": "p01_mcp_agents",
+      "verified_delivery_commit": "62961bb1090ca2f58bb4508b29f665ae66a210b6",
+      "evidence": [
+        {
+          "path": "docs/mcp-live.json",
+          "sha256": "1c4595f902b75f728fc09432733794fc79d0c3d6c867e6043bb04986c392f4d0"
+        },
+        {
+          "path": "docs/mcp-browser.json",
+          "sha256": "63ce8aaa3b28ac2f30d5526fa5e9d12015b5223981e6fff48b95a178d0bdf453"
+        },
+        {
+          "path": "docs/mcp-browser-saved.json",
+          "sha256": "a915e93177a3c300d0b173700a77616caee858ddf3eeedd1839de007700ef133"
+        },
+        {
+          "path": "docs/mcp-eval/run.json",
+          "sha256": "81cf5d896315a7ae38d9ee333a71db2f88b5f0838e0d1791b45d3755c3590d2a"
+        }
+      ]
+    },
+    {
+      "project": "p02_voice_agent",
+      "verified_delivery_commit": "5bd8f19729164984c51c33b4587ebe2e3db08535",
+      "evidence": [
+        {
+          "path": "docs/voice-live.json",
+          "sha256": "929a5f9d13f716711390e2891635b483c6fd603cffc68b1e313a04a045989e35"
+        },
+        {
+          "path": "docs/voice-browser.json",
+          "sha256": "7beacd3848331dad24f76e3df3b98170fc48156c66e062204de83d629d1c83c6"
+        },
+        {
+          "path": "docs/voice-demo.wav",
+          "sha256": "0987f636971e5452dfb7928b02b8e1be2c8240247c93fea2f8a5169a66045670"
+        },
+        {
+          "path": "docs/voice-desktop.png",
+          "sha256": "7e5fabba3077326a75e449f3390c4412fad24bac2dd7b06c6a6b9197b31f4e4d"
+        },
+        {
+          "path": "docs/voice-mobile.png",
+          "sha256": "277305028f3f4100f049a5b75fd156b579c78c3068534f53287da82b7cc6d2c1"
+        }
+      ]
+    },
+    {
+      "project": "p03_agentic_rag",
+      "verified_delivery_commit": "1e15240c560baedfef96f88b5246405bebc2bc89",
+      "evidence": [
+        {
+          "path": "docs/rag-live.json",
+          "sha256": "6d3ed64e0f1863abebd8e6df4352579ccefaab02b0c640ca37d5082cd5a93cef"
+        },
+        {
+          "path": "docs/rag-persistence.json",
+          "sha256": "53e9bc564de845347c46978ebec3717fb9d700b6804627cc17efadf6c700657e"
+        },
+        {
+          "path": "docs/rag-browser.json",
+          "sha256": "0b242f755c243a80050f9960c9052b71c219f36cd5392379e987506881dbe4cd"
+        },
+        {
+          "path": "docs/rag-eval/run.json",
+          "sha256": "b96e8f094c465f07ba75add5e21b8b3fc2d2d4a1046571cabebb59f4fdaf5a5d"
+        }
+      ]
+    },
+    {
+      "project": "p04_local_ai",
+      "verified_delivery_commit": "70f7fb7326b07ed2c03e8f64a6af42b0e1039f69",
+      "evidence": [
+        {
+          "path": "docs/local-ai-live.json",
+          "sha256": "86a2263391e1e8fac99f5674d60c9d9b4bbea55ecddd988c2b73ace77d179875"
+        },
+        {
+          "path": "docs/local-ai-browser.json",
+          "sha256": "26a6aa73c14ae22149770c7f7644d41ad023a8618e4837f95880f4436e4ce5e7"
+        }
+      ]
+    },
+    {
+      "project": "p05_self_healing_pipeline",
+      "verified_delivery_commit": "379b8c25350a888b747a07c7e60ff5256d9205b5",
+      "evidence": [
+        {
+          "path": "docs/pipeline-live.json",
+          "sha256": "53b77ff31657d20d7b2d17de1908bbb63babb0b27678533750bcdcbcbd5bbe1b"
+        },
+        {
+          "path": "docs/pipeline-browser.json",
+          "sha256": "13ff3582acb1933bca62e3ebf535ba47bfe6c2fdb79f57c58610aa4ee6b35a43"
+        },
+        {
+          "path": "docs/pipeline-eval/run.json",
+          "sha256": "f10763e4ee624700de15ee27c2b12dc1ed1e506bc80fdecf9781017ba72c0db4"
+        }
+      ]
+    },
+    {
+      "project": "p06_code_assistant",
+      "verified_delivery_commit": "ff0909b4028a465101259caec075988962f8ada3",
+      "evidence": [
+        {
+          "path": "docs/code-isolation.json",
+          "sha256": "069989a7037966d6e37e859103b7a9f79de9f9db19ee6159da5783259a99f935"
+        },
+        {
+          "path": "docs/code-core-live.json",
+          "sha256": "a1b98e9d74b65e217650280ab28ecc42b885c1cb7aba89f59369c56b82afe5ce"
+        },
+        {
+          "path": "docs/code-assistant-live.json",
+          "sha256": "a8d99e8c93cec59cc8c485efb090eed9429405a63f48df2b7c40b6d9a5ce43e4"
+        },
+        {
+          "path": "docs/code-browser.json",
+          "sha256": "2d243a51c9ae685d3fd6dff8cebc35901b0e981b9b09903227b28a726a1805c4"
+        },
+        {
+          "path": "docs/code-eval/run.json",
+          "sha256": "6b0f7baf779d9affe02f4afb945ca72bc221b7887e85d07450b0cac507dc31f5"
+        }
+      ]
+    },
+    {
+      "project": "p07_sql_assistant",
+      "verified_delivery_commit": "9fd2c94fde9d3b15efdbd39a817fcae035281bb7",
+      "evidence": [
+        {
+          "path": "docs/sql-assistant-live.json",
+          "sha256": "3fda29ad9472a1f98d9d79e8e2a0c16fec68228407f51a5878283b2e8d0b6362"
+        },
+        {
+          "path": "docs/sql-assistant-browser.json",
+          "sha256": "f0d92060fdc87de24dad036b53b70a31162ff0fae5d7cb28d67fb81ec565768a"
+        },
+        {
+          "path": "docs/sql-assistant-eval/run.json",
+          "sha256": "0e22617cbbbe9cb6b82f3f74dc2014436bb942a75d9e91ca48e33b766fea0ef0"
+        }
+      ]
+    },
+    {
+      "project": "p08_app_builder",
+      "verified_delivery_commit": "cb542b9fe26b8cdc8f981d164f94a71829b2c8b6",
+      "evidence": [
+        {
+          "path": "docs/app-isolation.json",
+          "sha256": "1d06c051893b7d8167ea21e04c5418d2e1b26f23b17a4ec5a2416b1c22b37139"
+        },
+        {
+          "path": "docs/app-builder-core-live.json",
+          "sha256": "96c8a67843cf0ba836b63b953fc75cc19d985c6e43975d2794d0f1748fb4b7d7"
+        },
+        {
+          "path": "docs/app-builder-browser.json",
+          "sha256": "0d64ee73cfcc2aaa77be7dccc94322fce7003c6341f27ab19c9553549818e5cb"
+        },
+        {
+          "path": "docs/app-builder-preview.png",
+          "sha256": "8478a9543d79114a55c55986e5579881f57864c2f6e7b2076afb0acaa8354f92"
+        }
+      ]
+    },
+    {
+      "project": "p09_docker_agent",
+      "verified_delivery_commit": "bc88dc82f6ede594d8436cab563e01ec0c8c80a8",
+      "evidence": [
+        {
+          "path": "docs/docker-agent-live.json",
+          "sha256": "4b1e32ba2d981a916a45dda1218793344961aea1e1522395ff1b423b005cae39"
+        },
+        {
+          "path": "docs/docker-agent-desktop.png",
+          "sha256": "1e61e061c410a24d15122637fd459bd6361b9da02d76ecaae7a189a1a57f5ced"
+        },
+        {
+          "path": "docs/docker-agent-eval/run.json",
+          "sha256": "6660ae78b8845d433293104bb03f5fe4387835d9be0d8e75b06d7346adb50d64"
+        }
+      ]
+    }
+  ],
+  "evidence_hash_basis": "Git blob bytes at source_commit",
+  "archive_line_ending_conversions": [
+    "docs/rag-live.json",
+    "docs/rag-persistence.json",
+    "docs/rag-browser.json",
+    "docs/rag-eval/run.json",
+    "docs/local-ai-live.json",
+    "docs/local-ai-browser.json",
+    "docs/sql-assistant-live.json",
+    "docs/sql-assistant-browser.json",
+    "docs/sql-assistant-eval/run.json",
+    "docs/docker-agent-eval/run.json"
+  ]
+}
