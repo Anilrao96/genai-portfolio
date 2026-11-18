@@ -1,6 +1,8 @@
 # Sprint progress
 
-Last updated: 9 November 2026, Asia/Kolkata.
+Last updated: 19 November 2026, Asia/Kolkata.
+
+The sprint window has ended with nine delivered MVPs. Sightline is implemented and offline-verified in the local working tree at `D:\genai-portfolio`. Its live Gemini verification and GitHub delivery remain pending a configured key and an agreed budget. The recurring automation was deleted. [Final results](docs/sprint-results.md).
 
 ## Existing completed work
 
@@ -40,11 +42,11 @@ Evidence: `docs/code-isolation.json`, `docs/code-core-live.json`, `docs/code-ass
 
 **Git:** nine completed MVPs have verified delivery on `main`. Clearflow Docker Agent was pushed as `bc88dc82f6ede594d8436cab563e01ec0c8c80a8` and matched remote main after the push. This record follows in a separate commit. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
-**Schedule:** active hourly continuation in this chat, automation ID `build-genai-portfolio-over-two-weeks`, ending before 19 November 00:00 Asia/Kolkata. Local files require the computer and desktop app to be running.
+**Schedule ended.** Automation `build-genai-portfolio-over-two-weeks` was deleted after the 19 November 00:00 Asia/Kolkata cutoff.
 
 ## Next actions
 
-1. Begin project 10 with image input limits, validated Gemini responses and speech using the local Windows adapter. The live provider call needs a securely configured Gemini key and an agreed budget.
+1. Further work requires a new instruction after the sprint cutoff. Finishing the local Sightline implementation requires a configured Gemini key, an agreed request budget, actual provider verification, and GitHub delivery after acceptance.
 
 ## Known dependencies
 

@@ -2,6 +2,8 @@
 
 Ten runnable portfolio applications, built incrementally on **D:** from **5–18 November 2026 (Asia/Kolkata)**.
 
+The sprint ended at **19 November 2026 00:00 Asia/Kolkata** with nine delivered MVPs. The recurring build automation has been deleted. [Final results](docs/sprint-results.md).
+
 **9/10 new MVPs are implemented and live-verified.** The latest runs Clearflow in Docker Compose with a persistent audit volume on D:. Agent Eval Lab is completed existing work. See [PROGRESS.md](PROGRESS.md) for delivery status and the remaining milestone. [GitHub repository](https://github.com/Anilrao96/genai-portfolio).
 
 Source: [Aman Kharwal's project list](https://amanxai.com/2026/07/31/10-end-to-end-genai-portfolio-projects/).
@@ -57,7 +59,7 @@ The [portfolio walkthrough](docs/portfolio-walkthrough.md) collects the demo ste
 - Default to local inference and fictional datasets. Paid API calls require a configured provider and an agreed budget. Never store credentials in Git.
 - Keep offline fixtures clearly distinct from live inference. A stub is not a completed AI integration.
 - Each app needs a reproducible start command, example workflow, architecture notes, focused tests, and evidence of what actually ran.
-- Work resumes hourly through 18 November when the computer and desktop app are available. This is scheduled work, not a persistent startup service; unavailable time reduces the build window.
+- The scheduled build ended at 19 November 2026 00:00 Asia/Kolkata. Further work requires a new instruction.
 - Push completed, verified projects to the portfolio GitHub repository. Keep runtime services local; hosting has not been requested.
 
 ## Layout
